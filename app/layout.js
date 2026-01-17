@@ -1,8 +1,8 @@
 import './globals.css'
 
 export const metadata = {
-  title: 'WikiNITT - NIT Trichy Encyclopedia',
-  description: 'Comprehensive encyclopedia for NIT Trichy - explore hostels, departments, campus facilities, events and clubs',
+  title: 'WikiNITT',
+  description: 'NIT Trichy Encyclopedia',
 }
 
 export default function RootLayout({ children }) {
