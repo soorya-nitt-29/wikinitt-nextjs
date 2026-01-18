@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 export default function WikiNITT() {
   const [searchQuery, setSearchQuery] = useState('')
@@ -8,6 +8,11 @@ export default function WikiNITT() {
   const [showSearch, setShowSearch] = useState(false)
   const [activeCategory, setActiveCategory] = useState('all')
   const [showMobileMenu, setShowMobileMenu] = useState(false)
+
+  // Scroll to top when article changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [selectedArticle])
 
   // Comprehensive Articles Database
   const articles = {
