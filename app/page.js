@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 export default function WikiNITT() {
   const [searchQuery, setSearchQuery] = useState('')
@@ -7,8 +7,9 @@ export default function WikiNITT() {
   const [darkMode, setDarkMode] = useState(true)
   const [showSearch, setShowSearch] = useState(false)
   const [activeCategory, setActiveCategory] = useState('all')
+  const [showMobileMenu, setShowMobileMenu] = useState(false)
 
-  // Comprehensive Articles Database - NIT Trichy
+  // Comprehensive Articles Database
   const articles = {
     agate: {
       title: "Agate Hostel",
@@ -18,11 +19,11 @@ export default function WikiNITT() {
       lastEdited: "2024-01-15",
       contributors: 8,
       content: {
-        intro: "Agate Hostel is one of the prominent residential facilities at the National Institute of Technology (NIT), Tiruchirappalli. Known for its modern amenities and vibrant community, Agate serves as home to undergraduate students pursuing various engineering disciplines.",
+        intro: "Agate Hostel is one of the prominent boys' residential facilities at the National Institute of Technology (NIT), Tiruchirappalli. Known for its modern amenities and vibrant community, Agate serves as home to undergraduate male students pursuing various engineering disciplines.",
         sections: [
           {
             title: "History and Establishment",
-            content: "Agate Hostel was established in the early 2000s as part of NIT Trichy's expansion to accommodate the growing student population. Named after the semi-precious stone 'Agate', the hostel embodies the institution's tradition of naming residential facilities after gemstones. The hostel was designed with modern architecture and student-centric facilities, reflecting the institute's commitment to providing quality living spaces for its students."
+            content: "Agate Hostel was established in the early 2000s as part of NIT Trichy's expansion to accommodate the growing student population. Named after the semi-precious stone 'Agate', the hostel embodies the institution's tradition of naming residential facilities after gemstones. The hostel was designed with modern architecture and student-centric facilities, reflecting the institute's commitment to providing quality living spaces for male students."
           },
           {
             title: "Infrastructure and Facilities",
@@ -30,7 +31,7 @@ export default function WikiNITT() {
           },
           {
             title: "Student Life and Culture",
-            content: "Agate Hostel is known for its vibrant student culture and strong sense of community. The residents actively participate in various cultural, technical, and sports activities. The hostel organizes regular events including cultural nights, technical workshops, sports tournaments, and festival celebrations. The hostel council, elected by students, plays a crucial role in managing hostel affairs and representing student interests. Annual hostel day celebrations feature performances, competitions, and dinner gatherings that strengthen bonds among residents."
+            content: "Agate Hostel is known for its vibrant student culture and strong sense of brotherhood. The residents actively participate in various cultural, technical, and sports activities. The hostel organizes regular events including cultural nights, technical workshops, sports tournaments, and festival celebrations. The hostel council, elected by students, plays a crucial role in managing hostel affairs and representing student interests. Annual hostel day celebrations feature performances, competitions, and dinner gatherings that strengthen bonds among residents."
           },
           {
             title: "Mess and Dining",
@@ -47,14 +48,14 @@ export default function WikiNITT() {
         ],
         quickFacts: {
           "Established": "Early 2000s",
-          "Type": "Undergraduate Men's Hostel",
+          "Type": "Boys Hostel",
           "Capacity": "~200 students",
           "Floors": "4",
-          "Mess Type": "Non-Vegetarian & Vegetarian",
+          "Mess Type": "Non-Veg & Veg",
           "Common Rooms": "3",
-          "Sports Facilities": "TT, Badminton, Carrom"
+          "Sports": "TT, Badminton, Carrom"
         },
-        tags: ["Hostels", "Accommodation", "Student Life", "NIT Trichy", "Boys Hostel"]
+        tags: ["Hostels", "Boys Hostel", "Accommodation", "Student Life", "NIT Trichy"]
       }
     },
     diamond: {
@@ -65,35 +66,30 @@ export default function WikiNITT() {
       lastEdited: "2024-01-10",
       contributors: 6,
       content: {
-        intro: "Diamond Hostel is one of the premier women's hostels at NIT Trichy, known for its excellent facilities, stringent security measures, and supportive community environment. It provides a safe and comfortable living space for female undergraduate students.",
+        intro: "Diamond Hostel is one of the boys' hostels at NIT Trichy, known for its excellent facilities and supportive community environment. It provides comfortable living space for undergraduate male students.",
         sections: [
           {
             title: "Overview and Location",
-            content: "Diamond Hostel stands as a testament to NIT Trichy's commitment to providing safe and comfortable accommodation for its female students. Located in the women's hostel complex, it is strategically positioned near the academic blocks, making it convenient for students to attend classes. The hostel combines modern amenities with a warm, homely atmosphere that helps students transition smoothly into campus life."
-          },
-          {
-            title: "Security and Safety",
-            content: "Diamond Hostel prioritizes the safety of its residents with 24/7 security personnel, CCTV surveillance at entry and exit points, biometric access control systems, and strictly monitored visitor policies. The hostel has dedicated lady wardens who are available round-the-clock for any emergencies or concerns. All visitors must register at the security desk and visits are only permitted during designated hours."
+            content: "Diamond Hostel stands as one of the well-maintained boys' hostels at NIT Trichy. Located strategically near the academic blocks, it is convenient for students to attend classes. The hostel combines modern amenities with a warm atmosphere that helps students transition smoothly into campus life."
           },
           {
             title: "Facilities and Amenities",
-            content: "The hostel features spacious rooms with attached or common washrooms depending on the floor, well-equipped study rooms with good lighting, common recreation areas with TV and indoor games, a well-maintained mess serving diverse cuisines including special diet considerations, high-speed WiFi connectivity, water purifiers on each floor, and washing machine facilities. The hostel also has a small gym and yoga room for fitness enthusiasts."
+            content: "The hostel features spacious rooms with attached or common washrooms depending on the floor, well-equipped study rooms with good lighting, common recreation areas with TV and indoor games, a well-maintained mess serving diverse cuisines, high-speed WiFi connectivity, water purifiers on each floor, and washing machine facilities."
           },
           {
             title: "Hostel Culture",
-            content: "Diamond Hostel is known for its strong sisterhood and collaborative environment. The hostel council organizes various events throughout the year including cultural nights, festival celebrations, birthday celebrations, and study groups before exams. Seniors actively mentor juniors, creating a supportive academic environment. The hostel also participates enthusiastically in inter-hostel competitions during Festember and Pragyan."
+            content: "Diamond Hostel is known for its strong brotherhood and collaborative environment. The hostel council organizes various events throughout the year including cultural nights, festival celebrations, birthday celebrations, and study groups before exams. Seniors actively mentor juniors, creating a supportive academic environment. The hostel also participates enthusiastically in inter-hostel competitions during Festember and Pragyan."
           }
         ],
         quickFacts: {
-          "Type": "Women's Hostel",
+          "Type": "Boys Hostel",
           "Capacity": "~150 students",
           "Floors": "3",
-          "Security": "24/7 with CCTV",
-          "Mess": "Separate Veg & Non-Veg",
+          "Mess": "Veg & Non-Veg",
           "Common Rooms": "2",
-          "Additional": "Gym, Yoga Room"
+          "WiFi": "High-speed"
         },
-        tags: ["Hostels", "Women's Hostel", "Accommodation", "Security", "NIT Trichy"]
+        tags: ["Hostels", "Boys Hostel", "Accommodation", "NIT Trichy"]
       }
     },
     jade: {
@@ -104,29 +100,29 @@ export default function WikiNITT() {
       lastEdited: "2024-01-12",
       contributors: 5,
       content: {
-        intro: "Jade Hostel is another prominent boys' hostel at NIT Trichy, known for its strong community spirit, excellent sports culture, and active participation in campus events.",
+        intro: "Jade Hostel is a prominent boys' hostel at NIT Trichy, known for its strong community spirit and excellent sports culture.",
         sections: [
           {
             title: "About Jade",
-            content: "Named after the precious jade stone, this hostel houses undergraduate male students primarily from the Electrical, Electronics, and Computer Science departments. The hostel has developed a reputation for producing excellent athletes and cultural performers who regularly represent NIT Trichy at national competitions."
+            content: "Named after the precious jade stone, this hostel houses undergraduate male students primarily from Electrical, Electronics, and Computer Science departments. Known for producing excellent athletes and strong academic performers."
           },
           {
             title: "Sports and Recreation",
-            content: "Jade Hostel has extensive sports facilities including basketball court, volleyball court, cricket practice nets, and a well-maintained table tennis room. The hostel regularly wins inter-hostel sports competitions and has produced several university-level players. Evening sports sessions are a common sight with students actively engaging in various games."
+            content: "Extensive sports facilities including basketball court, volleyball court, cricket nets, and table tennis room. Regularly wins inter-hostel sports competitions and has produced several university-level players."
           },
           {
             title: "Academic Environment",
-            content: "The hostel maintains a conducive academic atmosphere with dedicated reading rooms that remain open 24/7 during exam periods. Study groups are common, with seniors helping juniors understand complex concepts. The hostel has a tradition of celebrating academic achievements with the topper's wall of fame displayed in the common room."
+            content: "The hostel maintains a conducive academic atmosphere with dedicated reading rooms that remain open 24/7 during exam periods. Study groups are common, with seniors helping juniors understand complex concepts."
           }
         ],
         quickFacts: {
           "Established": "2005",
+          "Type": "Boys Hostel",
           "Capacity": "~180 students",
           "Floors": "4",
-          "Sports Courts": "Basketball, Volleyball",
-          "Reading Rooms": "2"
+          "Sports Courts": "Basketball, Volleyball"
         },
-        tags: ["Hostels", "Boys Hostel", "Sports", "Academic", "NIT Trichy"]
+        tags: ["Hostels", "Boys Hostel", "Sports", "NIT Trichy"]
       }
     },
     coral: {
@@ -137,61 +133,60 @@ export default function WikiNITT() {
       lastEdited: "2024-01-08",
       contributors: 4,
       content: {
-        intro: "Coral Hostel is one of the newer women's hostels at NIT Trichy, featuring modern architecture and state-of-the-art facilities designed to provide maximum comfort to its residents.",
+        intro: "Coral Hostel is one of the newer boys' hostels at NIT Trichy, featuring modern architecture and state-of-the-art facilities.",
         sections: [
           {
             title: "Modern Infrastructure",
-            content: "Built in 2015, Coral Hostel represents the new generation of hostel facilities at NIT Trichy. The building features modern architecture with better ventilation, larger rooms, and improved common areas. All rooms have attached bathrooms, individual study spaces with ample lighting, and balconies with scenic views of the campus."
+            content: "Built in 2015, Coral represents new generation hostel facilities with better ventilation, larger rooms, attached bathrooms, and balconies with scenic campus views for male students."
           },
           {
             title: "Amenities",
-            content: "The hostel boasts WiFi coverage throughout, central water purification system, solar water heaters, modern mess with varied menu options, multipurpose hall for events and gatherings, reading room with AC, and a well-equipped recreation room with books, board games, and musical instruments."
+            content: "WiFi coverage throughout, central water purification system, solar water heaters, modern mess with varied menu options, multipurpose hall for events and gatherings, reading room with AC."
           },
           {
             title: "Green Initiatives",
-            content: "Coral Hostel is known for its environmental consciousness with rainwater harvesting systems, solar panels for partial electricity needs, composting facility for biodegradable waste, and a small organic garden maintained by students. The hostel actively participates in campus sustainability initiatives."
+            content: "Known for environmental consciousness with rainwater harvesting, solar panels, composting facility, and organic garden maintained by students."
           }
         ],
         quickFacts: {
           "Established": "2015",
-          "Type": "Women's Hostel",
+          "Type": "Boys Hostel",
           "Capacity": "~120 students",
-          "Room Type": "Attached bathrooms",
-          "Special Feature": "Solar powered",
-          "Garden": "Organic terrace garden"
+          "Special": "Solar powered",
+          "Garden": "Organic terrace"
         },
-        tags: ["Hostels", "Women's Hostel", "Modern", "Eco-Friendly", "NIT Trichy"]
+        tags: ["Hostels", "Boys Hostel", "Eco-Friendly", "Modern"]
       }
     },
     cse: {
-      title: "Computer Science & Engineering Department",
+      title: "Computer Science & Engineering",
       category: "Departments",
       image: "💻",
       views: 3421,
       lastEdited: "2024-01-18",
       contributors: 15,
       content: {
-        intro: "The Department of Computer Science and Engineering at NIT Trichy is one of the premier CSE departments in India, known for cutting-edge research, excellent faculty, and outstanding placement records. Established in 1984, it has consistently ranked among the top engineering departments in the country.",
+        intro: "The Department of Computer Science and Engineering at NIT Trichy is one of the premier CSE departments in India, known for cutting-edge research, excellent faculty, and outstanding placement records.",
         sections: [
           {
             title: "Academic Programs",
-            content: "The department offers B.Tech in Computer Science and Engineering (4 years), M.Tech in Computer Science and Engineering with specializations in AI/ML, Data Science, Cyber Security, and Software Engineering, and Ph.D. programs in various research areas. The curriculum is regularly updated to include emerging technologies and industry requirements."
+            content: "B.Tech in CSE (4 years), M.Tech with specializations in AI/ML, Data Science, Cyber Security, Software Engineering, and Ph.D. programs. Curriculum regularly updated with emerging technologies."
           },
           {
-            title: "Research and Innovation",
-            content: "The department is actively involved in cutting-edge research in areas including Artificial Intelligence and Machine Learning, Data Science and Big Data Analytics, Cyber Security and Cryptography, Internet of Things, Cloud Computing, Computer Vision and Image Processing, Natural Language Processing, and Blockchain Technology. Several faculty members have ongoing sponsored research projects from DST, DRDO, and industry partners."
+            title: "Research Areas",
+            content: "Active research in AI/ML, Data Science, Cyber Security, IoT, Cloud Computing, Computer Vision, NLP, and Blockchain. Multiple sponsored projects from DST, DRDO, and industry."
           },
           {
             title: "Labs and Facilities",
-            content: "The department houses state-of-the-art laboratories including AI/ML Lab with GPU clusters, Network Security Lab with latest security tools, Software Engineering Lab with industry-standard IDEs, Cloud Computing Lab with access to AWS and Azure, Mobile Application Development Lab, Database Management Systems Lab, and Operating Systems Lab. All labs are equipped with high-end workstations and latest software."
+            content: "State-of-the-art labs including AI/ML Lab with GPU clusters, Network Security Lab, Software Engineering Lab, Cloud Computing Lab with AWS/Azure, Mobile Dev Lab, DBMS Lab, and OS Lab."
           },
           {
-            title: "Placements and Internships",
-            content: "CSE students at NIT Trichy enjoy exceptional placement opportunities with top tech companies. Regular recruiters include Google, Microsoft, Amazon, Adobe, Goldman Sachs, Morgan Stanley, Uber, Flipkart, and numerous startups. The average package consistently exceeds 20 LPA with top packages reaching 1 Crore+. Summer internships at premier organizations are common, providing valuable industry exposure."
+            title: "Placements",
+            content: "Exceptional placements with Google, Microsoft, Amazon, Adobe, Goldman Sachs, Morgan Stanley, Uber, Flipkart. Average package exceeds 20 LPA with top packages 1 Crore+."
           },
           {
             title: "Student Activities",
-            content: "The department has active student clubs including Delta Force (coding club), Spider R&D (research and development club), and Forge (innovation club). These clubs organize hackathons, coding competitions, workshops, and guest lectures throughout the year. Students regularly participate in ACM ICPC, Google Code Jam, and other prestigious coding competitions."
+            content: "Active clubs: Delta Force (coding), Spider R&D (research), Forge (innovation). Regular hackathons, coding competitions, workshops. Students excel in ACM ICPC, Google Code Jam."
           }
         ],
         quickFacts: {
@@ -200,86 +195,75 @@ export default function WikiNITT() {
           "Faculty": "~40",
           "Labs": "15+",
           "Avg Package": "20+ LPA",
-          "Top Package": "1 Crore+",
-          "Research Areas": "AI/ML, Cyber Security, IoT"
+          "Top Package": "₹1 Crore+"
         },
-        tags: ["Departments", "CSE", "Engineering", "Technology", "Placements", "Research"]
+        tags: ["Departments", "CSE", "Technology", "Placements", "Research"]
       }
     },
     ece: {
-      title: "Electronics & Communication Engineering",
+      title: "Electronics & Communication",
       category: "Departments",
       image: "📡",
       views: 2156,
       lastEdited: "2024-01-16",
       contributors: 12,
       content: {
-        intro: "The Department of Electronics and Communication Engineering is one of the oldest and most prestigious departments at NIT Trichy, established in 1964. The department has earned national recognition for its academic excellence and research contributions in VLSI, Embedded Systems, and Communication Networks.",
+        intro: "The ECE Department, established in 1964, is one of the oldest and most prestigious departments earning national recognition for academic excellence and research.",
         sections: [
           {
-            title: "Department Overview",
-            content: "ECE at NIT Trichy offers comprehensive education in electronics and communication covering areas like VLSI Design, Embedded Systems, Signal Processing, Wireless Communications, and Microelectronics. The department has collaborations with leading research institutions and industries for projects and internships."
+            title: "Research Areas",
+            content: "VLSI Design, RF and Microwave Engineering, Embedded Systems, Digital Signal Processing, Wireless Communication, 5G Technologies, Image Processing, Optical Communication."
           },
           {
-            title: "Key Research Areas",
-            content: "Faculty and students actively research in VLSI and Chip Design, RF and Microwave Engineering, Embedded Systems and IoT, Digital Signal Processing, Wireless Communication and 5G Technologies, Image and Video Processing, and Optical Communication. The department has multiple ongoing sponsored projects worth several crores."
-          },
-          {
-            title: "Laboratory Facilities",
-            content: "The department boasts excellent lab infrastructure including VLSI Design Lab with Cadence and Synopsys tools, Embedded Systems Lab with various microcontroller kits, Communication Lab with spectrum analyzers and network analyzers, Signal Processing Lab with DSP processors and MATLAB, Microwave Lab with microwave test benches, and Antenna Lab with anechoic chamber facilities."
+            title: "Lab Facilities",
+            content: "VLSI Design Lab with Cadence/Synopsys, Embedded Systems Lab, Communication Lab, Signal Processing Lab with MATLAB, Microwave Lab, Antenna Lab with anechoic chamber."
           },
           {
             title: "Industry Connect",
-            content: "Strong industry partnerships with Texas Instruments, Qualcomm, Broadcom, Intel, Samsung, and various semiconductor companies. Students get opportunities for internships, projects, and pre-placement offers. The department regularly organizes industrial visits and guest lectures from industry experts."
+            content: "Strong partnerships with Texas Instruments, Qualcomm, Broadcom, Intel, Samsung. Regular internships, projects, PPOs."
           }
         ],
         quickFacts: {
           "Established": "1964",
-          "Faculty Strength": "~35",
+          "Faculty": "~35",
           "Research Labs": "12",
           "Industry Partners": "50+",
-          "Avg Package": "18 LPA",
-          "Notable Alumni": "Leaders in Tech & Research"
+          "Avg Package": "18 LPA"
         },
-        tags: ["Departments", "ECE", "VLSI", "Communications", "Electronics", "Research"]
+        tags: ["Departments", "ECE", "VLSI", "Electronics"]
       }
     },
     mech: {
-      title: "Mechanical Engineering Department",
+      title: "Mechanical Engineering",
       category: "Departments",
       image: "⚙️",
       views: 1876,
       lastEdited: "2024-01-14",
       contributors: 10,
       content: {
-        intro: "The Department of Mechanical Engineering at NIT Trichy is one of the pioneering departments, established in 1964. It is renowned for its strong foundation in core mechanical engineering principles combined with modern manufacturing and automation technologies.",
+        intro: "The Mechanical Engineering Department, established in 1964, is renowned for strong foundation in core mechanical principles combined with modern manufacturing technologies.",
         sections: [
           {
-            title: "Academic Excellence",
-            content: "The department offers B.Tech, M.Tech (with specializations in CAD/CAM, Thermal Engineering, Manufacturing, and Industrial Engineering), and Ph.D. programs. The curriculum balances theoretical knowledge with practical skills through extensive lab work and industrial training."
+            title: "Specializations",
+            content: "M.Tech specializations in CAD/CAM, Thermal Engineering, Manufacturing, Industrial Engineering. Strong balance of theory and practical skills."
           },
           {
-            title: "Research Focus",
-            content: "Key research areas include Robotics and Automation, Advanced Manufacturing Technologies, Thermal and Fluid Engineering, Renewable Energy Systems, Composite Materials, Tribology and Surface Engineering, and Finite Element Analysis. The department has well-funded research projects from various government and private organizations."
+            title: "Research",
+            content: "Robotics, Automation, Advanced Manufacturing, Thermal Engineering, Renewable Energy, Composite Materials, Tribology, FEA."
           },
           {
-            title: "Workshop and Labs",
-            content: "The department has comprehensive workshop facilities including CNC machining center, 3D printing and additive manufacturing lab, robotics and automation lab, CAD/CAM lab with latest software, thermal engineering lab with IC engines and refrigeration systems, fluid mechanics and hydraulics lab, and metrology lab with precision instruments."
-          },
-          {
-            title: "Placements",
-            content: "Mechanical engineering students receive excellent placement opportunities in core companies like L&T, Tata Motors, Ashok Leyland, Caterpillar, Schlumberger, and consulting firms like McKinsey and BCG. Many students also pursue higher studies at premier institutions like IITs, IIMs, and foreign universities."
+            title: "Workshops",
+            content: "CNC machining center, 3D printing, robotics lab, CAD/CAM lab, thermal lab, fluid mechanics lab, metrology lab with precision instruments."
           }
         ],
         quickFacts: {
           "Established": "1964",
-          "Specializations": "CAD/CAM, Thermal, Manufacturing",
-          "Workshop Area": "5000 sq.ft",
-          "Major Labs": "10+",
-          "Avg Package": "12 LPA",
-          "Core Placements": "High percentage"
+          "Specializations": "CAD/CAM, Thermal",
+          "Workshop": "5000 sq.ft",
+          "Labs": "10+",
+          "Avg Package": "12 LPA"
         },
-        tags: ["Departments", "Mechanical", "Manufacturing", "Automation", "Engineering"]
+        tags: ["Departments", "Mechanical", "Manufacturing"]
       }
     },
     campus: {
@@ -290,192 +274,43 @@ export default function WikiNITT() {
       lastEdited: "2024-01-18",
       contributors: 20,
       content: {
-        intro: "The NIT Trichy campus spans over 800 acres along the banks of the Cauvery River and is one of the most beautiful technical campuses in India. The lush green campus features modern infrastructure, historical buildings, and state-of-the-art facilities that create an ideal environment for academic excellence and holistic development.",
+        intro: "The NIT Trichy campus spans over 800 acres along the Cauvery River and is one of the most beautiful technical campuses in India, featuring modern infrastructure and lush greenery.",
         sections: [
           {
-            title: "Campus Layout and Architecture",
-            content: "The campus is thoughtfully divided into distinct zones: the academic zone housing department buildings and lecture halls, the residential zone with 16 hostels for boys and girls, the administrative block with the main building featuring iconic architecture, the sports complex with multiple facilities, and the recreational areas with parks and open spaces. The architecture blends colonial-era buildings with modern structures, creating a unique aesthetic. The main building, with its distinctive red-brick facade and clock tower, serves as the campus landmark."
+            title: "Campus Layout",
+            content: "Divided into academic zone, residential zone with 16 hostels, administrative block with iconic main building, sports complex, and recreational areas. Colonial-era architecture blends with modern structures."
           },
           {
             title: "Academic Infrastructure",
-            content: "NIT Trichy houses 16 academic departments spread across well-designed buildings. Each department has dedicated lecture halls with smart boards and audio-visual equipment, research laboratories with cutting-edge instruments, computational facilities with high-performance computing clusters, faculty cabins and meeting rooms, and student project areas. The Central Workshop provides hands-on training facilities for various engineering disciplines. All academic buildings are connected via covered walkways and have 24/7 WiFi connectivity."
+            content: "16 departments with dedicated lecture halls, smart boards, research labs, computational facilities, faculty offices, project areas. All buildings connected via covered walkways with 24/7 WiFi."
           },
           {
-            title: "Central Library",
-            content: "The Central Library is a five-story modern building and the knowledge hub of the campus. It houses over 2,00,000 books, 5,000+ national and international journals, extensive digital resources including IEEE, Springer, Elsevier databases, individual study cabins for focused research, spacious reading halls with 500+ seating capacity, computer lab with internet access, discussion rooms for group studies, and 24/7 access during examination periods. The library uses RFID technology for book management and has a modern digital archive."
+            title: "Sports Facilities",
+            content: "Synthetic athletics track, cricket ground, football/hockey fields, basketball/volleyball courts, tennis courts, badminton complex, Olympic swimming pool, gymnasium, TT hall."
           },
           {
-            title: "Sports and Recreation",
-            content: "The campus boasts world-class sports infrastructure including a synthetic athletics track for running events, cricket ground with pavilion and practice nets, multiple football and hockey fields, basketball and volleyball courts (both indoor and outdoor), tennis courts, badminton complex with 8 courts, swimming pool (Olympic size, 50m), fully-equipped gymnasium with modern equipment, table tennis hall, and chess and carrom rooms. The Sports Council organizes regular tournaments and maintains these facilities. Students have access to professional coaches for various sports."
-          },
-          {
-            title: "Residential Facilities",
-            content: "The campus has 16 hostels named after gemstones (Agate, Diamond, Jade, Coral, Opal, Pearl, Ruby, Sapphire, Emerald, Amber, Tanzanite, Turquoise, Zircon, Garnet, Moonstone, and Crystal). Each hostel is a self-contained community with mess facilities, common rooms, reading rooms, sports facilities, and WiFi. Separate hostels for boys and girls ensure safety and comfort. All hostels have 24/7 security and are located within walking distance of academic blocks."
+            title: "Hostels",
+            content: "16 hostels named after gemstones (Agate, Diamond, Jade, Coral, Opal, Pearl, Ruby, Sapphire, etc.). Each with mess, common rooms, reading rooms, sports facilities, WiFi."
           },
           {
             title: "Food and Dining",
-            content: "Each hostel has its own mess providing three meals daily with both vegetarian and non-vegetarian options. The South Indian cuisine is predominant but North Indian and Chinese dishes are also served regularly. Special meals are prepared during festivals. The campus also has multiple food courts and canteens including Night Canteen (Jigarthanda) open till late hours, Brown Bakery serving snacks and beverages, JNC (Juice and Noodles Corner) popular for quick bites, Amul parlor for ice creams and milk products, and departmental canteens in major blocks. Food quality and hygiene are regularly monitored."
+            content: "Each hostel mess serves 3 meals daily. Campus food courts: Night Canteen, Brown Bakery, JNC (Juice/Noodles), Amul parlor, departmental canteens."
           },
           {
-            title: "Healthcare",
-            content: "The Institute Hospital provides 24/7 medical care with resident doctors, nursing staff, ambulance service, basic emergency facilities, and regular health checkups. The hospital has tie-ups with major hospitals in Trichy for specialized treatments. A pharmacy within the campus ensures availability of medicines. Regular health awareness programs and medical camps are organized."
-          },
-          {
-            title: "Green Campus Initiatives",
-            content: "NIT Trichy is committed to environmental sustainability with extensive tree plantation programs, rainwater harvesting systems across the campus, solar panels on various buildings providing renewable energy, biogas plant for organic waste management, sewage treatment plant for water recycling, plastic-free campus initiatives, and an eco-friendly transportation system. The campus has been awarded for its green initiatives and biodiversity conservation efforts. Over 30% of the campus is green cover."
-          },
-          {
-            title: "Transportation",
-            content: "The campus has an excellent internal transport system with regular bus services connecting various parts of the 800-acre campus to hostels, academic blocks, and main gate. Bicycles are popular among students for eco-friendly commute. The campus is well-connected to Trichy city (30 km) with regular bus services and railway connectivity to major cities."
-          },
-          {
-            title: "Internet and IT Infrastructure",
-            content: "The entire campus is covered under high-speed WiFi with 1 Gbps internet backbone connectivity. Students get unlimited internet access in hostels and academic areas. The Computer Center provides computational facilities and support. Dedicated servers host institute websites, student portals, and learning management systems. Regular IT workshops and cybersecurity awareness programs are conducted."
+            title: "Green Initiatives",
+            content: "Tree plantation, rainwater harvesting, solar panels, biogas plant, sewage treatment, plastic-free campus. Over 30% green cover."
           }
         ],
         quickFacts: {
-          "Total Area": "800 acres",
+          "Area": "800 acres",
           "Departments": "16",
           "Hostels": "16",
-          "Total Students": "~8000",
-          "Faculty & Staff": "~1000",
-          "Library Books": "2,00,000+",
-          "Sports Facilities": "30+",
+          "Students": "~8000",
           "Green Cover": "30%",
-          "Location": "Tiruchirappalli, Tamil Nadu",
+          "Location": "Tiruchirappalli, TN",
           "Established": "1964"
         },
-        tags: ["Campus", "Infrastructure", "Facilities", "Sports", "Library", "Hostels", "Green Campus"]
-      }
-    },
-    pragyan: {
-      title: "Pragyan - Technical Festival",
-      category: "Events",
-      image: "🎯",
-      views: 5234,
-      lastEdited: "2024-01-16",
-      contributors: 18,
-      content: {
-        intro: "Pragyan is the annual international techno-managerial festival of NIT Trichy, attracting over 25,000 participants from across the globe. Established in 1996, it has grown to become one of India's largest student-run technical festivals, featuring cutting-edge competitions, workshops, exhibitions, and guest lectures from industry leaders and innovators.",
-        sections: [
-          {
-            title: "Festival Overview",
-            content: "Pragyan is a four-day technical extravaganza typically held in February-March each year. The festival transforms the NIT Trichy campus into a hub of innovation and technology with participants from over 500 colleges nationwide and international participants from countries like USA, UK, Singapore, and Australia. The festival has a different theme each year, focusing on emerging technologies and global challenges. Past themes have included Artificial Intelligence, Sustainability, Space Exploration, and Quantum Computing."
-          },
-          {
-            title: "Technical Competitions and Events",
-            content: "Pragyan hosts over 50 competitions across various domains: Coding events like Hackathons (24-hour coding marathons), Competitive Programming contests, App Development challenges, and Game Development competitions. Robotics competitions including line following, warehouse management, robo-soccer, and autonomous navigation challenges. Electronics events featuring circuit design, embedded systems projects, and Arduino/Raspberry Pi challenges. Engineering design competitions like bridge building, hydraulic crane design, and CAD modeling contests. Science and innovation events including paper presentations, project exhibitions, and research poster competitions. Business and management events like case study competitions, stock market simulations, and startup pitches."
-          },
-          {
-            title: "Workshops and Guest Lectures",
-            content: "Industry experts and academic leaders conduct workshops on trending technologies including Machine Learning and Deep Learning with hands-on Python sessions, Web Development using modern frameworks, Blockchain and Cryptocurrency, Internet of Things and Smart Systems, Data Science and Analytics, Cyber Security and Ethical Hacking, Robotics and Automation, and 3D Printing and CAD Design. Guest lectures feature renowned personalities from tech giants like Google, Microsoft, Amazon, and innovative startups. Past speakers have included CEOs of major companies, distinguished professors, and successful entrepreneurs who share insights on technology trends, career guidance, and innovation."
-          },
-          {
-            title: "Exhibitions and Demonstrations",
-            content: "Pragyan features impressive exhibitions including Project Expo where students from various colleges showcase their innovative projects, ranging from drones and robots to IoT devices and AI applications. Industry exhibitions where companies display their latest products and technologies. Science demonstrations featuring physics experiments, chemistry shows, and interactive mathematical puzzles. Startup exhibitions highlighting innovative business ideas and products by young entrepreneurs. The exhibitions are highly interactive, allowing visitors to try out technologies and engage with creators."
-          },
-          {
-            title: "Gaming Championships",
-            content: "The festival includes massive gaming tournaments with substantial prize pools in popular titles like CS:GO, Dota 2, Valorant, FIFA, Need for Speed, and mobile games like BGMI and COD Mobile. The gaming arena is equipped with high-end gaming PCs and consoles. LAN gaming creates an electrifying atmosphere with hundreds of gamers competing simultaneously."
-          },
-          {
-            title: "Quizzing and Literary Events",
-            content: "Pragyan also celebrates intellect through various quiz competitions including General Quiz covering diverse topics, Technology Quiz focusing on latest tech trends, Business Quiz for management enthusiasts, and Puzzle events testing logical reasoning. Debate competitions, paper presentation contests, and technical writing competitions add literary flavor to the technical festival."
-          },
-          {
-            title: "Informal Events and Entertainment",
-            content: "Beyond technical competitions, Pragyan ensures entertainment through DJ nights and concerts featuring popular artists, stand-up comedy shows by renowned comedians, treasure hunts across the campus, flash mobs and street plays, food festivals with diverse cuisines, and cultural performances. The informal events provide relaxation and networking opportunities for participants."
-          },
-          {
-            title: "International Participation",
-            content: "Pragyan has grown to attract international participation with students from universities worldwide participating through online platforms and on-campus visits. The festival collaborates with international technical organizations and student chapters. Virtual events enable global participation in coding contests, paper presentations, and workshops."
-          },
-          {
-            title: "Organization and Student Involvement",
-            content: "Pragyan is entirely student-organized by the Pragyan Core Team, comprising 100+ student coordinators and 500+ volunteers. The festival operates with departments like Publicity, Sponsorship, Events, Hospitality, Design, Web, and Finance. Students gain invaluable experience in event management, leadership, teamwork, and coordination. The festival has an annual budget running into crores, managed entirely by students with guidance from faculty advisors."
-          },
-          {
-            title: "Impact and Legacy",
-            content: "Over its 28+ year history, Pragyan has become a launchpad for innovation, with several projects showcased at the festival going on to become successful startups. The festival has influenced thousands of students to pursue research and innovation. Alumni often credit Pragyan participation as a transformative experience in their academic journey. The festival's reputation continues to grow, attracting increasingly prestigious sponsors, speakers, and participants each year."
-          }
-        ],
-        quickFacts: {
-          "Established": "1996",
-          "Duration": "4 days",
-          "Participants": "25,000+",
-          "Colleges": "500+",
-          "Events": "50+",
-          "Prize Pool": "₹40 Lakhs+",
-          "Footfall": "50,000+",
-          "International Reach": "10+ countries",
-          "Student Team": "600+ volunteers"
-        },
-        tags: ["Events", "Technical", "Festival", "Competitions", "Hackathon", "Robotics", "Innovation", "Pragyan"]
-      }
-    },
-    festember: {
-      title: "Festember - Cultural Festival",
-      category: "Events",
-      image: "🎭",
-      views: 4876,
-      lastEdited: "2024-01-14",
-      contributors: 16,
-      content: {
-        intro: "Festember is the annual cultural festival of NIT Trichy and one of South India's largest and most vibrant student-organized cultural extravaganzas. Established in 1975, Festember attracts over 60,000 participants from across the nation for four days of music, dance, drama, fashion, literature, and entertainment.",
-        sections: [
-          {
-            title: "Festival Heritage",
-            content: "With a rich legacy spanning nearly five decades, Festember has evolved from a small college festival to one of India's premier cultural celebrations. The name 'Festember' combines 'Festival' and 'September', though it now takes place in October. The festival embodies the creative spirit of NIT Trichy and serves as a platform for young talent to showcase their artistic abilities on a grand stage."
-          },
-          {
-            title: "Cultural Competitions",
-            content: "Festember hosts competitions across various artistic domains. Dance events include Solo Dance across classical and contemporary styles, Group Dance with themes ranging from mythology to social issues, Face-off (dance battle), and Nupur (classical dance). Music competitions feature Solo Singing in various genres, Band competitions for rock, fusion, and acoustic bands, Beat Boxing championships, and Instrumental performances. Drama and theatre events include Street plays on social themes, Mime performances, Mono-acting, and Short film competitions. Fashion events showcase Ramp walks, Costume design contests, and Fashion choreography."
-          },
-          {
-            title: "Pro-Nights and Celebrity Performances",
-            content: "Festember's highlight is its spectacular Pro-Nights featuring performances by India's biggest celebrities. Past performers include renowned singers like Arijit Singh, Sunidhi Chauhan, Neha Kakkar, and Armaan Malik who have enthralled audiences with their live performances. Stand-up comedy nights have featured popular comedians like Zakir Khan, Biswa Kalyan Rath, and Kenny Sebastian. DJ nights bring in international and national DJs spinning electronic dance music. The Pro-Nights attract audiences of 10,000+ creating an electrifying atmosphere in the open-air amphitheater."
-          },
-          {
-            title: "Literary and Debating Events",
-            content: "The festival celebrates intellect through various literary competitions including Debate (both Parliamentary and Asian formats), Extempore speaking, Creative Writing, Poetry slam, Quizzing (General, Entertainment, Literature), Spelling Bee, and Dumb Charades. These events attract the best orators, writers, and quiz enthusiasts from across the country."
-          },
-          {
-            title: "Fine Arts and Photography",
-            content: "Creative expression finds its space through Fine Arts competitions including Painting, Sketching, Doodling, Cartooning, Rangoli making, and Face painting. Photography competitions cover themes like Nature, Portraiture, Photojournalism, and Mobile photography. Installation art and live art performances add contemporary flair to the festival."
-          },
-          {
-            title: "Workshops and Masterclasses",
-            content: "Festember conducts workshops by industry professionals in various fields. Music production workshops teach digital audio workstation usage and mixing techniques. Dance workshops cover various forms like Hip-hop, Contemporary, and Salsa. Theatre workshops on acting, direction, and improvisation. Photography masterclasses by renowned photographers. Fashion styling and makeup workshops by industry experts. These workshops provide learning opportunities while adding skill development to entertainment."
-          },
-          {
-            title: "Informal Events",
-            content: "The festival features numerous informal events for maximum participation including Mr. and Ms. Festember (personality contest), Treasure Hunt spanning the entire campus, Fashion shows and parade, Food festivals with diverse cuisines, Art exhibitions, Carnival games and activities, and Flash mobs. These events ensure every participant can find something engaging regardless of their artistic background."
-          },
-          {
-            title: "Infrastructure and Venues",
-            content: "Festember utilizes the entire NIT Trichy campus with multiple venues operating simultaneously. The main stage hosts Pro-Nights and major competitions. The Audi (Auditorium) hosts indoor performances like theatre and classical music. Multiple open-air stages for parallel events. Exhibition halls for art displays. Food courts spread across the campus. The entire campus transforms into a cultural carnival with decorations, lights, and art installations creating a festive atmosphere."
-          },
-          {
-            title: "Organization",
-            content: "Festember is entirely student-run with over 800 volunteers working round the clock. The Festember Core Team comprises department heads for Events, Publicity, Sponsorship, Hospitality, Design, Web, Media, and Security. Planning begins months in advance with team members coordinating logistics, reaching out to sponsors, designing marketing campaigns, and managing a multi-crore budget. The organizational experience provides invaluable skills in event management, leadership, and teamwork."
-          },
-          {
-            title: "Cultural Impact",
-            content: "Festember has launched many careers with winners of competitions going on to become professional artists, musicians, and actors. The festival fosters cultural exchange with participants from diverse backgrounds sharing their art forms. It has become a networking platform where students build lasting friendships and professional connections. The festival's emphasis on both traditional and contemporary art forms helps preserve culture while embracing innovation."
-          }
-        ],
-        quickFacts: {
-          "Established": "1975",
-          "Duration": "4 days",
-          "Participants": "60,000+",
-          "Events": "100+",
-          "Prize Pool": "₹30 Lakhs+",
-          "Footfall": "1,00,000+",
-          "Pro-Nights": "4",
-          "Student Volunteers": "800+",
-          "Colleges": "600+"
-        },
-        tags: ["Events", "Cultural", "Festival", "Music", "Dance", "Drama", "Entertainment", "Festember"]
+        tags: ["Campus", "Infrastructure", "Sports", "Hostels", "Green"]
       }
     },
     library: {
@@ -486,225 +321,205 @@ export default function WikiNITT() {
       lastEdited: "2024-01-12",
       contributors: 11,
       content: {
-        intro: "The Central Library at NIT Trichy is a state-of-the-art, five-story facility serving as the knowledge repository and academic hub for students, faculty, and researchers. With a collection of over 2,00,000 books, thousands of journals, extensive digital resources, and modern amenities, the library supports the academic and research endeavors of the entire NIT Trichy community.",
+        intro: "The Central Library is a five-story facility serving as the knowledge repository with over 2,00,000 books, extensive digital resources, and modern amenities.",
         sections: [
           {
-            title: "Infrastructure and Layout",
-            content: "The library building is an architecturally impressive structure spanning over 50,000 square feet. The ground floor houses the circulation desk, new arrivals section, newspaper and magazine reading area, and the main entrance lobby with RFID gates. The first and second floors contain vast collections of textbooks, reference books organized by departments and subjects, with comfortable reading areas interspersed throughout. The third floor features the digital library, computer lab with 100+ terminals, and individual study cabins for focused research. The fourth floor is dedicated to special collections, research journals, thesis archives, and discussion rooms. Each floor is equipped with elevators, staircases, water purifiers, and restroom facilities."
+            title: "Collections",
+            content: "2,00,000+ books, 5,000+ journals, 50,000+ e-books, conference proceedings, standards (IS, ASTM, IEEE), competitive exam books, fiction, rare book collection."
           },
           {
-            title: "Collections and Resources",
-            content: "The library houses an extensive collection including over 2,00,000 books covering all engineering disciplines, sciences, humanities, and management, 5,000+ national and international journals in print and electronic formats, 50,000+ e-books accessible online, conference proceedings and technical reports, standards and specifications (IS, ASTM, IEEE), competitive exam preparation books (GATE, GRE, CAT), fiction and non-fiction for leisure reading, and a rare book collection with vintage technical texts. The collection is continuously updated with latest editions and new publications based on faculty recommendations and student requirements."
+            title: "Digital Resources",
+            content: "IEEE Xplore, Springer Link, ScienceDirect, ASME, ACM Digital Library, ASTM Standards, SciFinder, MathSciNet, Web of Science, Scopus."
           },
           {
-            title: "Digital Resources and Databases",
-            content: "The library provides access to premium digital resources including IEEE Xplore Digital Library (complete collection of IEEE journals and conferences), Springer Link (engineering, science, and medical journals), ScienceDirect (Elsevier's platform with thousands of journals), ASME Digital Collection (mechanical engineering resources), ACM Digital Library (computing literature), ASTM Standards, SciFinder (chemical research database), MathSciNet (mathematical sciences), Web of Science and Scopus for citation tracking, and numerous open access resources. Students and faculty can access these databases both on-campus and remotely through VPN."
-          },
-          {
-            title: "Services and Facilities",
-            content: "The library offers comprehensive services including automated book issue/return system using RFID technology, online catalog (OPAC) for searching resources, document delivery and inter-library loan services, reference and research assistance by trained librarians, printing, scanning, and photocopying facilities, WiFi connectivity throughout the building, air-conditioned reading halls with comfortable seating for 500+ users, individual study cubicles for research scholars, group discussion rooms bookable in advance, and extended hours (8 AM to 11 PM on weekdays, 24/7 during exams). The library staff is helpful and conducts regular orientation programs for new users."
-          },
-          {
-            title: "Special Sections",
-            content: "The library maintains several special sections including the Thesis Section housing all M.Tech and Ph.D. theses submitted at NIT Trichy, Project Reports section with undergraduate final year projects, Reserve Book Section with multiple copies of high-demand textbooks, Competitive Exams corner with preparation materials, Career Guidance section with placement and higher studies resources, and a Periodicals section with current magazines and newspapers from around the world. The Special Collections room preserves historical documents and publications related to NIT Trichy's history."
-          },
-          {
-            title: "Technology and Automation",
-            content: "The library has embraced technology with complete automation using KOHA Library Management System, RFID-based self-check in/out kiosks reducing waiting time, barcode scanning for quick identification, online reservation and renewal of books through the library portal, mobile app for accessing library services, digital notice boards for announcements, and security systems to prevent unauthorized removal of books. The library website provides 24/7 access to digital resources, allowing students to download research papers and e-books from their hostel rooms."
+            title: "Services",
+            content: "RFID book system, online catalog, document delivery, research assistance, printing/scanning, WiFi, AC reading halls (500+ seats), study cubicles, discussion rooms, 8 AM-11 PM (24/7 during exams)."
           },
           {
             title: "Learning Commons",
-            content: "The library has evolved into a Learning Commons with facilities beyond traditional book lending including collaborative learning spaces with whiteboards and projectors for group study, multimedia room with audio-visual equipment for presentations, training rooms where workshops on research methodology, plagiarism detection, and citation management are conducted, scanning station for digitizing documents, 3D visualization lab for engineering design review, and a relaxation area with sofas and bean bags for informal reading. This transformation makes the library a vibrant space for learning, collaboration, and innovation."
-          },
-          {
-            title: "Student Initiatives",
-            content: "The Library Advisory Committee includes student representatives who provide feedback and suggestions. The library organizes regular events like Book exhibitions showcasing new arrivals and themed collections, Reading challenges encouraging diverse reading, Author talks and literary discussions, Information literacy sessions on effective database searching, and Library quiz competitions. A student-run Book Club meets weekly to discuss books, fostering a reading culture on campus."
-          },
-          {
-            title: "Support for Research",
-            content: "The library actively supports research activities by providing access to citation management tools (Mendeley, Zotero), plagiarism detection software (Turnitin), statistical analysis software (SPSS, MATLAB), reference management assistance, helping with systematic literature reviews, conducting workshops on research paper writing, and maintaining an institutional repository (IR) where NIT Trichy's research output is archived and made freely accessible. Research scholars receive dedicated support with longer borrowing periods and priority access to resources."
-          },
-          {
-            title: "Future Developments",
-            content: "The library continuously upgrades its facilities with plans to expand the e-resource collection, implement AI-powered recommendation systems for personalized book suggestions, create maker spaces with 3D printers and electronics kits, enhance mobile accessibility of services, and develop virtual reality zones for immersive learning experiences. The library aims to remain at the forefront of academic libraries in India."
+            content: "Collaborative spaces with projectors, multimedia room, training rooms for workshops, scanning station, 3D visualization lab, relaxation area."
           }
         ],
         quickFacts: {
-          "Total Books": "2,00,000+",
+          "Books": "2,00,000+",
           "Journals": "5,000+",
           "E-Books": "50,000+",
-          "Seating Capacity": "500+",
+          "Seating": "500+",
           "Floors": "5",
-          "Area": "50,000 sq ft",
-          "Databases": "25+",
-          "Operating Hours": "8 AM - 11 PM (24/7 during exams)",
-          "Study Cabins": "50",
-          "Computer Terminals": "100+"
+          "Hours": "8 AM - 11 PM",
+          "Databases": "25+"
         },
-        tags: ["Campus", "Library", "Resources", "Research", "Digital", "Books", "Study", "Academic"]
+        tags: ["Campus", "Library", "Resources", "Study"]
       }
     },
     sac: {
-      title: "Student Activity Center (SAC)",
+      title: "Student Activity Center",
       category: "Campus",
       image: "🎪",
       views: 3124,
       lastEdited: "2024-01-15",
       contributors: 13,
       content: {
-        intro: "The Student Activity Center (SAC) is the vibrant heart of extracurricular life at NIT Trichy. This modern facility serves as the headquarters for all student clubs, cultural activities, and recreational pursuits, fostering creativity, leadership, and community building among students.",
+        intro: "SAC is the vibrant heart of extracurricular life, serving as headquarters for all student clubs, cultural activities, and recreational pursuits.",
         sections: [
           {
-            title: "Infrastructure",
-            content: "SAC is a large multi-story building equipped with numerous activity rooms, practice studios, meeting halls, and recreational facilities. The building includes dedicated music rooms with soundproofing and basic instruments, dance practice halls with mirrors and sound systems, art and craft studios with supplies and workspace, photography darkroom and editing stations, multipurpose halls for meetings and events, conference rooms for club meetings, a cafeteria for quick refreshments, and storage facilities for club equipment. The entire building has WiFi connectivity and is accessible from early morning till late night to accommodate various student activities."
+            title: "Facilities",
+            content: "Music rooms with soundproofing, dance studios with mirrors, art studios, photography darkroom, multipurpose halls, meeting rooms, cafeteria, equipment storage. WiFi enabled."
           },
           {
-            title: "Student Clubs and Organizations",
-            content: "SAC houses over 40 active student clubs across various domains. Technical clubs include Delta Force (coding and software development), Spider R&D (research and innovation), Forge (hardware and innovation), and department-specific technical societies. Cultural clubs encompass Music Club for instrumental and vocal music, Dance Club covering various styles, Dramatics Club for theatre and street plays, Fine Arts Club for painting and sketching, Photography Club for budding photographers, and Literary Club for writing and debates. Special interest clubs include Entrepreneurship Cell for startup enthusiasts, NSS (National Service Scheme) for social service, Quiz Club, Adventure Club for trekking and outdoor activities, Film and Media Club, and environmental clubs. Each club has dedicated space in SAC for regular meetings and activities."
+            title: "Student Clubs",
+            content: "40+ clubs: Delta Force (coding), Spider R&D (robotics), Music Club, Dance Club, Dramatics, Fine Arts, Photography, E-Cell, NSS, Quiz Club, Adventure Club, Forge."
           },
           {
-            title: "Practice Facilities",
-            content: "SAC provides excellent facilities for students to hone their skills. Music practice rooms are equipped with keyboards, guitars, drum pads, and audio recording equipment. Dance studios have professional sound systems, mirrors, and wooden flooring. Theatre practice areas with basic lighting and props. Art studios with easels, canvases, and various art supplies. A mini recording studio for music production. These facilities are available for booking by individual students and clubs, enabling regular practice and preparation for competitions and events."
+            title: "Activities",
+            content: "Weekly club meetings, monthly open mics, talent shows, workshops, training sessions, jamming sessions, festival prep. Center for Festember and Pragyan."
           },
           {
-            title: "Regular Activities and Events",
-            content: "SAC buzzes with activity throughout the academic year. Weekly club meetings and practice sessions are common. Monthly open mics and talent shows provide platforms for students to showcase their skills. Workshops and training sessions by professionals in music, dance, photography, and other arts. Inter-club collaborations for joint events. The building also hosts auditions for Festember and Pragyan events, club inductions for freshers, and pre-festival meetings. During festival seasons, SAC becomes the nerve center with round-the-clock activity."
-          },
-          {
-            title: "Student Council Offices",
-            content: "SAC houses offices of various student bodies including Student Council with designated meeting rooms, Sports Council coordinating athletic activities, Cultural Council organizing cultural events, Technical Council for tech fest coordination, and Mess Council representatives. These bodies work from SAC to plan events, address student concerns, and manage their respective domains. The proximity of all student leadership in one building facilitates better coordination and communication."
-          },
-          {
-            title: "Recreational Facilities",
-            content: "Beyond organized club activities, SAC offers recreational amenities for relaxation including table tennis tables, carrom boards, chess sets, a small library with magazines and comics, a TV lounge for watching sports and entertainment, gaming zone with board games, and comfortable seating areas for socializing. The SAC cafeteria is a popular hangout spot where students gather between classes and after events."
-          },
-          {
-            title: "Jamming and Informal Sessions",
-            content: "One of SAC's most cherished features is the culture of informal jamming sessions. Musicians gather spontaneously in the music rooms for jam sessions, creating original compositions and covers. Dance enthusiasts practice freestyle and collaborate on fusion pieces. Artists sketch together and discuss techniques. These informal interactions often lead to beautiful creative collaborations and lasting friendships. Late-night jamming sessions before cultural festivals are legendary, with students pulling all-nighters to perfect their performances."
-          },
-          {
-            title: "Equipment and Resources",
-            content: "SAC maintains an inventory of equipment available for student use including musical instruments (guitars, keyboards, drums, flutes, violins), professional cameras and lenses for photography club, video cameras and editing equipment, sound systems and mixers, costumes and props for dramatics, art supplies (paints, brushes, canvases), and sports equipment. Students can borrow these resources for events and practice, with proper documentation maintained by club coordinators."
-          },
-          {
-            title: "Administration and Management",
-            content: "SAC is managed by a committee comprising student representatives from various clubs and faculty advisors. The committee coordinates space allocation, equipment maintenance, funding distribution, and conflict resolution. Each club has designated time slots for their activities, though flexible arrangements are made during festival seasons. The administration ensures that SAC remains inclusive and accessible to all students regardless of their artistic background or skill level."
-          },
-          {
-            title: "Cultural Impact",
-            content: "SAC has been instrumental in nurturing artistic talent at NIT Trichy. Many students discover their passion for arts through exposure to SAC activities. The collaborative environment encourages interdisciplinary interactions with engineers, artists, musicians, and writers working together. Skills developed at SAC - teamwork, leadership, creativity, time management - prove invaluable in students' careers. Alumni often recall their SAC experiences as some of the most memorable aspects of their college life, and many continue their artistic pursuits professionally."
+            title: "Equipment",
+            content: "Musical instruments, professional cameras, video equipment, sound systems, costumes, props, art supplies, sports equipment available for student use."
           }
         ],
         quickFacts: {
-          "Student Clubs": "40+",
+          "Clubs": "40+",
           "Practice Rooms": "15+",
-          "Seating Areas": "Multiple lounges",
-          "Operating Hours": "6 AM - 11 PM",
+          "Hours": "6 AM - 11 PM",
           "Music Rooms": "6",
           "Dance Studios": "3",
-          "Art Studios": "2",
-          "Meeting Rooms": "8",
-          "Annual Events": "100+"
+          "Art Studios": "2"
         },
-        tags: ["Campus", "Clubs", "Cultural", "Activities", "Music", "Dance", "Arts", "Recreation", "SAC"]
+        tags: ["Campus", "Clubs", "Cultural", "Music", "SAC"]
       }
     },
-    crc: {
-      title: "Career Development Cell (CDC)",
+    cdc: {
+      title: "Career Development Cell",
       category: "Campus",
       image: "💼",
       views: 2987,
       lastEdited: "2024-01-17",
       contributors: 9,
       content: {
-        intro: "The Career Development Cell (CDC) at NIT Trichy is the dedicated placement and career guidance center that facilitates recruitment of students by top companies and organizations. With an exceptional track record, CDC has consistently achieved 100% placement for interested students with impressive salary packages.",
+        intro: "CDC facilitates recruitment with exceptional track record - 100% placement for interested students with impressive salary packages.",
         sections: [
           {
             title: "Placement Record",
-            content: "NIT Trichy boasts one of the best placement records among NITs and engineering colleges in India. The institute consistently achieves 100% placement for interested students across all branches. For the 2023-24 academic year, the average package stood at ₹14.5 LPA with the highest package touching ₹44 LPA for international offers and ₹1.05 Crore domestic. Over 300 companies visit the campus annually for recruitments. Top recruiters include tech giants like Google, Microsoft, Amazon, Adobe, Oracle, Uber, and LinkedIn; core engineering companies like Tata Steel, L&T, Ashok Leyland, and Caterpillar; consulting firms like McKinsey, BCG, Bain, and Deloitte; finance companies like Goldman Sachs, Morgan Stanley, and American Express; and numerous startups and product-based companies."
+            content: "Consistent 100% placement. 2023-24: Average ₹14.5 LPA, Highest ₹44 LPA international, ₹1.05 Crore domestic. 300+ companies visit annually."
           },
           {
-            title: "The Recruitment Process",
-            content: "The placement season typically begins in July with pre-placement talks where companies present their profiles and job roles. The process includes written tests assessing aptitude, technical knowledge, and coding skills, followed by technical interviews evaluating problem-solving abilities and subject knowledge, HR interviews assessing personality and cultural fit, and group discussions for certain roles. Companies visit campus in phases (Phase 1 for core and analytics, Phase 2 for IT and software, and Phase 3 for remaining opportunities). The entire process is meticulously organized by CDC with dedicated placement coordinators ensuring smooth operations."
+            title: "Top Recruiters",
+            content: "Tech: Google, Microsoft, Amazon, Adobe, Oracle, Uber, LinkedIn. Core: Tata Steel, L&T, Ashok Leyland, Caterpillar. Consulting: McKinsey, BCG, Bain, Deloitte. Finance: Goldman Sachs, Morgan Stanley."
           },
           {
-            title: "Internship Opportunities",
-            content: "CDC also facilitates summer internships for pre-final year students, which are crucial stepping stones to final placements. Many students secure Pre-Placement Offers (PPOs) based on their internship performance. Internship opportunities span research internships at IITs, IISc, and international universities, industry internships at leading companies, and startup internships for entrepreneurial exposure. The average internship stipend ranges from ₹25,000 to ₹1,00,000 per month with some international internships offering higher compensation."
+            title: "Internships",
+            content: "Summer internships for pre-final years. Many secure PPOs. Research internships at IITs/IISc, industry internships, startup exposure. Stipend ₹25K-₹1L/month."
           },
           {
-            title: "Career Development Programs",
-            content: "CDC organizes various programs throughout the year to prepare students for placements including aptitude and reasoning workshops, coding bootcamps covering data structures and algorithms, communication and personality development sessions, resume building and LinkedIn optimization workshops, mock interviews with alumni and industry professionals, group discussion practice sessions, and company-specific preparation drives. These programs, often conducted by alumni and industry experts, significantly enhance students' employability."
-          },
-          {
-            title: "Branch-wise Performance",
-            content: "Placement performance varies by branch but all departments achieve excellent results. Computer Science and Electronics students often bag the highest packages in software and analytics roles. Mechanical, Civil, and Metallurgical students excel in core engineering companies and manufacturing sectors. Instrumentation and Electrical students get opportunities in both software and core domains. Even non-circuital branches have strong placement records with students securing roles in consulting, analytics, and software development. The CDC ensures that every branch receives adequate attention and opportunities."
-          },
-          {
-            title: "Support for Higher Studies",
-            content: "While CDC focuses primarily on placements, it also supports students aspiring for higher education through information sessions about MS and Ph.D. programs abroad, GRE, TOEFL, and IELTS preparation guidance, assistance with university applications and SOPs, connecting students with alumni pursuing higher studies, and information about scholarships and funding opportunities. Many NIT Trichy graduates proceed to top universities like MIT, Stanford, Carnegie Mellon, UC Berkeley, and Ivy League institutions."
-          },
-          {
-            title: "Alumni Network",
-            content: "CDC leverages NIT Trichy's strong alumni network for placements. Alumni working at various companies often advocate for NIT Trichy students, facilitating recruitment. Alumni also conduct mock interviews, mentor students, and provide industry insights. The placement team maintains regular contact with alumni to explore new opportunities and referrals, strengthening the placement ecosystem year after year."
-          },
-          {
-            title: "CDC Team",
-            content: "The CDC comprises faculty placement coordinators from each department, student placement coordinators (senior students) who liaise between CDC and the student body, and administrative staff managing logistics and communications. Student coordinators play a crucial role in organizing events, coordinating with companies, and assisting peers with preparation. Serving as a placement coordinator is considered a prestigious responsibility and provides invaluable experience in management and leadership."
+            title: "Preparation",
+            content: "Aptitude workshops, coding bootcamps, communication sessions, resume building, mock interviews with alumni, GD practice, company-specific drives."
           }
         ],
         quickFacts: {
-          "Placement Rate": "100%",
-          "Companies Visiting": "300+",
-          "Highest Package": "₹1.05 Crore",
-          "Average Package": "₹14.5 LPA",
-          "International Offers": "Yes",
-          "PPO Percentage": "~25%",
-          "Internship Stipend": "₹25K - ₹1L/month",
-          "Top Recruiters": "Google, Microsoft, Amazon, Goldman Sachs"
+          "Placement": "100%",
+          "Companies": "300+",
+          "Highest": "₹1.05 Crore",
+          "Average": "₹14.5 LPA",
+          "PPO Rate": "~25%",
+          "Internship": "₹25K-₹1L/month"
         },
-        tags: ["Campus", "Placements", "Career", "CDC", "Jobs", "Internships", "Companies", "Recruitment"]
+        tags: ["Placements", "Career", "Jobs", "CDC"]
       }
     },
-    orion: {
-      title: "Orion - The Literary Club",
-      category: "Clubs",
-      image: "✍️",
-      views: 1543,
-      lastEdited: "2024-01-13",
-      contributors: 7,
+    pragyan: {
+      title: "Pragyan - Technical Festival",
+      category: "Events",
+      image: "🎯",
+      views: 5234,
+      lastEdited: "2024-01-16",
+      contributors: 18,
       content: {
-        intro: "Orion is the official literary club of NIT Trichy, dedicated to fostering a love for literature, creative writing, debating, and all forms of verbal expression. The club provides a platform for students to explore their literary talents through various activities, competitions, and publications.",
+        intro: "Pragyan is the annual international techno-managerial festival attracting 25,000+ participants from across the globe. Established 1996, it's one of India's largest student-run technical festivals.",
         sections: [
           {
-            title: "Club Activities",
-            content: "Orion conducts regular activities throughout the year including weekly creative writing sessions where members share stories, poems, and essays, debate competitions on current affairs and philosophical topics, book discussion meets analyzing classic and contemporary literature, poetry slam events for spoken word performances, and storytelling sessions. The club also organizes quizzing events, word games, and literary trivia that attract enthusiastic participation. These activities create a vibrant community of literature enthusiasts on campus."
+            title: "Festival Overview",
+            content: "Four-day technical extravaganza in Feb-March. Attracts participants from 500+ colleges nationwide and international participation from USA, UK, Singapore, Australia. Different theme each year: AI, Sustainability, Space, Quantum."
           },
           {
-            title: "Publications",
-            content: "Orion publishes 'Expressions', a bi-annual literary magazine featuring creative works by students including short stories, poems, essays, artwork, and photography. The magazine has gained recognition for its quality content and professional presentation. Members also contribute articles to the institute's official magazine and maintain an active blog featuring book reviews, literary analyses, and creative pieces. During Festember, Orion releases special edition publications showcasing the best literary talent."
+            title: "Competitions",
+            content: "50+ events: Hackathons (24-hour), Competitive Programming, App/Game Dev, Robotics (line following, warehouse, robo-soccer, autonomous), Electronics (circuit design, embedded, Arduino/Pi), Engineering (bridge, crane, CAD), Paper presentations, Business events."
           },
           {
-            title: "Workshops and Guest Lectures",
-            content: "The club regularly invites established authors, poets, journalists, and playwrights for interactive sessions. Past guest speakers have included renowned Indian English authors, Tamil writers, journalists from leading publications, and slam poetry champions. Workshops cover topics like creative writing techniques, storytelling craft, effective debating, poetry composition, and journalism. These sessions provide invaluable insights and inspiration to aspiring writers and speakers."
+            title: "Workshops & Lectures",
+            content: "ML/Deep Learning, Web Dev, Blockchain, IoT, Data Science, Cyber Security, Robotics, 3D Printing by industry experts. Guest lectures from tech giant CEOs, professors, entrepreneurs."
           },
           {
-            title: "Festember Events",
-            content: "During Festember, Orion organizes and manages all literary events including Debate competitions (Parliamentary and Asian formats), Extempore speaking contests, Poetry slam, Creative writing competitions, Spell Bee, Dumb Charades, and Literary quiz. These events attract participants from colleges across India, making them highly competitive and prestigious. Orion members serve as organizers, judges, and coordinators, gaining event management experience."
+            title: "Exhibitions",
+            content: "Project Expo (student innovations: drones, robots, IoT, AI), Industry exhibitions, Science demonstrations, Startup showcases. Highly interactive."
           },
           {
-            title: "Community Impact",
-            content: "Orion has cultivated a strong reading and writing culture at NIT Trichy. The club has helped many students discover their passion for literature and some members have gone on to publish books, write for major publications, and pursue careers in journalism and content creation. The club also collaborates with the library for book donation drives and reading campaigns, promoting literacy beyond the campus."
+            title: "Gaming",
+            content: "Massive tournaments: CS:GO, Dota 2, Valorant, FIFA, NFS, BGMI, COD Mobile. High-end gaming PCs, consoles, LAN gaming."
+          },
+          {
+            title: "Organization",
+            content: "100+ core team, 500+ volunteers. Multi-crore budget managed by students. Departments: Publicity, Sponsorship, Events, Hospitality, Design, Web, Finance."
           }
         ],
         quickFacts: {
-          "Established": "1990s",
-          "Members": "100+",
-          "Publications": "2 per year",
-          "Weekly Meetings": "Yes",
-          "Guest Lectures": "10+ per year",
-          "Festember Events": "8+"
+          "Established": "1996",
+          "Duration": "4 days",
+          "Participants": "25,000+",
+          "Events": "50+",
+          "Prize Pool": "₹40 Lakhs+",
+          "Footfall": "50,000+",
+          "Volunteers": "600+"
         },
-        tags: ["Clubs", "Literary", "Writing", "Debate", "Poetry", "Books", "Orion"]
+        tags: ["Events", "Technical", "Pragyan", "Hackathon", "Robotics"]
+      }
+    },
+    festember: {
+      title: "Festember - Cultural Festival",
+      category: "Events",
+      image: "🎭",
+      views: 4876,
+      lastEdited: "2024-01-14",
+      contributors: 16,
+      content: {
+        intro: "Festember is the annual cultural festival and one of South India's largest student-organized cultural extravaganzas. Established 1975, attracts 60,000+ participants.",
+        sections: [
+          {
+            title: "Cultural Events",
+            content: "Dance: Solo, Group, Face-off, Nupur (classical). Music: Solo Singing, Band, Beat Boxing, Instrumental. Drama: Street plays, Mime, Mono-acting, Short films. Fashion: Ramp, Costume design."
+          },
+          {
+            title: "Pro-Nights",
+            content: "Spectacular performances by India's biggest celebrities. Past: Arijit Singh, Sunidhi Chauhan, Neha Kakkar, Armaan Malik. Comedy: Zakir Khan, Biswa Kalyan Rath, Kenny Sebastian. DJ nights with international/national DJs. 10,000+ audience."
+          },
+          {
+            title: "Literary Events",
+            content: "Debate (Parliamentary, Asian), Extempore, Creative Writing, Poetry slam, Quizzing, Spelling Bee, Dumb Charades."
+          },
+          {
+            title: "Fine Arts",
+            content: "Painting, Sketching, Doodling, Cartooning, Rangoli, Face painting, Photography, Installation art, Live art."
+          },
+          {
+            title: "Informal Events",
+            content: "Mr./Ms. Festember, Treasure Hunt, Fashion parade, Food festivals, Art exhibitions, Carnival games, Flash mobs."
+          },
+          {
+            title: "Organization",
+            content: "800+ volunteers, Core Team with Events, Publicity, Sponsorship, Hospitality, Design, Web, Media, Security. Multi-crore budget."
+          }
+        ],
+        quickFacts: {
+          "Established": "1975",
+          "Duration": "4 days",
+          "Participants": "60,000+",
+          "Events": "100+",
+          "Prize Pool": "₹30 Lakhs+",
+          "Footfall": "1,00,000+",
+          "Pro-Nights": "4"
+        },
+        tags: ["Events", "Cultural", "Festember", "Music", "Dance"]
       }
     },
     delta: {
@@ -715,39 +530,27 @@ export default function WikiNITT() {
       lastEdited: "2024-01-18",
       contributors: 14,
       content: {
-        intro: "Delta Force is the premier coding and software development club at NIT Trichy. The club aims to promote competitive programming, software development, and open-source contributions among students, creating a community of skilled programmers who excel in technical interviews and coding competitions.",
+        intro: "Delta Force is the premier coding and software development club promoting competitive programming, development, and open-source contributions.",
         sections: [
           {
             title: "Competitive Programming",
-            content: "Delta Force actively promotes competitive programming through regular contests on platforms like Codeforces, CodeChef, and LeetCode. The club organizes weekly coding challenges, discusses solutions to complex algorithmic problems, conducts crash courses on data structures and algorithms, and provides guidance for participating in prestigious contests like ACM ICPC, Google Code Jam, Facebook Hacker Cup, and Google Hash Code. Many club members have achieved high ratings on competitive programming platforms and have represented NIT Trichy at national and international competitions."
+            content: "Regular contests on Codeforces, CodeChef, LeetCode. Weekly coding challenges, DSA crash courses, guidance for ACM ICPC, Google Code Jam, Facebook Hacker Cup. High ratings on CP platforms."
           },
           {
-            title: "Development Projects",
-            content: "Beyond competitive programming, Delta Force emphasizes practical software development. The club undertakes projects including web applications using modern frameworks (React, Angular, Django, Flask), mobile app development for Android and iOS, open-source contributions to popular GitHub repositories, automation scripts and tools, and machine learning models and AI applications. These projects provide hands-on experience with industry-standard tools and practices, preparing students for real-world software engineering."
+            title: "Development",
+            content: "Web apps (React, Angular, Django, Flask), Mobile apps (Android/iOS), Open-source contributions, Automation scripts, ML/AI applications. Industry-standard tools."
           },
           {
-            title: "Workshops and Training",
-            content: "Delta Force conducts comprehensive training programs for students of all levels. For beginners, the club offers crash courses in programming languages (C++, Python, Java), introduction to data structures and algorithms, and Git and version control basics. Advanced workshops cover topics like advanced algorithms and problem-solving techniques, web development stacks (MERN, MEAN), mobile app development frameworks, cloud computing (AWS, Azure), DevOps and CI/CD, and machine learning and deep learning. These sessions are conducted by senior members and occasionally by industry professionals and alumni."
+            title: "Training",
+            content: "Beginner: Programming languages (C++, Python, Java), DSA basics, Git. Advanced: Advanced algorithms, Web dev stacks (MERN, MEAN), Mobile dev, Cloud (AWS, Azure), DevOps, ML/DL."
           },
           {
             title: "Hackathons",
-            content: "The club organizes and participates in numerous hackathons throughout the year. Internal hackathons like 'Code Sprint' and 'Hack Night' provide platforms for students to build innovative solutions to real-world problems within 24-48 hours. Delta Force teams regularly participate in external hackathons including Smart India Hackathon, various corporate hackathons by Google, Microsoft, Facebook, and startup competitions. Many teams have won prizes and recognition, with some hackathon projects evolving into full-fledged startups."
+            content: "Internal: Code Sprint, Hack Night (24-48 hours). External: Smart India Hackathon, corporate hackathons (Google, Microsoft, Facebook), startup competitions. Multiple wins."
           },
           {
-            title: "Placement Preparation",
-            content: "Delta Force plays a crucial role in placement preparation for computer science students. The club maintains a repository of company-specific interview questions, conducts mock interviews simulating technical rounds, organizes peer programming sessions for practice, shares resources for system design and development interviews, and provides guidance on resume building and LinkedIn optimization. The club's alumni network, comprising software engineers at top tech companies, regularly conducts sessions and mentors students, significantly contributing to the excellent placement record of CS students."
-          },
-          {
-            title: "Pragyan Involvement",
-            content: "During Pragyan, Delta Force organizes major coding events including 24-hour hackathons with substantial prize pools, competitive programming contests, app development challenges, and code debugging competitions. These events attract participants from across India, often featuring problem sets designed in collaboration with partner companies. Delta Force also manages the technical infrastructure for Pragyan's online platform and registration systems."
-          },
-          {
-            title: "Open Source and Collaborations",
-            content: "Delta Force encourages members to contribute to open-source projects, participating in programs like Google Summer of Code, GitHub externships, and open-source mentorship programs. The club collaborates with other technical clubs like Spider R&D for interdisciplinary projects, partners with companies for sponsored projects and workshops, and engages with the developer community through meetups and conferences. This exposure to the broader tech ecosystem enhances members' skills and networking."
-          },
-          {
-            title: "Success Stories",
-            content: "Delta Force alumni have achieved remarkable success in the tech industry and academia. Members have joined companies like Google, Facebook, Microsoft, Amazon, and top startups in software engineering and research roles, secured admissions to top universities (MIT, Stanford, CMU) for higher studies, founded successful startups in the tech space, achieved top ranks in competitive programming globally, and contributed significantly to major open-source projects. The club's culture of excellence and continuous learning has been instrumental in these successes."
+            title: "Placement Prep",
+            content: "Company-specific questions repository, Mock technical interviews, Peer programming, System design guidance, Resume/LinkedIn optimization. Alumni mentorship from top tech companies."
           }
         ],
         quickFacts: {
@@ -756,66 +559,177 @@ export default function WikiNITT() {
           "Weekly Contests": "Yes",
           "Hackathons": "5+ per year",
           "Projects": "30+ ongoing",
-          "Company Collaborations": "10+",
-          "Average Codeforces Rating": "1600+"
+          "Avg CF Rating": "1600+"
         },
-        tags: ["Clubs", "Coding", "Programming", "Development", "Hackathon", "Competitive Programming", "Delta"]
+        tags: ["Clubs", "Coding", "Programming", "Delta", "Hackathon"]
       }
     },
     spider: {
-      title: "Spider R&D - Research & Innovation",
+      title: "Spider R&D",
       category: "Clubs",
       image: "🕷️",
       views: 3654,
       lastEdited: "2024-01-16",
       contributors: 12,
       content: {
-        intro: "Spider R&D is NIT Trichy's premier research and development club focused on hardware, robotics, IoT, and innovative engineering projects. The club serves as a platform for students to explore emerging technologies, build prototypes, and transform ideas into working solutions.",
+        intro: "Spider R&D is NIT Trichy's premier research and development club focused on hardware, robotics, IoT, and innovative engineering projects.",
         sections: [
           {
             title: "Research Areas",
-            content: "Spider R&D members work on diverse cutting-edge technologies including Robotics and Automation with autonomous navigation robots, line-following and obstacle-avoidance bots, and robotic arms and manipulators; Internet of Things projects like smart home automation, agricultural monitoring systems, and industrial IoT solutions; Embedded Systems using Arduino, Raspberry Pi, ESP32, and custom PCB designs; Machine Learning and Computer Vision for object detection and recognition, image processing applications, and autonomous vehicle systems; and Renewable Energy projects including solar tracking systems and energy-efficient devices. The club encourages interdisciplinary research combining electronics, mechanical design, and software development."
+            content: "Robotics (autonomous navigation, line-following, robotic arms), IoT (smart home, agricultural monitoring, industrial), Embedded Systems (Arduino, Raspberry Pi, custom PCB), ML/Computer Vision (object detection, autonomous vehicles), Renewable Energy (solar tracking, energy-efficient devices)."
           },
           {
-            title: "Projects and Prototypes",
-            content: "Spider R&D has successfully completed numerous innovative projects. Notable examples include autonomous delivery robots for campus use, IoT-based smart irrigation systems for agriculture, gesture-controlled wheelchairs for physically challenged individuals, air quality monitoring systems, drone technology for surveillance and mapping, automated waste segregation systems, and smart parking solutions. These projects have won accolades at national-level competitions and some have been adopted for practical implementation. The club maintains a well-equipped workshop with tools, electronic components, and prototyping facilities where members can bring their ideas to life."
+            title: "Projects",
+            content: "Autonomous delivery robots, IoT irrigation systems, gesture-controlled wheelchairs, air quality monitoring, drone technology, automated waste segregation, smart parking. Multiple awards."
           },
           {
-            title: "Competitions and Events",
-            content: "Spider R&D actively participates in robotics and innovation competitions including ABU Robocon (Asia-Pacific Robot Contest), IIT Tech Fests (Techfest, Shaastra, Kshitij), Smart India Hackathon, various drone and UAV competitions, and Make-a-thon challenges. The club has a strong track record with multiple podium finishes and recognition at national events. During Pragyan, Spider organizes robotics competitions, workshops on embedded systems and IoT, project exhibitions showcasing member innovations, and beginner-friendly robot building workshops. These events attract enthusiastic participation and inspire younger students to pursue hardware and robotics."
+            title: "Competitions",
+            content: "ABU Robocon (Asia-Pacific Robot Contest), IIT Tech Fests (Techfest, Shaastra, Kshitij), Smart India Hackathon, drone competitions. Top positions."
           },
           {
-            title: "Training and Mentorship",
-            content: "Spider R&D conducts structured training programs for new members covering basics of electronics and circuit design, microcontroller programming (Arduino, Raspberry Pi), sensor integration and data acquisition, motor control and actuation, PCB design and fabrication, 3D modeling and printing for mechanical components, and project management and documentation. Senior members mentor juniors through hands-on projects, providing guidance on troubleshooting, optimization, and presentation skills. The club fosters a collaborative learning environment where experimentation and failure are seen as learning opportunities."
+            title: "Training",
+            content: "Electronics, circuit design, microcontroller programming, sensor integration, motor control, PCB design/fabrication, 3D modeling/printing, project management."
           },
           {
             title: "Collaborations",
-            content: "Spider R&D collaborates extensively with academic departments for research projects, other student clubs (Delta Force, Forge) for interdisciplinary initiatives, industry partners for sponsored projects and mentorship, startups and innovation labs for real-world problem solving, and government organizations for development of socially impactful solutions. These collaborations provide members with diverse perspectives, resources, and opportunities to work on meaningful projects beyond academic requirements."
-          },
-          {
-            title: "Achievements",
-            content: "The club has an impressive portfolio of achievements including multiple top positions at ABU Robocon representing NIT Trichy, awards at IIT tech fests in robotics and hardware categories, grants and funding from government innovation schemes, patents filed for novel innovations, publications in conferences and journals, and successful product deployments in industry and agriculture. These accomplishments have established Spider R&D as one of the leading technical clubs at NIT Trichy and earned recognition in the national engineering community."
-          },
-          {
-            title: "Future Vision",
-            content: "Spider R&D continuously evolves to embrace emerging technologies. Current focus areas include advanced autonomous systems with AI integration, industrial automation and Industry 4.0 solutions, wearable technology and health monitoring devices, sustainable and green technology innovations, and space technology and satellite systems. The club aims to contribute to cutting-edge research while solving real-world problems and creating socially impactful innovations."
+            content: "Academic departments, other clubs (Delta, Forge), industry partners, startups, government organizations for socially impactful solutions."
           }
         ],
         quickFacts: {
           "Established": "2006",
           "Members": "150+",
-          "Active Projects": "25+",
-          "Workshop Area": "Well-equipped lab",
+          "Projects": "25+ active",
           "Competitions Won": "20+",
-          "Collaborations": "Industry & Research",
-          "Focus": "Robotics, IoT, Embedded Systems"
+          "Focus": "Robotics, IoT, Embedded"
         },
-        tags: ["Clubs", "Robotics", "IoT", "Hardware", "Innovation", "Research", "Spider", "R&D"]
+        tags: ["Clubs", "Robotics", "IoT", "Spider", "Hardware"]
+      }
+    },
+    forge: {
+      title: "Forge - Innovation Club",
+      category: "Clubs",
+      image: "🔧",
+      views: 2341,
+      lastEdited: "2024-01-15",
+      contributors: 9,
+      content: {
+        intro: "Forge is NIT Trichy's innovation and maker club that encourages students to turn ideas into reality through hands-on projects, prototyping, and creative problem-solving.",
+        sections: [
+          {
+            title: "Club Activities",
+            content: "Forge provides a platform for students to work on innovative projects across various domains. The club organizes regular workshops on product design, prototyping, electronics, mechanical systems, and entrepreneurship. Members collaborate on building everything from simple gadgets to complex multi-disciplinary projects."
+          },
+          {
+            title: "Maker Space",
+            content: "The club has access to a well-equipped maker space featuring 3D printers, laser cutters, soldering stations, power tools, electronics components, and crafting materials. This space allows students to bring their ideas to life through rapid prototyping and iteration."
+          },
+          {
+            title: "Innovation Challenges",
+            content: "Forge regularly organizes innovation challenges and competitions encouraging students to solve real-world problems. Past challenges have focused on sustainability, healthcare solutions, assistive technology, and campus improvements. The club also participates in external maker faires and innovation competitions."
+          },
+          {
+            title: "Collaborations",
+            content: "Forge collaborates with other technical clubs like Delta Force and Spider R&D for interdisciplinary projects. The club also works with local industries and startups to give students exposure to real-world product development processes."
+          }
+        ],
+        quickFacts: {
+          "Established": "2010",
+          "Members": "120+",
+          "Workshops": "15+ per year",
+          "Projects": "20+ active",
+          "Equipment": "3D Printers, Laser Cutters",
+          "Focus": "Product Design, Prototyping"
+        },
+        tags: ["Clubs", "Innovation", "Maker", "Forge", "Prototyping"]
+      }
+    },
+    ecell: {
+      title: "E-Cell - Entrepreneurship Cell",
+      category: "Clubs",
+      image: "💡",
+      views: 2876,
+      lastEdited: "2024-01-14",
+      contributors: 10,
+      content: {
+        intro: "E-Cell is NIT Trichy's Entrepreneurship Cell dedicated to fostering entrepreneurial spirit among students. The club provides resources, mentorship, and platforms for aspiring entrepreneurs to develop their startup ideas.",
+        sections: [
+          {
+            title: "Startup Support",
+            content: "E-Cell offers comprehensive support to student entrepreneurs including idea validation, business model development, pitch deck preparation, and connections with investors and mentors. The club has helped launch several successful startups founded by NIT Trichy students and alumni."
+          },
+          {
+            title: "Events and Workshops",
+            content: "Regular workshops on entrepreneurship fundamentals, startup funding, marketing strategies, legal aspects of business, and product development. The club invites successful entrepreneurs, venture capitalists, and industry experts for guest lectures and panel discussions. Annual flagship events include startup competitions, business plan contests, and entrepreneurship summits."
+          },
+          {
+            title: "Incubation Programs",
+            content: "E-Cell runs incubation programs for promising startup ideas, providing workspace, mentorship, seed funding opportunities, and networking events. Teams receive guidance on everything from customer discovery to scaling their ventures."
+          },
+          {
+            title: "Networking",
+            content: "The club maintains strong connections with the startup ecosystem including incubators, accelerators, angel investors, and venture capital firms. Regular networking sessions connect student entrepreneurs with successful alumni who have started their own companies."
+          },
+          {
+            title: "Success Stories",
+            content: "Several startups incubated at E-Cell have gone on to raise significant funding and achieve market success. Alumni entrepreneurs regularly return to mentor the next generation of innovators."
+          }
+        ],
+        quickFacts: {
+          "Established": "2008",
+          "Members": "150+",
+          "Startups Launched": "30+",
+          "Events": "20+ per year",
+          "Mentors": "50+ Alumni",
+          "Focus": "Startups, Business"
+        },
+        tags: ["Clubs", "Entrepreneurship", "E-Cell", "Startups", "Business"]
+      }
+    },
+    nss: {
+      title: "NSS - National Service Scheme",
+      category: "Clubs",
+      image: "🤝",
+      views: 3124,
+      lastEdited: "2024-01-13",
+      contributors: 11,
+      content: {
+        intro: "NSS at NIT Trichy is dedicated to social service and community development. The club engages students in various outreach programs, awareness campaigns, and volunteer activities to contribute positively to society.",
+        sections: [
+          {
+            title: "Social Service Activities",
+            content: "NSS organizes regular community service activities including teaching underprivileged children, blood donation drives, health awareness camps, cleanliness drives, tree plantation programs, and visits to old age homes and orphanages. Volunteers dedicate their time to making a meaningful impact in local communities."
+          },
+          {
+            title: "Awareness Campaigns",
+            content: "The club conducts awareness campaigns on important social issues such as health and hygiene, environmental conservation, women's safety, digital literacy, and education for all. These campaigns reach thousands of people in villages and urban areas around Trichy."
+          },
+          {
+            title: "Annual Camps",
+            content: "NSS organizes annual special camps where volunteers spend 7-10 days in rural areas working on community development projects. Activities include infrastructure development, health camps, education programs, and skill development workshops for villagers."
+          },
+          {
+            title: "Disaster Relief",
+            content: "NSS volunteers actively participate in disaster relief efforts during floods, cyclones, and other emergencies. The club collects relief materials, organizes fundraisers, and coordinates with authorities to help affected communities."
+          },
+          {
+            title: "Impact",
+            content: "Over the years, NSS NIT Trichy has positively impacted thousands of lives through its various initiatives. Volunteers develop strong leadership skills, empathy, and a sense of social responsibility that stays with them throughout their lives."
+          }
+        ],
+        quickFacts: {
+          "Established": "1970s",
+          "Volunteers": "300+",
+          "Villages Adopted": "5",
+          "Blood Donation": "500+ units/year",
+          "Annual Camps": "2",
+          "Focus": "Social Service"
+        },
+        tags: ["Clubs", "NSS", "Social Service", "Volunteering", "Community"]
       }
     }
   }
 
-  // Filter articles based on search and category
+  // Filter articles
   const getFilteredArticles = () => {
     return Object.entries(articles).filter(([key, article]) => {
       const matchesSearch = article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -827,10 +741,9 @@ export default function WikiNITT() {
   }
 
   const categories = ['all', 'Hostels', 'Departments', 'Campus', 'Events', 'Clubs']
-
   const currentArticle = articles[selectedArticle] || null
 
-  // Calculate total stats
+  // Stats
   const totalArticles = Object.keys(articles).length
   const totalContributors = Object.values(articles).reduce((sum, article) => sum + article.contributors, 0)
   const totalViews = Object.values(articles).reduce((sum, article) => sum + article.views, 0)
@@ -841,56 +754,88 @@ export default function WikiNITT() {
         ? 'bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-100' 
         : 'bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 text-slate-900'
     }`}>
-      {/* Animated background effects */}
+      {/* Animated background */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className={`absolute top-0 left-1/4 w-96 h-96 rounded-full blur-3xl opacity-20 ${
+        <div className={`absolute top-0 left-1/4 w-72 h-72 md:w-96 md:h-96 rounded-full blur-3xl opacity-20 ${
           darkMode ? 'bg-blue-600' : 'bg-blue-400'
         }`} style={{ animation: 'float 20s ease-in-out infinite' }}></div>
-        <div className={`absolute bottom-0 right-1/4 w-96 h-96 rounded-full blur-3xl opacity-20 ${
+        <div className={`absolute bottom-0 right-1/4 w-72 h-72 md:w-96 md:h-96 rounded-full blur-3xl opacity-20 ${
           darkMode ? 'bg-indigo-600' : 'bg-indigo-400'
         }`} style={{ animation: 'float 25s ease-in-out infinite reverse' }}></div>
       </div>
 
-      {/* Header */}
+      {/* Header with Logo */}
       <header className={`sticky top-0 z-50 backdrop-blur-xl border-b transition-all duration-300 ${
         darkMode 
-          ? 'bg-slate-900/80 border-slate-800 shadow-lg shadow-black/20' 
-          : 'bg-white/80 border-slate-200'
+          ? 'bg-slate-900/90 border-slate-800 shadow-lg shadow-black/20' 
+          : 'bg-white/90 border-slate-200'
       }`}>
-        <div className="max-w-7xl mx-auto px-6 py-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
           <div className="flex items-center justify-between">
-            {/* Logo */}
+            {/* Logo + Brand */}
             <button
-              onClick={() => setSelectedArticle('home')}
-              className="flex items-center gap-3 group"
+              onClick={() => {
+                setSelectedArticle('home')
+                setShowMobileMenu(false)
+              }}
+              className="flex items-center gap-2 sm:gap-3 group"
             >
-              <div className="text-4xl transform transition-transform group-hover:scale-110 group-hover:rotate-12">
-                📚
+              {/* Hexagon Logo SVG */}
+              <div className="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0">
+                <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+                  <defs>
+                    <linearGradient id={`bgLogo${darkMode ? 'Dark' : 'Light'}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style={{stopColor: darkMode ? '#3B82F6' : '#2563EB', stopOpacity:1}} />
+                      <stop offset="50%" style={{stopColor: darkMode ? '#06B6D4' : '#0891B2', stopOpacity:1}} />
+                      <stop offset="100%" style={{stopColor: darkMode ? '#8B5CF6' : '#7C3AED', stopOpacity:1}} />
+                    </linearGradient>
+                    <linearGradient id="accentLogo" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style={{stopColor:'#F59E0B', stopOpacity:1}} />
+                      <stop offset="100%" style={{stopColor:'#EF4444', stopOpacity:1}} />
+                    </linearGradient>
+                  </defs>
+                  <polygon points="24,4 40,14 40,34 24,44 8,34 8,14" fill={`url(#bgLogo${darkMode ? 'Dark' : 'Light'})`} className="transition-all group-hover:scale-110"/>
+                  <polygon points="24,10 35,17 35,31 24,38 13,31 13,17" fill="none" stroke={darkMode ? '#FFFFFF' : '#FFFFFF'} strokeWidth="1.5" opacity="0.3"/>
+                  <g transform="translate(24, 24)">
+                    <path d="M -8 -6 Q -8 -7 -7 -7 L -1 -7 L -1 7 L -7 7 Q -8 7 -8 6 Z" fill="#FFFFFF"/>
+                    <path d="M 1 -7 L 7 -7 Q 8 -7 8 -6 L 8 6 Q 8 7 7 7 L 1 7 Z" fill="#FFFFFF" opacity="0.8"/>
+                    <rect x="-1" y="-7" width="2" height="14" fill="url(#accentLogo)"/>
+                    <line x1="-6" y1="-4" x2="-2" y2="-4" stroke="#2563EB" strokeWidth="0.8" opacity="0.6"/>
+                    <line x1="-6" y1="-1" x2="-2" y2="-1" stroke="#2563EB" strokeWidth="0.8" opacity="0.6"/>
+                    <line x1="-6" y1="2" x2="-2" y2="2" stroke="#2563EB" strokeWidth="0.8" opacity="0.5"/>
+                    <line x1="2" y1="-4" x2="6" y2="-4" stroke="#0891B2" strokeWidth="0.8" opacity="0.5"/>
+                    <line x1="2" y1="-1" x2="6" y2="-1" stroke="#0891B2" strokeWidth="0.8" opacity="0.5"/>
+                    <line x1="2" y1="2" x2="6" y2="2" stroke="#0891B2" strokeWidth="0.8" opacity="0.4"/>
+                  </g>
+                  <circle cx="24" cy="3" r="1.5" fill="#FBBF24" opacity="0.8"/>
+                  <circle cx="41" cy="24" r="1.5" fill="#22D3EE" opacity="0.8"/>
+                  <circle cx="24" cy="45" r="1.5" fill="#FBBF24" opacity="0.8"/>
+                  <circle cx="7" cy="24" r="1.5" fill="#22D3EE" opacity="0.8"/>
+                </svg>
               </div>
+              
+              {/* Brand Text */}
               <div>
-                <h1 className={`text-2xl font-bold bg-gradient-to-r ${
+                <h1 className={`text-xl sm:text-2xl font-bold bg-gradient-to-r ${
                   darkMode 
                     ? 'from-blue-400 via-cyan-400 to-indigo-400' 
                     : 'from-blue-600 to-indigo-600'
                 } bg-clip-text text-transparent drop-shadow-lg`}>
                   WikiNITT
                 </h1>
-                <p className={`text-xs ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
-                  Complete NIT Trichy Encyclopedia
+                <p className={`text-xs hidden sm:block ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+                  NIT Trichy Encyclopedia
                 </p>
               </div>
             </button>
 
-            {/* Search and Controls */}
-            <div className="flex items-center gap-4">
-              {/* Search */}
+            {/* Desktop Controls */}
+            <div className="hidden md:flex items-center gap-4">
               <div className="relative">
                 <button
                   onClick={() => setShowSearch(!showSearch)}
                   className={`p-3 rounded-xl transition-all transform hover:scale-110 ${
-                    darkMode 
-                      ? 'hover:bg-slate-800 text-slate-300 hover:text-blue-400' 
-                      : 'hover:bg-slate-100'
+                    darkMode ? 'hover:bg-slate-800 text-slate-300 hover:text-blue-400' : 'hover:bg-slate-100'
                   }`}
                 >
                   🔍
@@ -898,9 +843,7 @@ export default function WikiNITT() {
                 
                 {showSearch && (
                   <div className={`absolute right-0 mt-2 w-96 rounded-2xl shadow-2xl border overflow-hidden backdrop-blur-xl ${
-                    darkMode 
-                      ? 'bg-slate-800/95 border-slate-700 shadow-black/40' 
-                      : 'bg-white border-slate-200'
+                    darkMode ? 'bg-slate-800/95 border-slate-700 shadow-black/40' : 'bg-white border-slate-200'
                   }`}>
                     <input
                       type="text"
@@ -924,9 +867,7 @@ export default function WikiNITT() {
                                 setSearchQuery('')
                               }}
                               className={`w-full px-4 py-3 text-left flex items-center gap-3 transition-all ${
-                                darkMode 
-                                  ? 'hover:bg-slate-700/50 border-b border-slate-700/50' 
-                                  : 'hover:bg-slate-50 border-b border-slate-100'
+                                darkMode ? 'hover:bg-slate-700/50 border-b border-slate-700/50' : 'hover:bg-slate-50 border-b border-slate-100'
                               }`}
                             >
                               <span className="text-2xl">{article.image}</span>
@@ -942,7 +883,7 @@ export default function WikiNITT() {
                           ))
                         ) : (
                           <div className={`px-4 py-8 text-center ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
-                            No articles found for "{searchQuery}"
+                            No articles found
                           </div>
                         )}
                       </div>
@@ -951,76 +892,171 @@ export default function WikiNITT() {
                 )}
               </div>
 
-              {/* Dark Mode Toggle */}
               <button
                 onClick={() => setDarkMode(!darkMode)}
                 className={`p-3 rounded-xl transition-all transform hover:scale-110 ${
-                  darkMode 
-                    ? 'hover:bg-slate-800 text-yellow-400' 
-                    : 'hover:bg-slate-100 text-slate-700'
+                  darkMode ? 'hover:bg-slate-800 text-yellow-400' : 'hover:bg-slate-100 text-slate-700'
                 }`}
               >
                 {darkMode ? '☀️' : '🌙'}
               </button>
             </div>
+
+            {/* Mobile Controls */}
+            <div className="flex md:hidden items-center gap-2">
+              <button
+                onClick={() => setShowSearch(!showSearch)}
+                className={`p-2.5 rounded-lg transition-all ${
+                  darkMode ? 'hover:bg-slate-800 text-slate-300' : 'hover:bg-slate-100'
+                }`}
+              >
+                🔍
+              </button>
+
+              <button
+                onClick={() => setDarkMode(!darkMode)}
+                className={`p-2.5 rounded-lg transition-all ${
+                  darkMode ? 'hover:bg-slate-800 text-yellow-400' : 'hover:bg-slate-100'
+                }`}
+              >
+                {darkMode ? '☀️' : '🌙'}
+              </button>
+
+              <button
+                onClick={() => setShowMobileMenu(!showMobileMenu)}
+                className={`p-2.5 rounded-lg transition-all ${
+                  darkMode ? 'hover:bg-slate-800 text-slate-300' : 'hover:bg-slate-100'
+                }`}
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  {showMobileMenu ? (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  ) : (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  )}
+                </svg>
+              </button>
+            </div>
           </div>
+
+          {/* Mobile Search */}
+          {showSearch && (
+            <div className="md:hidden mt-3">
+              <input
+                type="text"
+                placeholder="Search WikiNITT..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className={`w-full px-4 py-2.5 rounded-lg outline-none ${
+                  darkMode ? 'bg-slate-800 text-white placeholder-slate-500' : 'bg-slate-100 text-slate-900'
+                }`}
+              />
+              {searchQuery && (
+                <div className={`mt-2 rounded-lg border overflow-hidden ${
+                  darkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'
+                }`}>
+                  {getFilteredArticles().slice(0, 5).map(([key, article]) => (
+                    <button
+                      key={key}
+                      onClick={() => {
+                        setSelectedArticle(key)
+                        setShowSearch(false)
+                        setSearchQuery('')
+                        setShowMobileMenu(false)
+                      }}
+                      className={`w-full px-3 py-2.5 text-left flex items-center gap-2 transition-all ${
+                        darkMode ? 'hover:bg-slate-700/50 border-b border-slate-700/50 last:border-0' : 'hover:bg-slate-50 border-b border-slate-100 last:border-0'
+                      }`}
+                    >
+                      <span className="text-xl">{article.image}</span>
+                      <div className="flex-1 min-w-0">
+                        <div className={`text-sm font-medium truncate ${darkMode ? 'text-white' : 'text-slate-900'}`}>
+                          {article.title}
+                        </div>
+                        <div className={`text-xs ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+                          {article.category}
+                        </div>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Mobile Menu */}
+          {showMobileMenu && (
+            <div className="md:hidden mt-3 space-y-2">
+              <div className={`p-3 rounded-lg ${darkMode ? 'bg-slate-800/50' : 'bg-slate-100'}`}>
+                <div className="text-xs font-semibold mb-2 uppercase tracking-wide opacity-60">Categories</div>
+                <div className="flex flex-wrap gap-2">
+                  {categories.map((cat) => (
+                    <button
+                      key={cat}
+                      onClick={() => {
+                        setActiveCategory(cat)
+                        setShowMobileMenu(false)
+                        if (selectedArticle !== 'home') setSelectedArticle('home')
+                      }}
+                      className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
+                        activeCategory === cat
+                          ? darkMode ? 'bg-blue-600 text-white' : 'bg-blue-600 text-white'
+                          : darkMode ? 'bg-slate-700/50 text-slate-300' : 'bg-white text-slate-700'
+                      }`}
+                    >
+                      {cat === 'all' ? 'All' : cat}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </header>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-6 py-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 relative z-10">
         {selectedArticle === 'home' ? (
           // Homepage
-          <div className="space-y-12">
-            {/* Hero Section */}
-            <div className="text-center space-y-6 py-16">
+          <div className="space-y-8 sm:space-y-12">
+            {/* Hero */}
+            <div className="text-center space-y-4 sm:space-y-6 py-8 sm:py-16">
               <div className="inline-block">
-                <h2 className={`text-6xl md:text-7xl font-bold mb-4 bg-gradient-to-r ${
-                  darkMode 
-                    ? 'from-blue-400 via-cyan-400 to-indigo-400' 
-                    : 'from-blue-600 via-indigo-600 to-purple-600'
+                <h2 className={`text-4xl sm:text-6xl md:text-7xl font-bold mb-3 sm:mb-4 bg-gradient-to-r ${
+                  darkMode ? 'from-blue-400 via-cyan-400 to-indigo-400' : 'from-blue-600 via-indigo-600 to-purple-600'
                 } bg-clip-text text-transparent drop-shadow-2xl`}>
                   Welcome to WikiNITT
                 </h2>
-                <div className={`h-1.5 bg-gradient-to-r ${
-                  darkMode 
-                    ? 'from-blue-500 via-cyan-500 to-indigo-500 shadow-lg shadow-blue-500/50' 
-                    : 'from-blue-600 to-indigo-600'
+                <div className={`h-1 sm:h-1.5 bg-gradient-to-r ${
+                  darkMode ? 'from-blue-500 via-cyan-500 to-indigo-500 shadow-lg shadow-blue-500/50' : 'from-blue-600 to-indigo-600'
                 } rounded-full`}></div>
               </div>
-              <p className={`text-xl max-w-3xl mx-auto ${
-                darkMode ? 'text-slate-300' : 'text-slate-700'
-              }`}>
-                Your comprehensive encyclopedia for National Institute of Technology, Tiruchirappalli - explore hostels, departments, campus facilities, events, clubs and everything about NIT Trichy
+              <p className={`text-base sm:text-xl max-w-3xl mx-auto px-4 ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>
+                Your comprehensive encyclopedia for NIT Tiruchirappalli
               </p>
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6">
               {[
                 { icon: '📖', label: 'Articles', value: totalArticles },
                 { icon: '👥', label: 'Contributors', value: totalContributors },
-                { icon: '👀', label: 'Total Views', value: `${(totalViews / 1000).toFixed(1)}K` },
-                { icon: '🔄', label: 'Last Updated', value: 'Today' }
+                { icon: '👀', label: 'Views', value: `${(totalViews / 1000).toFixed(1)}K` },
+                { icon: '🔄', label: 'Updated', value: 'Today' }
               ].map((stat, idx) => (
                 <div
                   key={idx}
-                  className={`p-6 rounded-2xl border transition-all hover:scale-105 hover:shadow-2xl backdrop-blur-sm ${
-                    darkMode 
-                      ? 'bg-slate-800/50 border-slate-700/50 shadow-lg shadow-black/20 hover:bg-slate-800/70 hover:border-blue-500/50' 
-                      : 'bg-white/80 border-slate-200 hover:border-blue-300'
+                  className={`p-4 sm:p-6 rounded-xl sm:rounded-2xl border transition-all hover:scale-105 hover:shadow-2xl backdrop-blur-sm ${
+                    darkMode ? 'bg-slate-800/50 border-slate-700/50 shadow-lg shadow-black/20 hover:bg-slate-800/70 hover:border-blue-500/50' : 'bg-white/80 border-slate-200 hover:border-blue-300'
                   }`}
-                  style={{ animationDelay: `${idx * 100}ms` }}
                 >
-                  <div className="text-4xl mb-3 filter drop-shadow-lg">{stat.icon}</div>
-                  <div className={`text-3xl font-bold mb-1 bg-gradient-to-r ${
-                    darkMode 
-                      ? 'from-blue-400 to-cyan-400' 
-                      : 'from-blue-600 to-indigo-600'
+                  <div className="text-3xl sm:text-4xl mb-2 sm:mb-3 filter drop-shadow-lg">{stat.icon}</div>
+                  <div className={`text-2xl sm:text-3xl font-bold mb-1 bg-gradient-to-r ${
+                    darkMode ? 'from-blue-400 to-cyan-400' : 'from-blue-600 to-indigo-600'
                   } bg-clip-text text-transparent`}>
                     {stat.value}
                   </div>
-                  <div className={`text-sm ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+                  <div className={`text-xs sm:text-sm ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
                     {stat.label}
                   </div>
                 </div>
@@ -1029,25 +1065,21 @@ export default function WikiNITT() {
 
             {/* Category Filter */}
             <div>
-              <h3 className={`text-2xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-slate-900'}`}>
+              <h3 className={`text-xl sm:text-2xl font-bold mb-3 sm:mb-4 ${darkMode ? 'text-white' : 'text-slate-900'}`}>
                 Browse by Category
               </h3>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-2 sm:gap-3">
                 {categories.map((cat) => (
                   <button
                     key={cat}
                     onClick={() => setActiveCategory(cat)}
-                    className={`px-6 py-3 rounded-xl font-medium transition-all transform hover:scale-105 ${
+                    className={`px-4 sm:px-6 py-2 sm:py-3 rounded-lg sm:rounded-xl text-sm sm:text-base font-medium transition-all transform hover:scale-105 ${
                       activeCategory === cat
-                        ? darkMode
-                          ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-lg shadow-blue-600/50'
-                          : 'bg-blue-600 text-white shadow-lg shadow-blue-600/30'
-                        : darkMode
-                          ? 'bg-slate-800/50 text-slate-300 hover:bg-slate-800 border border-slate-700/50'
-                          : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-200'
+                        ? darkMode ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-lg shadow-blue-600/50' : 'bg-blue-600 text-white shadow-lg shadow-blue-600/30'
+                        : darkMode ? 'bg-slate-800/50 text-slate-300 hover:bg-slate-800 border border-slate-700/50' : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-200'
                     }`}
                   >
-                    {cat === 'all' ? '🌟 All Articles' : `${cat} (${Object.values(articles).filter(a => a.category === cat).length})`}
+                    {cat === 'all' ? '🌟 All' : `${cat} (${Object.values(articles).filter(a => a.category === cat).length})`}
                   </button>
                 ))}
               </div>
@@ -1055,65 +1087,54 @@ export default function WikiNITT() {
 
             {/* Articles Grid */}
             <div>
-              <h3 className={`text-2xl font-bold mb-6 flex items-center justify-between ${darkMode ? 'text-white' : 'text-slate-900'}`}>
-                <span>
-                  {activeCategory === 'all' ? 'All Articles' : activeCategory}
-                  <span className={`ml-3 text-lg font-normal ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
-                    ({getFilteredArticles().length} articles)
-                  </span>
+              <h3 className={`text-xl sm:text-2xl font-bold mb-4 sm:mb-6 ${darkMode ? 'text-white' : 'text-slate-900'}`}>
+                {activeCategory === 'all' ? 'All Articles' : activeCategory}
+                <span className={`ml-2 sm:ml-3 text-base sm:text-lg font-normal ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+                  ({getFilteredArticles().length})
                 </span>
               </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                 {getFilteredArticles().map(([key, article]) => (
                   <button
                     key={key}
                     onClick={() => setSelectedArticle(key)}
-                    className={`p-6 rounded-2xl border text-left transition-all hover:scale-105 hover:shadow-2xl group backdrop-blur-sm ${
-                      darkMode 
-                        ? 'bg-slate-800/50 border-slate-700/50 hover:bg-slate-800/70 hover:border-blue-500/50 shadow-lg shadow-black/20' 
-                        : 'bg-white/80 border-slate-200 hover:border-blue-300'
+                    className={`p-4 sm:p-6 rounded-xl sm:rounded-2xl border text-left transition-all hover:scale-105 hover:shadow-2xl group backdrop-blur-sm ${
+                      darkMode ? 'bg-slate-800/50 border-slate-700/50 hover:bg-slate-800/70 hover:border-blue-500/50 shadow-lg shadow-black/20' : 'bg-white/80 border-slate-200 hover:border-blue-300'
                     }`}
                   >
-                    <div className="flex flex-col gap-4">
+                    <div className="flex flex-col gap-3 sm:gap-4">
                       <div className="flex items-start justify-between">
-                        <div className="text-5xl transform transition-transform group-hover:scale-125 group-hover:rotate-12 filter drop-shadow-lg">
+                        <div className="text-4xl sm:text-5xl transform transition-transform group-hover:scale-125 group-hover:rotate-12 filter drop-shadow-lg">
                           {article.image}
                         </div>
                         <span className={`text-xs px-2 py-1 rounded-full ${
-                          darkMode 
-                            ? 'bg-slate-700/50 text-slate-400' 
-                            : 'bg-slate-100 text-slate-600'
+                          darkMode ? 'bg-slate-700/50 text-slate-400' : 'bg-slate-100 text-slate-600'
                         }`}>
                           {article.category}
                         </span>
                       </div>
                       <div>
-                        <h4 className={`text-xl font-bold mb-2 ${darkMode ? 'text-white' : 'text-slate-900'}`}>
+                        <h4 className={`text-lg sm:text-xl font-bold mb-2 ${darkMode ? 'text-white' : 'text-slate-900'}`}>
                           {article.title}
                         </h4>
-                        <p className={`text-sm mb-3 line-clamp-3 ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+                        <p className={`text-sm mb-3 line-clamp-2 sm:line-clamp-3 ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
                           {article.content.intro}
                         </p>
-                        <div className="flex flex-wrap gap-2 mb-3">
+                        <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3">
                           {article.content.tags.slice(0, 3).map((tag, idx) => (
                             <span
                               key={idx}
-                              className={`px-2 py-1 rounded-full text-xs font-medium ${
-                                darkMode 
-                                  ? 'bg-slate-700/50 text-slate-300 border border-slate-600/50' 
-                                  : 'bg-slate-100 text-slate-700'
+                              className={`px-2 py-0.5 sm:py-1 rounded-full text-xs font-medium ${
+                                darkMode ? 'bg-slate-700/50 text-slate-300 border border-slate-600/50' : 'bg-slate-100 text-slate-700'
                               }`}
                             >
                               {tag}
                             </span>
                           ))}
                         </div>
-                        <div className={`flex items-center gap-4 text-xs ${
-                          darkMode ? 'text-slate-500' : 'text-slate-500'
-                        }`}>
+                        <div className={`flex items-center gap-3 sm:gap-4 text-xs ${darkMode ? 'text-slate-500' : 'text-slate-500'}`}>
                           <span>👀 {article.views}</span>
                           <span>👥 {article.contributors}</span>
-                          <span>📅 {article.lastEdited}</span>
                         </div>
                       </div>
                     </div>
@@ -1124,47 +1145,39 @@ export default function WikiNITT() {
           </div>
         ) : currentArticle ? (
           // Article View
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Main Content */}
-            <div className="lg:col-span-2 space-y-8">
-              {/* Article Header */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
+            <div className="lg:col-span-2 space-y-6 sm:space-y-8">
               <div>
                 <button
                   onClick={() => setSelectedArticle('home')}
-                  className={`mb-4 flex items-center gap-2 text-sm transition-all hover:gap-3 ${
-                    darkMode 
-                      ? 'text-blue-400 hover:text-blue-300' 
-                      : 'text-blue-600 hover:text-blue-700'
+                  className={`mb-3 sm:mb-4 flex items-center gap-2 text-sm transition-all hover:gap-3 ${
+                    darkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-700'
                   }`}
                 >
                   ← Back to home
                 </button>
                 
-                <div className="flex items-center gap-4 mb-4">
-                  <span className="text-6xl filter drop-shadow-2xl">{currentArticle.image}</span>
-                  <div className="flex-1">
-                    <h1 className={`text-4xl font-bold mb-2 ${darkMode ? 'text-white' : 'text-slate-900'}`}>
+                <div className="flex items-start gap-3 sm:gap-4 mb-4">
+                  <span className="text-5xl sm:text-6xl filter drop-shadow-2xl flex-shrink-0">{currentArticle.image}</span>
+                  <div className="flex-1 min-w-0">
+                    <h1 className={`text-2xl sm:text-4xl font-bold mb-2 ${darkMode ? 'text-white' : 'text-slate-900'}`}>
                       {currentArticle.title}
                     </h1>
-                    <div className={`flex flex-wrap items-center gap-4 text-sm ${
-                      darkMode ? 'text-slate-400' : 'text-slate-600'
-                    }`}>
+                    <div className={`flex flex-wrap items-center gap-2 sm:gap-4 text-xs sm:text-sm ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
                       <span>📁 {currentArticle.category}</span>
-                      <span>👀 {currentArticle.views} views</span>
-                      <span>✏️ {currentArticle.contributors} contributors</span>
-                      <span>📅 {currentArticle.lastEdited}</span>
+                      <span>👀 {currentArticle.views}</span>
+                      <span className="hidden sm:inline">✏️ {currentArticle.contributors} contributors</span>
+                      <span className="hidden sm:inline">📅 {currentArticle.lastEdited}</span>
                     </div>
                   </div>
                 </div>
 
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5 sm:gap-2">
                   {currentArticle.content.tags.map((tag, idx) => (
                     <span
                       key={idx}
-                      className={`px-3 py-1 rounded-full text-xs font-medium ${
-                        darkMode 
-                          ? 'bg-slate-800/50 text-slate-300 border border-slate-700/50' 
-                          : 'bg-slate-100 text-slate-700'
+                      className={`px-2 sm:px-3 py-1 rounded-full text-xs font-medium ${
+                        darkMode ? 'bg-slate-800/50 text-slate-300 border border-slate-700/50' : 'bg-slate-100 text-slate-700'
                       }`}
                     >
                       {tag}
@@ -1173,22 +1186,19 @@ export default function WikiNITT() {
                 </div>
               </div>
 
-              {/* Article Content */}
-              <div className={`p-8 rounded-2xl border backdrop-blur-sm ${
-                darkMode 
-                  ? 'bg-slate-800/50 border-slate-700/50 shadow-xl shadow-black/20' 
-                  : 'bg-white/80 border-slate-200'
+              <div className={`p-6 sm:p-8 rounded-xl sm:rounded-2xl border backdrop-blur-sm ${
+                darkMode ? 'bg-slate-800/50 border-slate-700/50 shadow-xl shadow-black/20' : 'bg-white/80 border-slate-200'
               }`}>
-                <p className={`text-lg leading-relaxed mb-8 ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>
+                <p className={`text-base sm:text-lg leading-relaxed mb-6 sm:mb-8 ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>
                   {currentArticle.content.intro}
                 </p>
 
                 {currentArticle.content.sections.map((section, idx) => (
-                  <div key={idx} className="mb-8 last:mb-0">
-                    <h2 className={`text-2xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-slate-900'}`}>
+                  <div key={idx} className="mb-6 sm:mb-8 last:mb-0">
+                    <h2 className={`text-xl sm:text-2xl font-bold mb-3 sm:mb-4 ${darkMode ? 'text-white' : 'text-slate-900'}`}>
                       {section.title}
                     </h2>
-                    <p className={`leading-relaxed ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>
+                    <p className={`text-sm sm:text-base leading-relaxed ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>
                       {section.content}
                     </p>
                   </div>
@@ -1196,30 +1206,20 @@ export default function WikiNITT() {
               </div>
             </div>
 
-            {/* Sidebar */}
             <div className="space-y-6">
-              {/* Quick Facts */}
-              <div className={`p-6 rounded-2xl border backdrop-blur-sm sticky top-24 ${
-                darkMode 
-                  ? 'bg-slate-800/50 border-slate-700/50 shadow-xl shadow-black/20' 
-                  : 'bg-white/80 border-slate-200'
+              <div className={`p-5 sm:p-6 rounded-xl sm:rounded-2xl border backdrop-blur-sm lg:sticky lg:top-24 ${
+                darkMode ? 'bg-slate-800/50 border-slate-700/50 shadow-xl shadow-black/20' : 'bg-white/80 border-slate-200'
               }`}>
-                <h3 className={`text-lg font-bold mb-4 flex items-center gap-2 ${
-                  darkMode ? 'text-white' : 'text-slate-900'
-                }`}>
+                <h3 className={`text-base sm:text-lg font-bold mb-4 flex items-center gap-2 ${darkMode ? 'text-white' : 'text-slate-900'}`}>
                   📊 Quick Facts
                 </h3>
                 <div className="space-y-3">
                   {Object.entries(currentArticle.content.quickFacts).map(([key, value], idx) => (
-                    <div key={idx} className={`pb-3 border-b ${
-                      darkMode ? 'border-slate-700/50' : 'border-slate-200'
-                    } last:border-0`}>
-                      <div className={`text-xs font-medium mb-1 uppercase tracking-wide ${
-                        darkMode ? 'text-slate-400' : 'text-slate-600'
-                      }`}>
+                    <div key={idx} className={`pb-3 border-b ${darkMode ? 'border-slate-700/50' : 'border-slate-200'} last:border-0`}>
+                      <div className={`text-xs font-medium mb-1 uppercase tracking-wide ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
                         {key}
                       </div>
-                      <div className={`font-medium ${darkMode ? 'text-white' : 'text-slate-900'}`}>
+                      <div className={`text-sm sm:text-base font-medium ${darkMode ? 'text-white' : 'text-slate-900'}`}>
                         {value}
                       </div>
                     </div>
@@ -1227,16 +1227,11 @@ export default function WikiNITT() {
                 </div>
               </div>
 
-              {/* Related Articles */}
-              <div className={`p-6 rounded-2xl border backdrop-blur-sm ${
-                darkMode 
-                  ? 'bg-slate-800/50 border-slate-700/50 shadow-xl shadow-black/20' 
-                  : 'bg-white/80 border-slate-200'
+              <div className={`p-5 sm:p-6 rounded-xl sm:rounded-2xl border backdrop-blur-sm ${
+                darkMode ? 'bg-slate-800/50 border-slate-700/50 shadow-xl shadow-black/20' : 'bg-white/80 border-slate-200'
               }`}>
-                <h3 className={`text-lg font-bold mb-4 flex items-center gap-2 ${
-                  darkMode ? 'text-white' : 'text-slate-900'
-                }`}>
-                  🔗 Related Articles
+                <h3 className={`text-base sm:text-lg font-bold mb-4 flex items-center gap-2 ${darkMode ? 'text-white' : 'text-slate-900'}`}>
+                  🔗 Related
                 </h3>
                 <div className="space-y-2">
                   {Object.entries(articles)
@@ -1250,16 +1245,14 @@ export default function WikiNITT() {
                       <button
                         key={key}
                         onClick={() => setSelectedArticle(key)}
-                        className={`w-full p-3 rounded-lg text-left transition-all ${
-                          darkMode 
-                            ? 'hover:bg-slate-700/50 border border-transparent hover:border-slate-600/50' 
-                            : 'hover:bg-slate-50'
+                        className={`w-full p-2.5 sm:p-3 rounded-lg text-left transition-all ${
+                          darkMode ? 'hover:bg-slate-700/50 border border-transparent hover:border-slate-600/50' : 'hover:bg-slate-50'
                         }`}
                       >
-                        <div className="flex items-center gap-3">
-                          <span className="text-2xl">{article.image}</span>
+                        <div className="flex items-center gap-2 sm:gap-3">
+                          <span className="text-xl sm:text-2xl flex-shrink-0">{article.image}</span>
                           <div className="flex-1 min-w-0">
-                            <div className={`font-medium text-sm truncate ${darkMode ? 'text-white' : 'text-slate-900'}`}>
+                            <div className={`text-sm font-medium truncate ${darkMode ? 'text-white' : 'text-slate-900'}`}>
                               {article.title}
                             </div>
                             <div className={`text-xs ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
@@ -1277,18 +1270,16 @@ export default function WikiNITT() {
       </div>
 
       {/* Footer */}
-      <footer className={`mt-16 border-t py-8 backdrop-blur-sm relative z-10 ${
-        darkMode 
-          ? 'bg-slate-900/50 border-slate-800' 
-          : 'bg-white/50 border-slate-200'
+      <footer className={`mt-12 sm:mt-16 border-t py-6 sm:py-8 backdrop-blur-sm relative z-10 ${
+        darkMode ? 'bg-slate-900/50 border-slate-800' : 'bg-white/50 border-slate-200'
       }`}>
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center space-y-2">
             <p className={`text-sm ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
-              Made with ❤️ for NIT Trichy Community
+              Made with ❤️ for NIT Trichy
             </p>
             <p className={`text-xs ${darkMode ? 'text-slate-500' : 'text-slate-500'}`}>
-              WikiNITT © 2024 • {totalArticles} Articles • {totalContributors} Contributors • {(totalViews / 1000).toFixed(1)}K+ Views
+              WikiNITT © 2024 • {totalArticles} Articles • {totalContributors} Contributors
             </p>
           </div>
         </div>
