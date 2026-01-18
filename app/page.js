@@ -1,539 +1,555 @@
-'use client'
-import { useState, useEffect } from 'react'
-import { Search, BookmarkCheck, Bookmark, Menu, X, Sun, Moon, BarChart3, Clock, TrendingUp, ChevronRight, Home } from 'lucide-react'
+'use client';
 
-const Logo = () => (
-  <div className="flex items-center space-x-3">
-    <div className="w-12 h-12 bg-gradient-to-br from-purple-600 to-blue-600 rounded-xl flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform">
-      <span className="text-2xl font-black text-white">W</span>
-    </div>
-    <div>
-      <h1 className="text-2xl font-black bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">WikiNITT</h1>
-      <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">NIT Trichy Encyclopedia</p>
-    </div>
-  </div>
-)
+import React, { useState, useEffect } from 'react';
+import { Search, Bookmark, BookmarkCheck, Sun, Moon, Home, TrendingUp, Clock, BarChart3 } from 'lucide-react';
 
 export default function WikiNITT() {
-  const [currentView, setCurrentView] = useState('home')
-  const [currentArticleId, setCurrentArticleId] = useState(null)
-  const [searchTerm, setSearchTerm] = useState('')
-  const [selectedCategory, setSelectedCategory] = useState('All')
-  const [bookmarks, setBookmarks] = useState([])
-  const [darkMode, setDarkMode] = useState(false)
-  const [menuOpen, setMenuOpen] = useState(false)
-  const [readingProgress, setReadingProgress] = useState(0)
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedArticle, setSelectedArticle] = useState(null);
+  const [bookmarks, setBookmarks] = useState([]);
+  const [isDark, setIsDark] = useState(true);
+  const [readingProgress, setReadingProgress] = useState(0);
+  const [viewStats, setViewStats] = useState({});
+  const [showStats, setShowStats] = useState(false);
 
   const articles = [
     {
       id: 1,
       title: "Computer Science and Engineering",
       category: "Departments",
-      icon: "💻",
-      content: `The Computer Science and Engineering department at NIT Trichy is one of the most prestigious departments. Established in 1984, it offers B.Tech, M.Tech, and Ph.D. programs with a curriculum covering AI, Machine Learning, Data Science, Blockchain, and Cybersecurity. Faculty members are highly qualified with publications in top-tier journals. The department has state-of-the-art labs and strong industry connections with Google, Microsoft, and Amazon. Student clubs like Delta Force and Spider focus on development and competitive programming.`,
-      quickFacts: {
-        "Established": "1984",
-        "Programs": "B.Tech, M.Tech, Ph.D",
-        "Faculty": "45+ Professors",
-        "Labs": "15+ Research Labs"
-      }
+      content: "The Department of Computer Science and Engineering at NIT Trichy is one of the premier departments in India. Established in 1984, it offers undergraduate, postgraduate, and doctoral programs. The department has state-of-the-art laboratories including AI Lab, Networks Lab, and Software Engineering Lab. Faculty members are engaged in cutting-edge research in areas like Machine Learning, Data Science, Computer Vision, and Cybersecurity. The department has strong industry connections with companies like Google, Microsoft, and Amazon regularly recruiting students. Annual technical fest pragyan and kurukshetra see major participation from CSE students.",
+      tags: ["CSE", "Engineering", "Technology"]
     },
     {
       id: 2,
       title: "Electrical and Electronics Engineering",
       category: "Departments",
-      icon: "⚡",
-      content: `The EEE department was founded in 1964 and focuses on power systems, control systems, electronics, and renewable energy. Students gain hands-on experience in labs for power electronics, electrical machines, and microprocessors. Research areas include smart grids, electric vehicles, and communication systems. The department collaborates with BHEL, Siemens, and ABB. Faculty secure research funding from DST, SERB, and DRDO. Placement opportunities span core electrical companies and software firms.`,
-      quickFacts: {
-        "Established": "1964",
-        "Specializations": "Power, Control, Electronics",
-        "Industry Partners": "BHEL, Siemens, ABB",
-        "Research Grants": "₹10+ Crores"
-      }
+      content: "The Department of Electrical and Electronics Engineering has been a cornerstone of NIT Trichy since 1968. It offers programs in Power Systems, Control Systems, and Electronics. The department houses advanced laboratories for Power Electronics, Digital Signal Processing, and Embedded Systems. Research areas include Renewable Energy, Smart Grids, VLSI Design, and Robotics. Faculty members collaborate with organizations like ISRO, DRDO, and leading power sector companies. Students participate in various technical competitions and projects funded by government agencies.",
+      tags: ["EEE", "Electrical", "Electronics"]
     },
     {
       id: 3,
       title: "Mechanical Engineering",
       category: "Departments",
-      icon: "⚙️",
-      content: `The Mechanical Engineering department, established in 1964, covers thermal engineering, design, manufacturing, and robotics. Students access workshops with CNC machines, 3D printers, and advanced manufacturing tools. Research includes CFD, FEA, composite materials, and renewable energy. The department collaborates with ISRO, DRDO, and automotive companies. Students participate in SAE BAJA and Formula Student competitions. Alumni hold leadership positions in Toyota, Tata Motors, and multinational corporations.`,
-      quickFacts: {
-        "Established": "1964",
-        "Laboratories": "20+ Labs",
-        "Research Areas": "Thermal, Design, Manufacturing",
-        "Industry Tie-ups": "ISRO, DRDO, BHEL"
-      }
+      content: "Mechanical Engineering at NIT Trichy is one of the oldest and most respected departments, established in 1964. The department offers specializations in Thermal Engineering, Design, and Manufacturing. Facilities include CAD/CAM Lab, Robotics Lab, IC Engines Lab, and a well-equipped workshop. Research focuses on Advanced Manufacturing, Renewable Energy Systems, Computational Fluid Dynamics, and Automotive Engineering. The department has collaborations with industries like Ashok Leyland, BHEL, and TVS Motors. Students regularly win awards in national-level technical competitions.",
+      tags: ["Mechanical", "Manufacturing", "Design"]
     },
     {
       id: 4,
       title: "Civil Engineering",
       category: "Departments",
-      icon: "🏗️",
-      content: `The Civil Engineering department focuses on structural, geotechnical, transportation, and environmental engineering. Labs include concrete testing, soil mechanics, surveying, and hydraulics. Research covers earthquake engineering, sustainable construction, and water treatment. Faculty engage in consultancy for government and private organizations. Students learn AutoCAD, STAAD Pro, ANSYS, and GIS. Career opportunities include core civil companies, consulting firms, and government organizations like PWD and Railways.`,
-      quickFacts: {
-        "Focus Areas": "Structural, Geotech, Transportation",
-        "Modern Labs": "15+ Specialized Labs",
-        "Consultancy Projects": "100+ Projects",
-        "Government Collaboration": "PWD, Railways, NHAI"
-      }
+      content: "The Department of Civil Engineering has been shaping infrastructure development since 1964. It offers programs in Structural Engineering, Environmental Engineering, and Transportation Engineering. The department has modern laboratories for Concrete Technology, Geotechnical Engineering, Highway Engineering, and Water Resources. Research areas include Sustainable Construction, Earthquake Engineering, Traffic Management, and Waste Water Treatment. Faculty collaborate with government agencies like NHAI, PWD, and private construction firms. Students engage in field projects and site visits regularly.",
+      tags: ["Civil", "Infrastructure", "Construction"]
     },
     {
       id: 5,
       title: "Electronics and Communication Engineering",
       category: "Departments",
-      icon: "📡",
-      content: `The ECE department offers curriculum in analog/digital electronics, communication systems, VLSI design, and embedded systems. Labs feature oscilloscopes, signal generators, and FPGA boards. Research areas include 5G/6G, IoT, image processing, and antenna design. Faculty receive funding from ISRO and DRDO. Students participate in design competitions and hackathons with internships at Qualcomm, Intel, and Texas Instruments. Placements are outstanding with offers from semiconductor and telecommunications firms.`,
-      quickFacts: {
-        "Core Areas": "VLSI, Communication, Signal Processing",
-        "Research Centers": "8+ Specialized Centers",
-        "Industry Partners": "Qualcomm, Intel, TI",
-        "International Collaborations": "15+ Universities"
-      }
+      content: "ECE Department at NIT Trichy is renowned for its excellence in electronics and communication technologies. Established in 1972, it offers programs in VLSI Design, Communication Systems, and Signal Processing. The department has cutting-edge labs for Microwave Engineering, Optical Communication, Embedded Systems, and Digital System Design. Research focuses on 5G Technologies, IoT, Semiconductor Devices, and Wireless Networks. Industry partnerships with companies like Qualcomm, Intel, and TI provide excellent placement opportunities. The department organizes workshops and seminars with industry experts regularly.",
+      tags: ["ECE", "Communication", "VLSI"]
     },
     {
       id: 6,
       title: "Production Engineering",
       category: "Departments",
-      icon: "🏭",
-      content: `The Production Engineering department focuses on manufacturing processes, industrial engineering, and operations management. The curriculum includes manufacturing technology, metrology, automation, operations research, and supply chain management. Research covers additive manufacturing, lean manufacturing, and Industry 4.0. Faculty engage in industry projects with manufacturing companies. Students learn through industrial training and live projects. Careers include production management, quality assurance, and consulting positions.`,
-      quickFacts: {
-        "Specializations": "Manufacturing, Industrial Engineering",
-        "Workshops": "Advanced CNC, Robotics",
-        "Industry Focus": "Automotive, Aerospace",
-        "Placement Sectors": "Core, Consulting, Analytics"
-      }
+      content: "Production Engineering Department focuses on manufacturing processes and industrial management. Established in 1980, it offers unique programs combining manufacturing technology with management principles. Facilities include CNC Machines Lab, Metrology Lab, Industrial Engineering Lab, and CAD/CAM facilities. Research areas cover Advanced Manufacturing Processes, Supply Chain Management, Quality Control, and Automation. The department has strong ties with manufacturing industries and automotive companies. Students work on live industry projects and case studies as part of curriculum.",
+      tags: ["Production", "Manufacturing", "Industrial"]
     },
     {
       id: 7,
       title: "Agate Hostel",
       category: "Hostels",
-      icon: "🏠",
-      content: `Agate is a premier girls' hostel with spacious rooms, study tables, beds, and cupboards. Common areas include TV room, reading room, and recreational spaces. The mess provides nutritious food with varied menus. The hostel has 24/7 security, medical facilities, and housekeeping. Wi-Fi connectivity is available throughout. Students form strong bonds through hostel events and cultural programs. Senior students mentor juniors, creating a supportive atmosphere.`,
-      quickFacts: {
-        "Type": "Girls' Hostel",
-        "Capacity": "300+ Students",
-        "Facilities": "Wi-Fi, Mess, Recreation",
-        "Security": "24/7 Surveillance"
-      }
+      content: "Agate is one of the premier hostels for male students at NIT Trichy. Known for its excellent facilities and vibrant community, Agate houses around 400 students. The hostel has spacious rooms, common areas, and a reading room. It features a gym, table tennis room, and badminton court. The mess serves quality food with separate vegetarian and non-vegetarian sections. Agate hosts the annual inter-hostel sports competition Ventura where students compete in various sports. The hostel has a strong culture of technical and cultural activities with students regularly winning prizes in college festivals.",
+      tags: ["Hostel", "Boys", "Facilities"]
     },
     {
       id: 8,
       title: "Diamond Hostel",
       category: "Hostels",
-      icon: "💎",
-      content: `Diamond is a boys' hostel near academic buildings and sports facilities. Rooms are double or triple occupancy with essential furniture. The mess serves three meals with North and South Indian cuisines. The hostel has strong sports culture with teams in cricket, football, basketball, and volleyball. Cultural activities include music nights and movie screenings. Common rooms have TV and indoor games facilities.`,
-      quickFacts: {
-        "Type": "Boys' Hostel",
-        "Occupancy": "Double/Triple",
-        "Mess": "North & South Indian",
-        "Sports": "Active Inter-Hostel Teams"
-      }
+      content: "Diamond Hostel is known for its academic atmosphere and competitive spirit. Home to approximately 380 male students, Diamond has excellent infrastructure including Wi-Fi connectivity, study rooms, and recreational facilities. The hostel has a well-maintained gym and sports facilities including volleyball and basketball courts. Diamond mess is popular for its varied menu and hygiene standards. The hostel actively participates in all inter-hostel competitions and cultural events. Diamond has produced numerous university rankers and successful alumni working in top companies worldwide.",
+      tags: ["Hostel", "Boys", "Academic"]
     },
     {
       id: 9,
       title: "Coral Hostel",
       category: "Hostels",
-      icon: "🏘️",
-      content: `Coral is a girls' hostel known for its supportive environment. Rooms are well-ventilated with modern furniture and proper lighting. The mess maintains high hygiene standards. Residents actively participate in cultural and sports competitions. Wi-Fi connectivity and a lending library are available. Safety features include controlled entry and CCTV surveillance.`,
-      quickFacts: {
-        "Type": "Girls' Hostel",
-        "Infrastructure": "Modern, Well-ventilated",
-        "Mess Committee": "Student-run",
-        "Cultural Participation": "High Achiever"
-      }
+      content: "Coral Hostel is famous for its friendly environment and cultural activities. Housing about 350 male students, Coral provides comfortable accommodation with modern amenities. The hostel features a music room, indoor games facility, and open-air theatre. Coral mess offers diverse cuisine options including North Indian, South Indian, and Chinese. The hostel is known for its strong performance in cultural competitions during Festember and Pragyan. Coral has an active hostel committee that organizes regular events, movie nights, and festival celebrations creating a home-away-from-home atmosphere.",
+      tags: ["Hostel", "Boys", "Cultural"]
     },
     {
       id: 10,
       title: "Jade Hostel",
       category: "Hostels",
-      icon: "🏢",
-      content: `Jade is a boys' hostel known for academic excellence. Furnished rooms and designated study areas support collaborative learning. The mess serves balanced meals with extended hours during exams. Residents participate in sports tournaments and organize cultural events. Good internet connectivity enables online classes and coding competitions.`,
-      quickFacts: {
-        "Type": "Boys' Hostel",
-        "Focus": "Academic Excellence",
-        "Facilities": "Study Areas, Wi-Fi",
-        "Events": "Cultural, Technical, Sports"
-      }
+      content: "Jade is one of the most sought-after girls hostels at NIT Trichy. Accommodating around 300 female students, Jade offers secure and comfortable living spaces. The hostel has excellent security with 24/7 guards and CCTV surveillance. Facilities include a well-equipped gym, library, TV room, and common room. Jade mess provides nutritious meals with special attention to dietary requirements. The hostel organizes fitness programs, yoga sessions, and self-defense workshops. Jade students excel in both academics and extracurricular activities, maintaining high standards in all college events.",
+      tags: ["Hostel", "Girls", "Safety"]
     },
     {
       id: 11,
       title: "Opal Hostel",
       category: "Hostels",
-      icon: "🌟",
-      content: `Opal is a girls' hostel with a home-like atmosphere. Well-maintained rooms with essential furniture and storage. The mess provides nutritious meals with regional cuisines. Residents engage in technical fests and cultural events. Dedicated spaces for group studies. Senior students conduct study sessions for juniors. Security includes restricted entry and CCTV monitoring.`,
-      quickFacts: {
-        "Type": "Girls' Hostel",
-        "Atmosphere": "Home-like, Supportive",
-        "Mess": "Regional Cuisines",
-        "Student Leadership": "High Involvement"
-      }
+      content: "Opal Hostel provides a nurturing environment for female students at NIT Trichy. With capacity for 280 students, Opal combines safety with modern amenities. The hostel features spacious rooms, study areas, and recreational facilities. Security measures include biometric access and round-the-clock monitoring. Opal mess is known for its homely food and special festival meals. The hostel has an active cultural committee organizing events, celebrations, and competitions. Opal students are known for their leadership roles in various college clubs and their contributions to technical festivals.",
+      tags: ["Hostel", "Girls", "Community"]
     },
     {
       id: 12,
-      title: "Emerald Hostel",
+      title: "Pearl Hostel",
       category: "Hostels",
-      icon: "🏛️",
-      content: `Emerald is a boys' hostel with prime campus location. Common rooms on each floor for discussions and recreation. The mess focuses on hygiene and taste with regular feedback. Residents excel in academics and extracurricular activities. Many win accolades in competitions and fests. Active sports participation in inter-hostel tournaments.`,
-      quickFacts: {
-        "Type": "Boys' Hostel",
-        "Location": "Prime Campus Location",
-        "Mess": "Hygienic, Feedback-driven",
-        "Excellence": "Academic & Extracurricular"
-      }
+      content: "Pearl Hostel is one of the newest additions to the girls hostel facilities. Housing 320 female students, Pearl boasts modern architecture and contemporary facilities. The hostel includes high-speed internet, study cubicles, and collaborative learning spaces. Pearl has a state-of-the-art gym, yoga room, and indoor sports facilities. The mess provides diverse menu options with focus on healthy eating. Pearl organizes regular wellness programs, career guidance sessions, and skill development workshops. The hostel has quickly built a reputation for academic excellence and active participation in college activities.",
+      tags: ["Hostel", "Girls", "Modern"]
     },
     {
       id: 13,
-      title: "Amber Hostel",
+      title: "Ruby Hostel",
       category: "Hostels",
-      icon: "🏡",
-      content: `Amber is a girls' hostel with excellent facilities. Spacious rooms with proper ventilation and lighting. Mess offers vegetarian and non-vegetarian options. Vibrant cultural scene with music events and dance performances. Wi-Fi throughout premises. Common areas include TV room and reading room. Strict safety protocols with controlled access.`,
-      quickFacts: {
-        "Type": "Girls' Hostel",
-        "Infrastructure": "Spacious, Well-lit",
-        "Mess": "Veg & Non-veg Options",
-        "Cultural Scene": "Vibrant & Active"
-      }
+      content: "Ruby Hostel is known for its vibrant community and excellent amenities for male students. Accommodating 400 students, Ruby has spacious rooms and well-maintained common areas. The hostel features a gym, table tennis hall, and outdoor sports courts. Ruby mess serves quality meals with options for special dietary needs. The hostel has a strong sports culture with teams regularly winning inter-hostel tournaments. Ruby also excels in cultural events with a dedicated music room and practice spaces. The hostel committee organizes regular events including birthday celebrations and festival gatherings.",
+      tags: ["Hostel", "Boys", "Sports"]
     },
     {
       id: 14,
-      title: "Pearl Hostel",
+      title: "Sapphire Hostel",
       category: "Hostels",
-      icon: "🏰",
-      content: `Pearl is a boys' hostel with strong community spirit. Standard double or triple occupancy rooms. The mess serves three meals with regular menu changes. Students actively participate in sports and field competitive teams. Good internet access for online projects. Inclusive environment promoting diversity.`,
-      quickFacts: {
-        "Type": "Boys' Hostel",
-        "Community": "Strong Spirit",
-        "Sports": "Competitive Teams",
-        "Environment": "Inclusive & Diverse"
-      }
+      content: "Sapphire Hostel offers premium accommodation for male students at NIT Trichy. With 360 residents, Sapphire provides excellent infrastructure and facilities. The hostel has centralized Wi-Fi, air-conditioned study rooms, and recreational areas. Sapphire features a modern gym, billiards room, and sports equipment. The mess is known for its quality food and clean environment. Sapphire students are actively involved in technical clubs and entrepreneurship activities. The hostel has produced several startup founders and successful entrepreneurs. Regular talks and workshops by alumni are organized at the hostel.",
+      tags: ["Hostel", "Boys", "Premium"]
     },
     {
       id: 15,
-      title: "Ruby Hostel",
+      title: "Turquoise Hostel",
       category: "Hostels",
-      icon: "💍",
-      content: `Ruby is a girls' hostel emphasizing comfort and security. Well-furnished rooms with regular housekeeping. The mess provides nutritious meals under hygienic conditions. Residents actively involved in campus life and technical fests. Common facilities include study areas and entertainment rooms. 24/7 surveillance with controlled access.`,
-      quickFacts: {
-        "Type": "Girls' Hostel",
-        "Standards": "High Cleanliness",
-        "Mess": "Nutritious & Tasty",
-        "Campus Involvement": "Very Active"
-      }
+      content: "Turquoise Hostel provides comfortable living for girls with focus on academic support. Housing 290 female students, Turquoise has dedicated study areas and group discussion rooms. The hostel maintains strict security protocols with controlled access. Facilities include a gym, library corner, and entertainment room. Turquoise mess offers nutritious meals with regular menu changes. The hostel organizes study groups, project collaboration sessions, and exam preparation support. Turquoise students maintain high academic standards with several toppers and scholarship recipients. The hostel also encourages participation in sports and cultural activities.",
+      tags: ["Hostel", "Girls", "Academic"]
     },
     {
       id: 16,
-      title: "Sapphire Hostel",
+      title: "Zircon Hostel",
       category: "Hostels",
-      icon: "🔷",
-      content: `Sapphire is a boys' hostel with quality accommodation. Friendly atmosphere helping new students adjust. Common areas with TV and indoor games. The mess provides wholesome meals with diverse options. Active engagement in inter-hostel competitions. Internet connectivity throughout. Regular hostel meetings for feedback.`,
-      quickFacts: {
-        "Type": "Boys' Hostel",
-        "Atmosphere": "Friendly",
-        "Mess": "Diverse Menu",
-        "Competitions": "Sports & Cultural"
-      }
+      content: "Zircon is a newly constructed girls hostel with state-of-the-art facilities. Accommodating 310 students, Zircon features modern architecture and eco-friendly design. The hostel has solar panels, rainwater harvesting, and waste segregation systems. Facilities include a meditation room, fitness center, and collaborative workspaces. Zircon mess focuses on organic and healthy food options. The hostel promotes sustainability through various green initiatives and awareness programs. Zircon students are encouraged to participate in environmental clubs and social service activities. The hostel has quickly become popular for its modern amenities and environmental consciousness.",
+      tags: ["Hostel", "Girls", "Sustainable"]
     },
     {
       id: 17,
-      title: "Topaz Hostel",
+      title: "Amethyst Hostel",
       category: "Hostels",
-      icon: "🏆",
-      content: `Topaz is a girls' hostel focusing on student welfare. Well-designed rooms with adequate space and lighting. Mess maintains high standards with strict hygiene. Students excel in technical events and cultural performances. Common areas provide spaces for collaboration. Comprehensive security measures with emergency response systems.`,
-      quickFacts: {
-        "Type": "Girls' Hostel",
-        "Focus": "Welfare & Success",
-        "Mess": "High Standards",
-        "Student Excellence": "Technical & Cultural"
-      }
+      content: "Amethyst Hostel is designed for senior male students offering greater independence. Housing 340 students, mostly final years, Amethyst provides a mature living environment. The hostel has individual study desks in rooms, high-speed internet, and printing facilities. Amethyst features a well-equipped gym and sports complex. The mess offers flexible timing for students with demanding schedules. The hostel supports placement preparation with mock interview rooms and group study areas. Amethyst has a strong alumni network with regular mentoring sessions. The hostel is known for its professional atmosphere while maintaining community spirit.",
+      tags: ["Hostel", "Boys", "Senior"]
     },
     {
       id: 18,
-      title: "Zircon Hostel",
+      title: "Beryl Hostel",
       category: "Hostels",
-      icon: "🏅",
-      content: `Zircon is a boys' hostel with well-maintained infrastructure. Standard rooms with comfortable furniture. The mess includes regional and popular dishes. Enthusiastic participation in campus events and tournaments. Internet access supporting academic work. Administration promotes balance between academics and extracurriculars.`,
-      quickFacts: {
-        "Type": "Boys' Hostel",
-        "Infrastructure": "Well-maintained",
-        "Mess": "Regional & Popular Dishes",
-        "Tradition": "Strong Competition Teams"
-      }
+      content: "Beryl Hostel caters to postgraduate and PhD students providing a research-oriented environment. With 250 residents, Beryl offers single and double occupancy rooms. The hostel has dedicated research workspaces, 24/7 internet connectivity, and seminar rooms. Facilities include a gym, library, and cafeteria with extended hours. Beryl promotes academic collaboration through regular research presentations and journal clubs. The hostel has a diverse community with students from various departments and countries. Beryl organizes guest lectures, workshops, and networking events. The mature environment helps students focus on their research and academic goals.",
+      tags: ["Hostel", "PG", "Research"]
     },
     {
       id: 19,
-      title: "Crystal Hostel",
+      title: "Garnet Hostel",
       category: "Hostels",
-      icon: "💠",
-      content: `Crystal is a girls' hostel combining modern amenities with welcoming atmosphere. Well-appointed rooms with adequate storage. Mess operations focus on nutrition and taste. Active participation in technical clubs and cultural organizations. Study rooms and entertainment areas available. Strict security protocols enforced.`,
-      quickFacts: {
-        "Type": "Girls' Hostel",
-        "Amenities": "Modern",
-        "Mess": "Nutrition-focused",
-        "Leadership": "Encouraged"
-      }
+      content: "Garnet Hostel is exclusively for international students and visiting scholars. Accommodating 150 guests, Garnet provides culturally diverse environment. The hostel has single rooms with attached bathrooms and modern furnishings. Facilities include a common kitchen for different cuisines, recreation room, and conference hall. Garnet organizes cultural exchange programs and international festival celebrations. The hostel provides support services for international students including local orientation and language assistance. Garnet has become a hub for cultural diversity promoting global understanding and friendship. Special events showcase different countries and their traditions.",
+      tags: ["Hostel", "International", "Cultural"]
     },
     {
       id: 20,
-      title: "Turquoise Hostel",
+      title: "Quartz Hostel",
       category: "Hostels",
-      icon: "🌊",
-      content: `Turquoise is a boys' hostel with quality accommodation. Vibrant community from various branches. The mess serves North and South Indian cuisines. Strong tradition in sports including cricket and football. Internet connectivity and common room facilities. Administration responsive to student needs.`,
-      quickFacts: {
-        "Type": "Boys' Hostel",
-        "Community": "Vibrant & Diverse",
-        "Mess": "North & South Indian",
-        "Sports Tradition": "Cricket, Football, Athletics"
-      }
+      content: "Quartz Hostel is designated for first-year male students ensuring smooth transition to college life. Housing 420 freshers, Quartz has a supportive mentoring system. Senior students act as mentors guiding newcomers in academics and activities. The hostel has spacious study rooms, recreational facilities, and sports courts. Quartz mess provides comfort food helping students adjust to hostel life. The hostel organizes orientation programs, ice-breaking sessions, and team-building activities. Quartz focuses on helping students develop independence while providing necessary support. The hostel committee ensures all first-years feel welcomed and included in college community.",
+      tags: ["Hostel", "Boys", "Freshers"]
     },
     {
       id: 21,
-      title: "Garnet Hostel",
+      title: "Moonstone Hostel",
       category: "Hostels",
-      icon: "🎯",
-      content: `Garnet is a girls' hostel with modern amenities. Spacious rooms with proper ventilation. Mess provides hygienic and nutritious meals. Known for achievements in academics, sports, and culture. Common areas for study and social gatherings. Comprehensive security measures including surveillance.`,
-      quickFacts: {
-        "Type": "Girls' Hostel",
-        "Infrastructure": "Spacious & Modern",
-        "Achievements": "Academic, Sports, Cultural",
-        "Security": "Comprehensive Measures"
-      }
+      content: "Moonstone is the newest girls hostel with cutting-edge facilities and design. Accommodating 330 students, Moonstone features smart rooms with app-controlled amenities. The hostel has biometric security, CCTV monitoring, and emergency response systems. Facilities include a modern gym, dance studio, and multimedia room. Moonstone mess uses digital ordering system for personalized meal choices. The hostel promotes wellness through yoga classes, fitness programs, and mental health support. Moonstone has green spaces, rooftop garden, and eco-friendly infrastructure. The hostel represents the future of student accommodation at NIT Trichy.",
+      tags: ["Hostel", "Girls", "Smart"]
     },
     {
       id: 22,
-      title: "Aquamarine Hostel",
+      title: "Topaz Hostel",
       category: "Hostels",
-      icon: "🌀",
-      content: `Aquamarine is a boys' hostel conveniently located on campus. Well-furnished rooms for double or triple occupancy. The mess focuses on hygiene and nutrition. Active participation in campus life and sports. Common facilities include study areas and TV rooms. Internet connectivity supports academic work.`,
-      quickFacts: {
-        "Type": "Boys' Hostel",
-        "Location": "Convenient Campus Location",
-        "Mess": "Hygienic & Nutritious",
-        "Campus Life": "Very Active"
-      }
+      content: "Topaz Hostel provides accommodation for sponsored and part-time male students. With 200 residents, Topaz offers flexible living arrangements. The hostel has individual work desks, good internet connectivity, and quiet study zones. Facilities include basic gym equipment and common recreation area. Topaz mess operates with extended timing considering varied schedules. The hostel understands unique needs of working students providing mature environment. Topaz has good industry interaction with regular talks by working professionals. The hostel community supports each other in balancing work and studies.",
+      tags: ["Hostel", "Boys", "Working"]
     },
     {
       id: 23,
-      title: "FESTEMBER",
+      title: "Student Activity Center (SAC)",
       category: "Student Life",
-      icon: "🎉",
-      content: `FESTEMBER is the annual cultural festival of NIT Trichy, one of South India's largest student-run cultural festivals. Held in September, it attracts thousands of participants from colleges across India. The four-day extravaganza features music, dance, drama, art, literary events, and informal competitions. Professional nights feature performances by renowned artists and celebrities. The festival showcases student talent through various competitions and provides a platform for cultural expression. Events include classical and Western music, solo and group dance, theater, fashion shows, and gaming competitions. FESTEMBER has become a brand synonymous with cultural excellence and grand celebrations.`,
-      quickFacts: {
-        "Held": "September",
-        "Duration": "4 Days",
-        "Participants": "30,000+ Students",
-        "Events": "100+ Competitions"
-      }
+      content: "The Student Activity Center is the heart of campus life at NIT Trichy. This massive complex houses facilities for various clubs, cultural activities, and student organizations. SAC includes an auditorium with 1000 seating capacity, multiple seminar halls, music rooms, dance studios, and art galleries. The center is home to over 50 active student clubs covering technical, cultural, literary, and social domains. Major events like Festember (cultural festival) and Pragyan (technical festival) are coordinated from SAC. The building also houses student council offices, club rooms, and practice spaces. SAC remains open until late night during festival seasons supporting student creativity and innovation.",
+      tags: ["Campus", "Activities", "Clubs"]
     },
     {
       id: 24,
-      title: "PRAGYAN",
+      title: "Central Library",
       category: "Student Life",
-      icon: "🔬",
-      content: `PRAGYAN is the annual international techno-managerial festival of NIT Trichy. Held in March, it is one of the biggest technical festivals in India. The festival features technical competitions, workshops, guest lectures, exhibitions, and entertainment events. Categories include robotics, coding, engineering design, management, quizzing, and gaming. International participation and industry collaboration make it a premier technical event. Professional nights and celebrity lectures add to the excitement. Students get opportunities to network with industry professionals and showcase their technical prowess. PRAGYAN promotes innovation, technical skills, and entrepreneurship among students.`,
-      quickFacts: {
-        "Held": "March",
-        "Type": "Techno-Managerial",
-        "Footfall": "50,000+ Students",
-        "Prize Money": "₹15+ Lakhs"
-      }
+      content: "NIT Trichy Central Library is one of the finest academic libraries in India. Spread across four floors, it houses over 2 lakh books, 15,000 journals, and extensive digital resources. The library subscribes to major databases like IEEE, Springer, Elsevier, and ACM. Facilities include reading halls with 600 seats, discussion rooms, digital library section, and rare book collection. The library operates 24/7 during examination periods. It has dedicated sections for different branches and research scholars. Library conducts workshops on research tools, reference management, and digital resources. Modern automation system allows easy book search and online reservations.",
+      tags: ["Library", "Academic", "Resources"]
     },
     {
       id: 25,
-      title: "Spider R&D Club",
+      title: "Sports Complex",
       category: "Student Life",
-      icon: "🕷️",
-      content: `Spider is the official Research and Development club of NIT Trichy focusing on software development and innovation. The club works on web development, mobile app development, machine learning, and other cutting-edge technologies. Spider maintains various institute portals and applications used by students and administration. Members work on real-world projects, participate in hackathons, and organize workshops. The club provides a platform for students to learn new technologies and contribute to open-source projects. Spider has developed several useful applications for the NIT Trichy community and collaborates with other technical clubs for college events.`,
-      quickFacts: {
-        "Focus": "Software Development",
-        "Projects": "Web, Mobile, ML",
-        "Activities": "Hackathons, Workshops",
-        "Impact": "Campus Applications"
-      }
+      content: "The Sports Complex at NIT Trichy promotes physical fitness and sportsmanship. Spread over 20 acres, it includes facilities for cricket, football, hockey, basketball, volleyball, tennis, and badminton. The complex has an Olympic-size swimming pool, athletics track, and indoor stadium. Gymnasium has modern equipment for strength training and cardio. Sports hostel accommodates sportspersons during training. Professional coaches train students in various sports. The institute has excellent track record in inter-NIT sports meets. Annual sports day Olympus showcases talent across multiple disciplines. The complex also offers yoga and aerobics classes for fitness enthusiasts.",
+      tags: ["Sports", "Fitness", "Athletics"]
     },
     {
       id: 26,
-      title: "Delta Force",
+      title: "Health Center",
       category: "Student Life",
-      icon: "🚀",
-      content: `Delta Force is a premier technical club at NIT Trichy specializing in competitive programming and software development. Members participate in coding competitions on platforms like Codeforces, CodeChef, and LeetCode. The club organizes coding contests, algorithm workshops, and programming bootcamps. Delta Force prepares students for technical interviews and placements through regular practice sessions. The club has produced numerous successful competitive programmers who have achieved high ratings and rankings. Members collaborate on projects involving algorithms, data structures, and system design. Delta Force fosters a culture of continuous learning and excellence in computer science.`,
-      quickFacts: {
-        "Focus": "Competitive Programming",
-        "Platforms": "Codeforces, CodeChef",
-        "Activities": "Contests, Workshops",
-        "Success": "High Achievers"
-      }
+      content: "NIT Trichy Health Center provides comprehensive medical care to students, staff, and their families. Operating 24/7, it has qualified doctors, nurses, and support staff. The center includes general medicine, dental care, and emergency services. Well-equipped pharmacy dispenses medicines at subsidized rates. Ambulance service is available round the clock for emergencies. The center conducts regular health checkups, vaccination drives, and health awareness programs. Specialist doctors visit for consultations in ophthalmology, ENT, and orthopedics. Mental health support through counseling services is also available. The center maintains electronic health records for all registered patients.",
+      tags: ["Health", "Medical", "Wellness"]
     },
     {
       id: 27,
-      title: "The Literary Society",
+      title: "Entrepreneurship Cell",
       category: "Student Life",
-      icon: "📚",
-      content: `The Literary Society is the hub for literature enthusiasts at NIT Trichy. The club organizes debates, quizzes, creative writing workshops, poetry sessions, and book discussions. Members participate in inter-college literary competitions and organize events during FESTEMBER. The society publishes a literary magazine featuring student writings including poems, short stories, and articles. Regular sessions help students improve their communication, writing, and critical thinking skills. The club provides a platform for students passionate about literature, debating, and public speaking to express themselves and hone their talents.`,
-      quickFacts: {
-        "Activities": "Debates, Quizzes, Writing",
-        "Magazine": "Student Publications",
-        "Events": "FESTEMBER Participation",
-        "Skills": "Communication, Critical Thinking"
-      }
+      content: "The Entrepreneurship Cell (E-Cell) at NIT Trichy fosters startup culture and innovation. It provides mentorship, resources, and networking opportunities for aspiring entrepreneurs. E-Cell organizes workshops on business planning, pitching, and fundraising. Annual entrepreneurship summit brings together investors, successful entrepreneurs, and students. The cell has incubation center supporting student startups with workspace and guidance. Many successful startups have emerged from NIT Trichy including tech companies and social enterprises. E-Cell connects students with angel investors and venture capitalists. Regular ideathons and business plan competitions encourage innovative thinking. The cell also facilitates industry internships and real-world project experience.",
+      tags: ["Startup", "Innovation", "Business"]
     },
     {
       id: 28,
-      title: "Music and Dance Clubs",
+      title: "Training and Placement Cell",
       category: "Student Life",
-      icon: "🎵",
-      content: `NIT Trichy has vibrant music and dance clubs catering to various interests. The Western Music Club focuses on rock, pop, and contemporary music with regular jamming sessions and performances. The Indian Music Club promotes classical and folk music traditions. Dance clubs include groups for classical dance forms like Bharatanatyam and contemporary styles like hip-hop and salsa. These clubs perform at college events, competitions, and festivals. Regular practice sessions, workshops by professional artists, and annual showcases provide opportunities for students to develop their talents. The clubs create a culturally rich environment on campus.`,
-      quickFacts: {
-        "Clubs": "Western, Indian Music, Dance",
-        "Styles": "Classical, Contemporary",
-        "Events": "Performances, Workshops",
-        "Culture": "Rich & Diverse"
-      }
+      content: "The Training and Placement Cell ensures excellent career opportunities for NIT Trichy students. With 100% placement record, the cell attracts top companies from various sectors. Major recruiters include Microsoft, Google, Amazon, Goldman Sachs, and consulting firms. The cell organizes pre-placement training in aptitude, technical skills, and soft skills. Mock interviews and group discussions prepare students for placement process. Annual placement season sees over 200 companies visiting campus. Average package consistently ranks among top NITs. The cell also facilitates internships, allowing students to gain industry experience. Alumni network provides mentorship and guidance. Special focus on helping students explore different career paths beyond traditional engineering roles.",
+      tags: ["Placement", "Career", "Training"]
     },
     {
       id: 29,
-      title: "Sports and Athletics",
+      title: "Festember - Cultural Festival",
       category: "Student Life",
-      icon: "⚽",
-      content: `NIT Trichy has excellent sports facilities including cricket grounds, football fields, basketball courts, tennis courts, badminton halls, and a swimming pool. Students participate in inter-hostel tournaments, inter-NIT competitions, and represent the college at national levels. The institute has teams for cricket, football, basketball, volleyball, athletics, table tennis, chess, and more. Regular coaching and training sessions are available for various sports. Annual sports events and championships promote healthy competition. The Sports Council organizes events and manages facilities. Many students balance academics with serious athletic pursuits, with some achieving state and national level recognition.`,
-      quickFacts: {
-        "Facilities": "Cricket, Football, Basketball, Pool",
-        "Competitions": "Inter-Hostel, Inter-NIT",
-        "Teams": "15+ Sports",
-        "Recognition": "State & National"
-      }
+      content: "Festember is South India's largest cultural festival held annually at NIT Trichy. This four-day extravaganza attracts over 50,000 participants from across the country. The festival features competitions in music, dance, drama, literature, and fine arts. Professional nights showcase performances by renowned artists and bands. Festember includes informal events, workshops, and pro-shows creating vibrant atmosphere. The festival is entirely student-organized with teams managing logistics, sponsorship, and marketing. Festember has become a platform for discovering talent with many participants pursuing careers in arts. The festival promotes cultural exchange and creativity while maintaining high professional standards.",
+      tags: ["Festival", "Cultural", "Events"]
     },
     {
       id: 30,
-      title: "Entrepreneurship Cell",
+      title: "Pragyan - Technical Festival",
       category: "Student Life",
-      icon: "💼",
-      content: `The Entrepreneurship Cell (E-Cell) at NIT Trichy promotes startup culture and innovation among students. The cell organizes workshops, speaker sessions, hackathons, and startup competitions. E-Cell connects aspiring entrepreneurs with mentors, investors, and industry experts. It helps students develop business ideas, create prototypes, and launch startups. The cell hosts an annual entrepreneurship summit featuring successful entrepreneurs and investors. Members get exposure to real-world business challenges through case studies and competitions. E-Cell has supported several successful student startups and continues to foster an entrepreneurial mindset on campus.`,
-      quickFacts: {
-        "Focus": "Startup Culture",
-        "Events": "Workshops, Summits, Hackathons",
-        "Support": "Mentorship, Funding Connections",
-        "Success": "Multiple Student Startups"
-      }
+      content: "Pragyan is NIT Trichy's international technical festival attracting participants from around the world. Held annually, it features competitions, workshops, exhibitions, and guest lectures. Technical events include robotics, coding, quizzing, and engineering challenges. Pragyan hosts international summits on technology trends and innovation. Guest lectures by industry leaders and researchers provide insights into cutting-edge technologies. The festival includes exhibitions showcasing student projects and industry innovations. Pragyan encourages interdisciplinary learning through varied events. Workshops on emerging technologies like AI, blockchain, and IoT are popular attractions. The festival serves as networking platform connecting students with industry and academia.",
+      tags: ["Festival", "Technical", "Innovation"]
     },
     {
       id: 31,
-      title: "Dramatics Club",
+      title: "NSS and Social Service",
       category: "Student Life",
-      icon: "🎭",
-      content: `The Dramatics Club is one of the most active cultural clubs at NIT Trichy. The club performs plays, street plays, skits, and improv sessions. Members participate in national-level theater festivals and competitions, often winning accolades. The club organizes workshops on acting, scriptwriting, direction, and stage design. Annual productions during FESTEMBER showcase student talent. The club addresses social issues through street plays and performs at various campus events. Members develop confidence, creativity, and teamwork through theatrical activities. The Dramatics Club has a rich legacy of memorable performances and continues to attract theater enthusiasts.`,
-      quickFacts: {
-        "Activities": "Plays, Street Theater, Improv",
-        "Competitions": "National Level",
-        "Workshops": "Acting, Writing, Direction",
-        "Impact": "Social Awareness"
-      }
+      content: "National Service Scheme (NSS) at NIT Trichy promotes social responsibility and community service. With over 500 active volunteers, NSS undertakes various social welfare activities. Regular programs include teaching underprivileged children, blood donation camps, and environmental conservation. Annual camps focus on rural development, health awareness, and skill training. NSS volunteers participate in disaster relief and rehabilitation efforts. The unit organizes cleanliness drives, tree plantation, and waste management initiatives. Special emphasis on women empowerment and education for all. NSS provides platform for students to contribute to society while developing leadership skills. The program instills values of citizenship and social consciousness.",
+      tags: ["Social", "Service", "Community"]
     },
     {
       id: 32,
-      title: "Photography and Film Making",
+      title: "Technical Clubs and Teams",
       category: "Student Life",
-      icon: "📸",
-      content: `The Photography and Film Making Club captures moments and tells stories through visual media. The club covers all college events, creating photo archives and promotional videos. Members learn photography techniques, video editing, cinematography, and documentary making. The club organizes photography walks, exhibitions, and competitions. Short films and documentaries created by members are showcased during fests. Workshops by professional photographers and filmmakers provide valuable insights. The club maintains the visual identity of college events and publications. Members develop technical skills in camera operation, lighting, editing software, and creative storytelling through regular practice and projects.`,
-      quickFacts: {
-        "Activities": "Photography, Videography",
-        "Coverage": "All College Events",
-        "Learning": "Techniques, Editing, Cinematography",
-        "Output": "Films, Exhibitions"
-      }
+      content: "NIT Trichy boasts numerous technical clubs fostering hands-on learning and innovation. Spider (R&D Club) works on web development, app development, and research projects. Delta Force specializes in robotics and automation. Coding clubs like Pragyan and GeeksforGeeks prepare students for competitive programming. Electronics Club conducts workshops on Arduino, Raspberry Pi, and embedded systems. Automobile Club designs and builds racing vehicles for competitions. Astronomy Club organizes stargazing sessions and astrophotography workshops. These clubs participate in national competitions bringing laurels to the institute. Regular hackathons, workshops, and project showcases keep technical culture vibrant. Clubs collaborate with industry partners for real-world projects.",
+      tags: ["Technical", "Clubs", "Projects"]
     }
-  ]
-
-  const categories = ['All', 'Departments', 'Hostels', 'Student Life']
-
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-    }
-  }, [darkMode])
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
-      if (currentArticleId) {
-        const winScroll = document.documentElement.scrollTop
-        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight
-        const scrolled = (winScroll / height) * 100
-        setReadingProgress(scrolled)
-      }
+      if (!selectedArticle) return;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      const scrollTop = window.scrollY;
+      const progress = (scrollTop / (documentHeight - windowHeight)) * 100;
+      setReadingProgress(Math.min(progress, 100));
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [selectedArticle]);
+
+  useEffect(() => {
+    if (selectedArticle) {
+      setViewStats(prev => ({
+        ...prev,
+        [selectedArticle.id]: (prev[selectedArticle.id] || 0) + 1
+      }));
     }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [currentArticleId])
+  }, [selectedArticle]);
 
-  const toggleBookmark = (id) => {
-    setBookmarks(prev => 
-      prev.includes(id) ? prev.filter(b => b !== id) : [...prev, id]
-    )
-  }
+  const filteredArticles = articles.filter(article =>
+    article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    article.content.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    article.category.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
-  const filteredArticles = articles.filter(article => {
-    const matchesSearch = article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         article.content.toLowerCase().includes(searchTerm.toLowerCase())
-    const matchesCategory = selectedCategory === 'All' || article.category === selectedCategory
-    return matchesSearch && matchesCategory
-  })
+  const categories = [...new Set(articles.map(a => a.category))];
 
-  const getReadingTime = (content) => {
-    const words = content.split(' ').length
-    const minutes = Math.ceil(words / 200)
-    return `${minutes} min read`
-  }
+  const toggleBookmark = (articleId) => {
+    setBookmarks(prev =>
+      prev.includes(articleId)
+        ? prev.filter(id => id !== articleId)
+        : [...prev, articleId]
+    );
+  };
 
-  const renderArticleContent = (content) => {
-    const paragraphs = content.split('\n\n')
-    return paragraphs.map((para, idx) => {
-      let processed = para
-      articles.forEach(article => {
-        if (article.title !== articles.find(a => a.id === currentArticleId)?.title) {
-          const regex = new RegExp(`\\b${article.title}\\b`, 'gi')
-          processed = processed.replace(regex, `<span class="text-purple-600 dark:text-purple-400 font-medium cursor-pointer hover:underline" onclick="document.getElementById('link-${article.id}').click()">${article.title}</span>`)
-        }
-      })
-      return (
-        <div key={idx}>
-          <p className="mb-4 text-gray-700 dark:text-gray-300 leading-relaxed" dangerouslySetInnerHTML={{ __html: processed }} />
-          {articles.map(article => (
-            <button key={article.id} id={`link-${article.id}`} onClick={() => setCurrentArticleId(article.id)} className="hidden" />
-          ))}
-        </div>
-      )
-    })
-  }
+  const isBookmarked = (articleId) => bookmarks.includes(articleId);
 
-  const currentArticle = articles.find(a => a.id === currentArticleId)
+  const totalViews = Object.values(viewStats).reduce((a, b) => a + b, 0);
+  const mostViewed = articles.reduce((max, article) =>
+    (viewStats[article.id] || 0) > (viewStats[max.id] || 0) ? article : max
+  , articles[0]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors">
-      {currentArticleId && (
+    <div className={`min-h-screen transition-colors duration-300 ${isDark ? 'bg-gray-900 text-gray-100' : 'bg-gray-50 text-gray-900'}`}>
+      {selectedArticle && (
         <div className="fixed top-0 left-0 w-full h-1 bg-gray-200 dark:bg-gray-700 z-50">
-          <div className="h-full bg-gradient-to-r from-purple-600 to-blue-600 transition-all" style={{ width: `${readingProgress}%` }} />
+          <div
+            className="h-full bg-gradient-to-r from-purple-500 to-blue-500 transition-all duration-150"
+            style={{ width: `${readingProgress}%` }}
+          />
         </div>
       )}
 
-      <header className="sticky top-0 z-40 bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg border-b border-gray-200 dark:border-gray-700 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <div className="cursor-pointer" onClick={() => { setCurrentView('home'); setCurrentArticleId(null); }}>
-              <Logo />
+      <header className={`sticky top-0 z-40 backdrop-blur-lg border-b transition-colors ${isDark ? 'bg-gray-900/95 border-gray-800' : 'bg-white/95 border-gray-200'}`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <div className="flex items-center space-x-3 cursor-pointer" onClick={() => setSelectedArticle(null)}>
+              <div className="relative w-10 h-10">
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-500 to-blue-600 rounded-lg transform rotate-45"></div>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="text-white font-bold text-xl z-10">W</span>
+                </div>
+              </div>
+              <div>
+                <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">
+                  WikiNITT
+                </h1>
+                <p className="text-xs text-gray-500">NIT Trichy Encyclopedia</p>
+              </div>
             </div>
 
-            <div className="hidden md:flex items-center space-x-6">
-              <button onClick={() => { setCurrentView('home'); setCurrentArticleId(null); }} className="flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-purple-100 dark:hover:bg-gray-700 transition-colors">
-                <Home size={20} />
-                <span className="font-medium">Home</span>
+            <div className="flex items-center space-x-4">
+              <button
+                onClick={() => setShowStats(!showStats)}
+                className={`p-2 rounded-lg transition-colors ${isDark ? 'hover:bg-gray-800' : 'hover:bg-gray-100'}`}
+              >
+                <BarChart3 className="w-5 h-5" />
               </button>
-              <button onClick={() => setCurrentView('stats')} className="flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-purple-100 dark:hover:bg-gray-700 transition-colors">
-                <BarChart3 size={20} />
-                <span className="font-medium">Stats</span>
+              <button
+                onClick={() => setIsDark(!isDark)}
+                className={`p-2 rounded-lg transition-colors ${isDark ? 'hover:bg-gray-800' : 'hover:bg-gray-100'}`}
+              >
+                {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
               </button>
-              <button onClick={() => setCurrentView('bookmarks')} className="flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-purple-100 dark:hover:bg-gray-700 transition-colors relative">
-                <BookmarkCheck size={20} />
-                <span className="font-medium">Bookmarks</span>
-                {bookmarks.length > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-purple-600 text-white text-xs
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {showStats && (
+        <div className={`border-b ${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="flex items-center space-x-3">
+                <div className="p-3 bg-purple-500/10 rounded-lg">
+                  <BarChart3 className="w-6 h-6 text-purple-500" />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-500">Total Views</p>
+                  <p className="text-2xl font-bold">{totalViews}</p>
+                </div>
+              </div>
+              <div className="flex items-center space-x-3">
+                <div className="p-3 bg-blue-500/10 rounded-lg">
+                  <Bookmark className="w-6 h-6 text-blue-500" />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-500">Bookmarks</p>
+                  <p className="text-2xl font-bold">{bookmarks.length}</p>
+                </div>
+              </div>
+              <div className="flex items-center space-x-3">
+                <div className="p-3 bg-green-500/10 rounded-lg">
+                  <TrendingUp className="w-6 h-6 text-green-500" />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-500">Most Viewed</p>
+                  <p className="text-lg font-semibold truncate">{mostViewed.title}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {!selectedArticle ? (
+          <>
+            <div className="mb-8">
+              <div className="relative">
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <input
+                  type="text"
+                  placeholder="Search articles..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className={`w-full pl-12 pr-4 py-4 rounded-xl border-2 focus:outline-none focus:border-purple-500 transition-all ${
+                    isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'
+                  }`}
+                />
+              </div>
+            </div>
+
+            {categories.map(category => {
+              const categoryArticles = filteredArticles.filter(a => a.category === category);
+              if (categoryArticles.length === 0) return null;
+
+              return (
+                <div key={category} className="mb-12">
+                  <h2 className="text-2xl font-bold mb-6 flex items-center">
+                    <span className="bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">
+                      {category}
+                    </span>
+                    <span className="ml-3 text-sm font-normal text-gray-500">
+                      ({categoryArticles.length})
+                    </span>
+                  </h2>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {categoryArticles.map(article => (
+                      <div
+                        key={article.id}
+                        onClick={() => setSelectedArticle(article)}
+                        className={`group cursor-pointer rounded-xl p-6 border-2 transition-all duration-300 hover:scale-105 hover:shadow-xl ${
+                          isDark
+                            ? 'bg-gray-800 border-gray-700 hover:border-purple-500'
+                            : 'bg-white border-gray-200 hover:border-purple-500'
+                        }`}
+                      >
+                        <div className="flex items-start justify-between mb-3">
+                          <h3 className="text-lg font-semibold group-hover:text-purple-500 transition-colors pr-2">
+                            {article.title}
+                          </h3>
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              toggleBookmark(article.id);
+                            }}
+                            className="flex-shrink-0 p-2 rounded-lg hover:bg-gray-700 transition-colors"
+                          >
+                            {isBookmarked(article.id) ? (
+                              <BookmarkCheck className="w-5 h-5 text-purple-500" />
+                            ) : (
+                              <Bookmark className="w-5 h-5 text-gray-400" />
+                            )}
+                          </button>
+                        </div>
+
+                        <p className={`text-sm mb-4 line-clamp-3 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                          {article.content}
+                        </p>
+
+                        <div className="flex items-center justify-between text-xs">
+                          <div className="flex items-center space-x-2">
+                            {article.tags.slice(0, 2).map(tag => (
+                              <span
+                                key={tag}
+                                className="px-2 py-1 rounded-full bg-purple-500/10 text-purple-500"
+                              >
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                          {viewStats[article.id] && (
+                            <div className="flex items-center space-x-1 text-gray-500">
+                              <Clock className="w-3 h-3" />
+                              <span>{viewStats[article.id]} views</span>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
+
+            {filteredArticles.length === 0 && (
+              <div className="text-center py-12">
+                <p className="text-gray-500 text-lg">No articles found matching your search.</p>
+              </div>
+            )}
+          </>
+        ) : (
+          <article className="max-w-4xl mx-auto">
+            <button
+              onClick={() => setSelectedArticle(null)}
+              className={`mb-6 flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors ${
+                isDark ? 'hover:bg-gray-800' : 'hover:bg-gray-100'
+              }`}
+            >
+              <Home className="w-5 h-5" />
+              <span>Back to Home</span>
+            </button>
+
+            <div className={`rounded-xl p-8 border-2 ${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
+              <div className="flex items-start justify-between mb-6">
+                <div className="flex-1">
+                  <div className="text-sm text-purple-500 font-semibold mb-2">
+                    {selectedArticle.category}
+                  </div>
+                  <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">
+                    {selectedArticle.title}
+                  </h1>
+                  <div className="flex items-center space-x-4 text-sm text-gray-500">
+                    {viewStats[selectedArticle.id] && (
+                      <div className="flex items-center space-x-1">
+                        <Clock className="w-4 h-4" />
+                        <span>{viewStats[selectedArticle.id]} views</span>
+                      </div>
+                    )}
+                    <div className="flex items-center space-x-1">
+                      <span>5 min read</span>
+                    </div>
+                  </div>
+                </div>
+                <button
+                  onClick={() => toggleBookmark(selectedArticle.id)}
+                  className={`p-3 rounded-xl transition-all ${
+                    isBookmarked(selectedArticle.id)
+                      ? 'bg-purple-500 text-white'
+                      : isDark
+                      ? 'bg-gray-700 hover:bg-gray-600'
+                      : 'bg-gray-100 hover:bg-gray-200'
+                  }`}
+                >
+                  {isBookmarked(selectedArticle.id) ? (
+                    <BookmarkCheck className="w-6 h-6" />
+                  ) : (
+                    <Bookmark className="w-6 h-6" />
+                  )}
+                </button>
+              </div>
+
+              <div className="flex flex-wrap gap-2 mb-6">
+                {selectedArticle.tags.map(tag => (
+                  <span
+                    key={tag}
+                    className="px-3 py-1 rounded-full bg-purple-500/10 text-purple-500 text-sm font-medium"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <div className={`prose prose-lg max-w-none ${isDark ? 'prose-invert' : ''}`}>
+                <p className="text-lg leading-relaxed whitespace-pre-line">
+                  {selectedArticle.content}
+                </p>
+              </div>
+            </div>
+          </article>
+        )}
+      </main>
+
+      <footer className={`mt-16 border-t ${isDark ? 'bg-gray-900 border-gray-800' : 'bg-gray-50 border-gray-200'}`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="text-center">
+            <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+              © 2026 WikiNITT - Your Complete Guide to NIT Trichy
+            </p>
+            <p className={`text-xs mt-2 ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
+              32 Articles • {bookmarks.length} Bookmarks • {totalViews} Total Views
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
