@@ -687,4 +687,313 @@ Green campus with tree-lined avenues, gardens, and open spaces. Focus on sustain
     const handleScroll = () => {
       if (!selectedArticle) return;
       const windowHeight = window.innerHeight;
-      const documentHeight
+      const documentHeight = document.documentElement.scrollHeight;
+      const scrollTop = window.scrollY;
+      const progress = (scrollTop / (documentHeight - windowHeight)) * 100;
+      setReadingProgress(Math.min(progress, 100));
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [selectedArticle]);
+
+  useEffect(() => {
+    if (selectedArticle) {
+      setViewStats(prev => ({
+        ...prev,
+        [selectedArticle.id]: (prev[selectedArticle.id] || 0) + 1
+      }));
+    }
+  }, [selectedArticle]);
+
+  const filteredArticles = articles.filter(article =>
+    article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    article.content.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    article.category.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  const categories = [...new Set(articles.map(a => a.category))];
+
+  const toggleBookmark = (articleId) => {
+    setBookmarks(prev =>
+      prev.includes(articleId)
+        ? prev.filter(id => id !== articleId)
+        : [...prev, articleId]
+    );
+  };
+
+  const isBookmarked = (articleId) => bookmarks.includes(articleId);
+
+  const totalViews = Object.values(viewStats).reduce((a, b) => a + b, 0);
+  const mostViewed = articles.reduce((max, article) =>
+    (viewStats[article.id] || 0) > (viewStats[max.id] || 0) ? article : max
+  , articles[0]);
+
+  return (
+    <div className={`min-h-screen transition-colors duration-300 ${isDark ? 'bg-gray-900 text-gray-100' : 'bg-gray-50 text-gray-900'}`}>
+      {selectedArticle && (
+        <div className="fixed top-0 left-0 w-full h-1 bg-gray-200 dark:bg-gray-700 z-50">
+          <div
+            className="h-full bg-gradient-to-r from-purple-500 to-blue-500 transition-all duration-150"
+            style={{ width: `${readingProgress}%` }}
+          />
+        </div>
+      )}
+
+      <header className={`sticky top-0 z-40 backdrop-blur-lg border-b transition-colors ${isDark ? 'bg-gray-900/95 border-gray-800' : 'bg-white/95 border-gray-200'}`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <div className="flex items-center space-x-3 cursor-pointer" onClick={() => setSelectedArticle(null)}>
+              <div className="relative w-10 h-10">
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-500 to-blue-600 rounded-lg transform rotate-45"></div>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="text-white font-bold text-xl z-10">W</span>
+                </div>
+              </div>
+              <div>
+                <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">
+                  WikiNITT
+                </h1>
+                <p className="text-xs text-gray-500">NIT Trichy Encyclopedia</p>
+              </div>
+            </div>
+
+            <div className="flex items-center space-x-4">
+              <button
+                onClick={() => setShowStats(!showStats)}
+                className={`p-2 rounded-lg transition-colors ${isDark ? 'hover:bg-gray-800' : 'hover:bg-gray-100'}`}
+              >
+                <BarChart3 className="w-5 h-5" />
+              </button>
+              <button
+                onClick={() => setIsDark(!isDark)}
+                className={`p-2 rounded-lg transition-colors ${isDark ? 'hover:bg-gray-800' : 'hover:bg-gray-100'}`}
+              >
+                {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {showStats && (
+        <div className={`border-b ${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="flex items-center space-x-3">
+                <div className="p-3 bg-purple-500/10 rounded-lg">
+                  <BarChart3 className="w-6 h-6 text-purple-500" />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-500">Total Views</p>
+                  <p className="text-2xl font-bold">{totalViews}</p>
+                </div>
+              </div>
+              <div className="flex items-center space-x-3">
+                <div className="p-3 bg-blue-500/10 rounded-lg">
+                  <Bookmark className="w-6 h-6 text-blue-500" />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-500">Bookmarks</p>
+                  <p className="text-2xl font-bold">{bookmarks.length}</p>
+                </div>
+              </div>
+              <div className="flex items-center space-x-3">
+                <div className="p-3 bg-green-500/10 rounded-lg">
+                  <TrendingUp className="w-6 h-6 text-green-500" />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-500">Most Viewed</p>
+                  <p className="text-lg font-semibold truncate">{mostViewed.title}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {!selectedArticle ? (
+          <>
+            <div className="mb-8">
+              <div className="relative">
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <input
+                  type="text"
+                  placeholder="Search articles..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className={`w-full pl-12 pr-4 py-4 rounded-xl border-2 focus:outline-none focus:border-purple-500 transition-all ${
+                    isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'
+                  }`}
+                />
+              </div>
+            </div>
+
+            {categories.map(category => {
+              const categoryArticles = filteredArticles.filter(a => a.category === category);
+              if (categoryArticles.length === 0) return null;
+
+              return (
+                <div key={category} className="mb-12">
+                  <h2 className="text-2xl font-bold mb-6 flex items-center">
+                    <span className="bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">
+                      {category}
+                    </span>
+                    <span className="ml-3 text-sm font-normal text-gray-500">
+                      ({categoryArticles.length})
+                    </span>
+                  </h2>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {categoryArticles.map(article => (
+                      <div
+                        key={article.id}
+                        onClick={() => setSelectedArticle(article)}
+                        className={`group cursor-pointer rounded-xl p-6 border-2 transition-all duration-300 hover:scale-105 hover:shadow-xl ${
+                          isDark
+                            ? 'bg-gray-800 border-gray-700 hover:border-purple-500'
+                            : 'bg-white border-gray-200 hover:border-purple-500'
+                        }`}
+                      >
+                        <div className="flex items-start justify-between mb-3">
+                          <h3 className="text-lg font-semibold group-hover:text-purple-500 transition-colors pr-2">
+                            {article.title}
+                          </h3>
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              toggleBookmark(article.id);
+                            }}
+                            className="flex-shrink-0 p-2 rounded-lg hover:bg-gray-700 transition-colors"
+                          >
+                            {isBookmarked(article.id) ? (
+                              <BookmarkCheck className="w-5 h-5 text-purple-500" />
+                            ) : (
+                              <Bookmark className="w-5 h-5 text-gray-400" />
+                            )}
+                          </button>
+                        </div>
+
+                        <p className={`text-sm mb-4 line-clamp-3 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                          {article.content.substring(0, 150)}...
+                        </p>
+
+                        <div className="flex items-center justify-between text-xs">
+                          <div className="flex items-center space-x-2">
+                            {article.tags.slice(0, 2).map(tag => (
+                              <span
+                                key={tag}
+                                className="px-2 py-1 rounded-full bg-purple-500/10 text-purple-500"
+                              >
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                          {viewStats[article.id] && (
+                            <div className="flex items-center space-x-1 text-gray-500">
+                              <Clock className="w-3 h-3" />
+                              <span>{viewStats[article.id]} views</span>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
+
+            {filteredArticles.length === 0 && (
+              <div className="text-center py-12">
+                <p className="text-gray-500 text-lg">No articles found matching your search.</p>
+              </div>
+            )}
+          </>
+        ) : (
+          <article className="max-w-4xl mx-auto">
+            <button
+              onClick={() => setSelectedArticle(null)}
+              className={`mb-6 flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors ${
+                isDark ? 'hover:bg-gray-800' : 'hover:bg-gray-100'
+              }`}
+            >
+              <Home className="w-5 h-5" />
+              <span>Back to Home</span>
+            </button>
+
+            <div className={`rounded-xl p-8 border-2 ${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
+              <div className="flex items-start justify-between mb-6">
+                <div className="flex-1">
+                  <div className="text-sm text-purple-500 font-semibold mb-2">
+                    {selectedArticle.category}
+                  </div>
+                  <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">
+                    {selectedArticle.title}
+                  </h1>
+                  <div className="flex items-center space-x-4 text-sm text-gray-500">
+                    {viewStats[selectedArticle.id] && (
+                      <div className="flex items-center space-x-1">
+                        <Clock className="w-4 h-4" />
+                        <span>{viewStats[selectedArticle.id]} views</span>
+                      </div>
+                    )}
+                    <div className="flex items-center space-x-1">
+                      <span>{selectedArticle.readTime} min read</span>
+                    </div>
+                  </div>
+                </div>
+                <button
+                  onClick={() => toggleBookmark(selectedArticle.id)}
+                  className={`p-3 rounded-xl transition-all ${
+                    isBookmarked(selectedArticle.id)
+                      ? 'bg-purple-500 text-white'
+                      : isDark
+                      ? 'bg-gray-700 hover:bg-gray-600'
+                      : 'bg-gray-100 hover:bg-gray-200'
+                  }`}
+                >
+                  {isBookmarked(selectedArticle.id) ? (
+                    <BookmarkCheck className="w-6 h-6" />
+                  ) : (
+                    <Bookmark className="w-6 h-6" />
+                  )}
+                </button>
+              </div>
+
+              <div className="flex flex-wrap gap-2 mb-6">
+                {selectedArticle.tags.map(tag => (
+                  <span
+                    key={tag}
+                    className="px-3 py-1 rounded-full bg-purple-500/10 text-purple-500 text-sm font-medium"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <div className={`prose prose-lg max-w-none ${isDark ? 'prose-invert' : ''}`}>
+                <p className="text-lg leading-relaxed whitespace-pre-line">
+                  {selectedArticle.content}
+                </p>
+              </div>
+            </div>
+          </article>
+        )}
+      </main>
+
+      <footer className={`mt-16 border-t ${isDark ? 'bg-gray-900 border-gray-800' : 'bg-gray-50 border-gray-200'}`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="text-center">
+            <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+              © 2026 WikiNITT - Your Complete Guide to NIT Trichy
+            </p>
+            <p className={`text-xs mt-2 ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
+              29 Articles • {bookmarks.length} Bookmarks • {totalViews} Total Views
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
