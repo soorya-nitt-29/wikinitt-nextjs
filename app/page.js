@@ -729,6 +729,68 @@ export default function WikiNITT() {
     }
   }
 
+  // AUTO-LINKING FUNCTION - Makes keywords clickable
+  const createAutoLinks = (text) => {
+    if (!text) return text
+    
+    // Map of keywords to article IDs
+    const linkMap = {
+      'Pragyan': 'pragyan',
+      'Festember': 'festember',
+      'Delta Force': 'delta',
+      'Spider R&D': 'spider',
+      'Forge': 'forge',
+      'E-Cell': 'ecell',
+      'NSS': 'nss',
+      'CDC': 'cdc',
+      'SAC': 'sac',
+      'Central Library': 'library',
+      'Agate': 'agate',
+      'Diamond': 'diamond',
+      'Jade': 'jade',
+      'Coral': 'coral',
+      'Computer Science': 'cse',
+      'NIT Trichy': 'campus'
+    }
+
+    let parts = [text]
+    
+    // Process each keyword
+    Object.entries(linkMap).forEach(([keyword, id]) => {
+      // Don't link to the current article
+      if (id === selectedArticle) return
+      
+      const newParts = []
+      parts.forEach(part => {
+        if (typeof part === 'string') {
+          const regex = new RegExp(`\\b(${keyword})\\b`, 'gi')
+          const segments = part.split(regex)
+          
+          segments.forEach((seg, i) => {
+            if (seg && seg.toLowerCase() === keyword.toLowerCase()) {
+              newParts.push(
+                <button
+                  key={`${id}-${i}-${Math.random()}`}
+                  onClick={() => setSelectedArticle(id)}
+                  className={`${darkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-700'} underline cursor-pointer transition-colors`}
+                >
+                  {seg}
+                </button>
+              )
+            } else if (seg) {
+              newParts.push(seg)
+            }
+          })
+        } else {
+          newParts.push(part)
+        }
+      })
+      parts = newParts
+    })
+    
+    return parts
+  }
+
   // Filter articles
   const getFilteredArticles = () => {
     return Object.entries(articles).filter(([key, article]) => {
@@ -1190,7 +1252,7 @@ export default function WikiNITT() {
                 darkMode ? 'bg-slate-800/50 border-slate-700/50 shadow-xl shadow-black/20' : 'bg-white/80 border-slate-200'
               }`}>
                 <p className={`text-base sm:text-lg leading-relaxed mb-6 sm:mb-8 ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>
-                  {currentArticle.content.intro}
+                  {createAutoLinks(currentArticle.content.intro)}
                 </p>
 
                 {currentArticle.content.sections.map((section, idx) => (
@@ -1199,7 +1261,7 @@ export default function WikiNITT() {
                       {section.title}
                     </h2>
                     <p className={`text-sm sm:text-base leading-relaxed ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>
-                      {section.content}
+                      {createAutoLinks(section.content)}
                     </p>
                   </div>
                 ))}
