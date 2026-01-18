@@ -24,7 +24,7 @@ Academic Programs:
 The department offers B.Tech, M.Tech, and Ph.D. programs with specializations in Artificial Intelligence, Machine Learning, Data Science, Cybersecurity, Computer Networks, and Software Engineering.
 
 Infrastructure:
-State-of-the-art laboratories include dedicated spaces for AI & Machine Learning, Computer Networks, Database Systems, Software Engineering, Cloud Computing, and High Performance Computing. The department houses over 200 workstations and multiple servers.
+State-of-the-art laboratories include dedicated spaces for AI and Machine Learning, Computer Networks, Database Systems, Software Engineering, Cloud Computing, and High Performance Computing. The department houses over 200 workstations and multiple servers.
 
 Research Excellence:
 Faculty members actively engage in cutting-edge research across various domains including Deep Learning, Natural Language Processing, Computer Vision, Internet of Things, Blockchain Technology, and Quantum Computing. The department has numerous sponsored research projects from organizations like DST, DRDO, and industry partners.
@@ -33,7 +33,7 @@ Industry Connections:
 Top technology companies including Google, Microsoft, Amazon, Adobe, and Goldman Sachs regularly recruit from the department. Many alumni hold leadership positions in major tech companies and successful startups.
 
 Student Activities:
-The department is home to Spider (R&D club), Delta Force (coding club), and various technical teams. Students regularly participate in ACM ICPC, Google Summer of Code, and other prestigious competitions.`,
+The department is home to the Spider R&D club, Delta Force coding club, and various technical teams. Students regularly participate in ACM ICPC, Google Summer of Code, and other prestigious competitions.`,
       tags: ["CSE", "Engineering", "Technology", "AI", "Programming"],
       readTime: 8
     },
@@ -47,7 +47,7 @@ Academic Programs:
 Offering B.Tech, M.Tech (with specializations in VLSI Design, Embedded Systems, Signal Processing, Wireless Communications, and Microelectronics), and Ph.D. programs.
 
 Laboratories and Facilities:
-Advanced labs for VLSI Design, Microwave Engineering, Digital Signal Processing, Optical Communication, Embedded Systems, Communication Networks, and RF & Antenna Design. The department has collaboration with leading semiconductor companies.
+Advanced labs for VLSI Design, Microwave Engineering, Digital Signal Processing, Optical Communication, Embedded Systems, Communication Networks, and RF and Antenna Design. The department has collaboration with leading semiconductor companies.
 
 Research Areas:
 Major research focus on 5G and beyond technologies, VLSI chip design, IoT systems, signal processing algorithms, optical networks, and semiconductor devices. Multiple patents and publications in top-tier journals.
@@ -56,7 +56,7 @@ Industry Collaboration:
 Strong partnerships with companies like Qualcomm, Intel, Texas Instruments, Broadcom, and Analog Devices. Regular workshops and internship opportunities for students.
 
 Student Achievements:
-Students showcase projects at Pragyan and contribute to Spider R&D club activities.`,
+Students showcase projects at the Pragyan technical festival and contribute to the Spider R&D club activities.`,
       tags: ["ECE", "VLSI", "Communication", "Electronics", "5G"],
       readTime: 7
     },
@@ -96,7 +96,7 @@ Facilities:
 State-of-the-art CAD/CAM labs, Robotics lab, IC Engines lab, Fluid Mechanics lab, Heat Transfer lab, Manufacturing Technology workshop, and Material Testing facilities.
 
 Research Domains:
-Advanced Manufacturing Processes, Composite Materials, Computational Fluid Dynamics, Renewable Energy Systems, Robotics & Automation, Additive Manufacturing, and Automotive Engineering.
+Advanced Manufacturing Processes, Composite Materials, Computational Fluid Dynamics, Renewable Energy Systems, Robotics and Automation, Additive Manufacturing, and Automotive Engineering.
 
 Industry Partnerships:
 Strong ties with Ashok Leyland, TVS Motors, BHEL, Caterpillar, Bosch, and numerous other manufacturing firms. Regular industrial training and placement support.
@@ -171,7 +171,7 @@ Culture:
 Strong sense of community with seniors mentoring juniors. Active participation in technical festivals, cultural events, and sports competitions.
 
 Location:
-Well-connected to academic blocks, library, and SAC. Close proximity to sports facilities and mess complex.`,
+Well-connected to academic blocks, library, and the Student Activity Center. Close proximity to sports facilities and mess complex.`,
       tags: ["Hostel", "Boys", "Sports", "Community"],
       readTime: 4
     },
@@ -194,7 +194,7 @@ Academic Culture:
 Strong focus on academics with group study sessions, peer learning, and knowledge sharing. Many students actively participate in competitive programming and research.
 
 Achievements:
-Consistently produces university rank holders, successful entrepreneurs, and professionals working in top global companies.`,
+Consistently produces university rank holders, successful entrepreneurs, and professionals working in top companies worldwide.`,
       tags: ["Hostel", "Boys", "Academic", "Excellence"],
       readTime: 4
     },
@@ -214,7 +214,7 @@ Mess:
 Diverse menu catering to different regional preferences. North Indian, South Indian, and Chinese options available. Special attention to food quality and taste.
 
 Cultural Activities:
-Strong participation in Festember and other cultural events. Regular music nights, drama performances, and creative workshops organized by hostel committee.
+Strong participation in Festember cultural festival and other cultural events. Regular music nights, drama performances, and creative workshops organized by hostel committee.
 
 Community:
 Welcoming atmosphere with strong bonding between batches. Annual hostel day celebrations and regular inter-hostel cultural competitions.`,
@@ -401,7 +401,7 @@ International Participation:
 Students and professionals from multiple countries participate, making it a truly global event. Cultural exchange and networking opportunities.
 
 Impact:
-Platform for students to showcase talent, learn new technologies, network with industry professionals, and explore career opportunities. Many startups and research collaborations have originated from Pragyan.`,
+Platform for students to showcase talent, learn new technologies, network with industry professionals, and explore career opportunities. Many startups and research collaborations have originated from this festival.`,
       tags: ["Festival", "Technical", "Innovation", "International"],
       readTime: 6
     },
@@ -430,7 +430,7 @@ Over 50,000 participants from colleges across India. Four days of non-stop cultu
     },
     {
       id: 19,
-      title: "Spider - R&D Club",
+      title: "Spider - Research and Development Club",
       category: "Student Life",
       content: `Spider, the Research and Development Club of NIT Trichy, is dedicated to fostering innovation, research, and technological development among students across all disciplines.
 
@@ -447,13 +447,13 @@ Collaborations:
 Industry partnerships providing exposure to professional development practices. Guest lectures by industry experts and researchers.
 
 Impact:
-Many Spider alumni have gone on to work at top tech companies or founded successful startups. The club has contributed significantly to campus digitalization and student skill development.`,
-      tags: ["Club", "R&D", "Technology", "Innovation"],
+Many alumni have gone on to work at top tech companies or founded successful startups. The club has contributed significantly to campus digitalization and student skill development.`,
+      tags: ["Club", "Research", "Technology", "Innovation"],
       readTime: 5
     },
     {
       id: 20,
-      title: "Student Activity Center (SAC)",
+      title: "Student Activity Center",
       category: "Student Life",
       content: `The Student Activity Center serves as the vibrant heart of campus life at NIT Trichy, providing infrastructure and support for numerous student activities, clubs, and organizations.
 
@@ -467,7 +467,7 @@ Events:
 Major college events including Festember, Pragyan, Convocation, and various club activities are conducted here. Regular workshops, seminars, and competitions.
 
 Management:
-Student-managed facility with SAC Committee coordinating activities. Booking system for spaces and equipment.
+Student-managed facility with committee coordinating activities. Booking system for spaces and equipment.
 
 Accessibility:
 Central location on campus, open late during festival seasons, accommodating simultaneous multiple events and activities.`,
@@ -545,7 +545,7 @@ Professional counseling services for stress management, academic pressure, perso
     },
     {
       id: 24,
-      title: "Entrepreneurship Cell (E-Cell)",
+      title: "Entrepreneurship Cell",
       category: "Student Life",
       content: `The Entrepreneurship Cell nurtures the startup ecosystem at NIT Trichy, providing aspiring entrepreneurs with resources, mentorship, and networking opportunities to transform ideas into successful ventures.
 
@@ -591,7 +591,7 @@ Counseling on career paths, higher education options, profile building, and skil
     },
     {
       id: 26,
-      title: "National Service Scheme (NSS)",
+      title: "National Service Scheme",
       category: "Student Life",
       content: `NSS at NIT Trichy embodies the spirit of social responsibility, engaging students in community service and nation-building activities while developing leadership and citizenship values.
 
@@ -602,14 +602,14 @@ Annual Camps:
 Week-long camps in rural areas focusing on community development, health awareness, sanitation, education, and skill development. Students live in villages understanding ground realities.
 
 Special Programs:
-Women empowerment initiatives, digital literacy programs, health camps, disaster relief participation, and Covid-19 relief activities.
+Women empowerment initiatives, digital literacy programs, health camps, disaster relief participation, and community service activities.
 
 Impact:
 Over 500 active volunteers making tangible difference in surrounding communities. Recognition from university and government bodies for exemplary service.
 
 Development:
 Builds leadership, empathy, social awareness, and organizational skills. Creates socially conscious engineers committed to national development.`,
-      tags: ["Social Service", "NSS", "Community", "Volunteer"],
+      tags: ["Social Service", "Community", "Volunteer", "Development"],
       readTime: 5
     },
     {
@@ -619,7 +619,7 @@ Builds leadership, empathy, social awareness, and organizational skills. Creates
       content: `NIT Trichy hosts numerous technical clubs providing hands-on learning, project experience, and competitive opportunities beyond classroom education.
 
 Major Clubs:
-Spider (R&D), Delta Force (Robotics), Coding clubs, Electronics Club, Automobile Club, Astronomy Club, and various department-specific technical societies.
+Research and Development club, Robotics club Delta Force, Coding clubs, Electronics Club, Automobile Club, Astronomy Club, and various department-specific technical societies.
 
 Activities:
 Regular workshops on latest technologies, project development, participation in national competitions, hackathons, and technical exhibitions.
@@ -660,20 +660,31 @@ Vibrant artistic community fostering creativity, collaboration, and cultural app
     },
     {
       id: 29,
-      title: "Department Overview",
-      category: "Academic Departments",
-      content: `NIT Trichy offers comprehensive education across various engineering disciplines, sciences, and management. Each department maintains high academic standards with experienced faculty, modern infrastructure, and industry connections.
+      title: "Campus Overview",
+      category: "Student Life",
+      content: `NIT Trichy campus spans over 800 acres providing a comprehensive ecosystem for academic, personal, and professional development of students.
 
-Engineering Departments:
-Computer Science (CSE), Electronics and Communication (ECE), Electrical and Electronics (EEE), Mechanical, Civil, Production, Chemical, Metallurgy, and Instrumentation.
+Academic Infrastructure:
+Modern classrooms with audio-visual facilities, well-equipped laboratories, research centers, central library, and departmental libraries. Computer centers with latest hardware and software.
 
-Science Departments:
-Physics, Chemistry, Mathematics providing strong foundational education and research opportunities in basic sciences.
+Residential Facilities:
+16 hostels for boys and girls with modern amenities. Mess facilities serving nutritious food. Sports complexes and recreational areas.
 
-Other Programs:
-Architecture, Management (MBA), and various interdisciplinary programs encouraging holistic learning.
+Healthcare:
+Health center with 24/7 medical services, ambulance facility, and tie-ups with nearby hospitals for specialized treatment.
 
-Teaching Excellence:
-Experienced faculty with PhDs from reputed institutions, active in research with publications in top journals and conferences. Many faculty members have industry experience.
+Transportation:
+Well-connected campus with internal bus services. Proximity to Trichy city and railway station. Regular bus services to major city locations.
 
-Research:
+Environment:
+Green campus with tree-lined avenues, gardens, and open spaces. Focus on sustainability and environmental conservation. Beautiful lake and landscaped areas providing serene atmosphere for learning.`,
+      tags: ["Campus", "Infrastructure", "Facilities", "Environment"],
+      readTime: 5
+    }
+  ];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!selectedArticle) return;
+      const windowHeight = window.innerHeight;
+      const documentHeight
