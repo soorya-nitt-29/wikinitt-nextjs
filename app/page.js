@@ -1,7 +1,7 @@
 'use client'
 
-import { useState, useEffect, useMemo } from 'react'
-import { Search, Moon, Sun, Menu, X, BookmarkIcon, Clock, Eye, Users, TrendingUp, Filter, Home, Building2, Hotel, Sparkles, ChevronRight, ArrowLeft, Share2, Printer, ChevronDown, ChevronUp, FileText, BarChart3 } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { Search, Moon, Sun, Menu, X, BookmarkIcon, Eye, ArrowLeft, TrendingUp } from 'lucide-react'
 
 export default function WikiNITT() {
   const [darkMode, setDarkMode] = useState(true)
@@ -12,12 +12,8 @@ export default function WikiNITT() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [showSearch, setShowSearch] = useState(false)
   const [bookmarks, setBookmarks] = useState([])
-  const [recentlyViewed, setRecentlyViewed] = useState([])
   const [readingProgress, setReadingProgress] = useState(0)
-  const [fontSize, setFontSize] = useState('medium')
-  const [showStats, setShowStats] = useState(false)
 
-  // Track reading progress
   useEffect(() => {
     if (selectedArticle) {
       const handleScroll = () => {
@@ -32,9 +28,7 @@ export default function WikiNITT() {
     }
   }, [selectedArticle])
 
-  // COMPREHENSIVE ARTICLE DATABASE - 32 ARTICLES
   const articles = {
-    // DEPARTMENTS (6)
     cse: {
       title: 'Computer Science & Engineering',
       category: 'Departments',
@@ -43,9 +37,8 @@ export default function WikiNITT() {
       contributors: 34,
       lastEdited: '2025-01-15',
       readingTime: 12,
-      difficulty: 'Advanced',
       tags: ['Engineering', 'Technology', 'Programming', 'AI', 'Placement'],
-      keywords: ['Computer Science', 'CSE', 'Programming', 'Coding', 'Software', 'Pragyan', 'Delta Force', 'Spider'],
+      keywords: ['Computer Science', 'CSE', 'Programming', 'Pragyan', 'Delta Force', 'Spider'],
       quickFacts: [
         { label: 'Established', value: '1964' },
         { label: 'Students', value: '600+' },
@@ -59,34 +52,33 @@ export default function WikiNITT() {
             heading: 'Department Overview',
             paragraphs: [
               'The Department of Computer Science & Engineering at NIT Trichy stands as one of the premier computer science departments in India, established in 1964. With a legacy spanning over six decades, the department has consistently produced exceptional engineers who have made significant contributions to the global technology landscape.',
-              'Our curriculum provides a strong foundation in core computer science principles while exposing students to cutting-edge technologies. The department maintains state-of-the-art laboratories equipped with the latest hardware and software, enabling hands-on experience in artificial intelligence, machine learning, cloud computing, and cybersecurity.'
+              'Our curriculum provides a strong foundation in core computer science principles while exposing students to cutting-edge technologies. The department maintains state-of-the-art laboratories equipped with the latest hardware and software.'
             ]
           },
           {
             heading: 'Academic Programs',
             paragraphs: [
-              'The B.Tech program covers fundamental and advanced topics including data structures, algorithms, database management, operating systems, computer networks, software engineering, artificial intelligence, and machine learning. Students have flexibility to choose elective courses based on interests and career goals.',
-              'Students are required to complete internships, summer projects, and a final year capstone project. These practical experiences help apply theoretical knowledge to real-world problems and prepare for successful careers in industry or academia.'
+              'The B.Tech program covers fundamental and advanced topics including data structures, algorithms, database management, operating systems, computer networks, software engineering, artificial intelligence, and machine learning.',
+              'Students complete internships, summer projects, and final year capstone projects. These practical experiences help apply theoretical knowledge to real-world problems.'
             ]
           },
           {
             heading: 'Research and Innovation',
             paragraphs: [
-              'The department is at the forefront of research in cutting-edge areas. Faculty and students work on projects funded by DST, DRDO, ISRO, and industry partners. Research areas include AI and machine learning, natural language processing, computer vision, data mining, cloud computing, IoT, cybersecurity, and blockchain.',
-              'Innovation is encouraged through hackathons, coding competitions, and innovation challenges. The department collaborates with Delta Force and Spider R&D clubs to organize technical events during Pragyan, providing platforms to showcase skills and interact with industry experts.'
+              'The department is at the forefront of research in AI, machine learning, natural language processing, computer vision, data mining, cloud computing, IoT, cybersecurity, and blockchain.',
+              'Students participate in Pragyan technical festival events organized by Delta Force and Spider R&D clubs, providing platforms to showcase skills and interact with industry experts.'
             ]
           },
           {
-            heading: 'Placements and Career',
+            heading: 'Placements',
             paragraphs: [
-              'The department has an outstanding placement record with 100% placement. Top companies like Google, Microsoft, Amazon, Adobe, Goldman Sachs, and Morgan Stanley recruit students for diverse roles. The average package is ₹18 lakhs per annum, with the highest reaching ₹52 lakhs.',
-              'Many students pursue higher education at MIT, Stanford, Carnegie Mellon, and UC Berkeley. Some choose entrepreneurship with support from the institute incubation center. The strong alumni network provides valuable mentorship and networking opportunities.'
+              'The department has 100% placement with top companies like Google, Microsoft, Amazon, Adobe, Goldman Sachs recruiting students. Average package is ₹18 lakhs per annum, highest reaching ₹52 lakhs.',
+              'Many students pursue higher education at MIT, Stanford, Carnegie Mellon. The strong alumni network provides valuable mentorship opportunities.'
             ]
           }
         ]
       }
     },
-    
     ece: {
       title: 'Electronics & Communication Engineering',
       category: 'Departments',
@@ -95,13 +87,11 @@ export default function WikiNITT() {
       contributors: 28,
       lastEdited: '2025-01-14',
       readingTime: 11,
-      difficulty: 'Advanced',
       tags: ['Engineering', 'Electronics', 'Communication', 'VLSI'],
-      keywords: ['ECE', 'Electronics', 'Communication', 'VLSI', 'Signal Processing'],
+      keywords: ['ECE', 'Electronics', 'VLSI', 'Signal Processing'],
       quickFacts: [
         { label: 'Established', value: '1965' },
         { label: 'Students', value: '550+' },
-        { label: 'Faculty', value: '42' },
         { label: 'Avg Package', value: '₹15 LPA' }
       ],
       content: {
@@ -109,28 +99,27 @@ export default function WikiNITT() {
           {
             heading: 'Department Introduction',
             paragraphs: [
-              'The Department of Electronics & Communication Engineering, established in 1965, is one of the oldest and most prestigious ECE departments in India. The department offers comprehensive education in electronics, communication systems, VLSI design, embedded systems, and signal processing.',
-              'Our curriculum balances theoretical knowledge with practical skills. Students learn about electronic circuits, digital systems, microprocessors, communication systems, and electromagnetic theory. Advanced courses cover wireless communications, optical fiber, VLSI design, and RF engineering.'
+              'The ECE Department, established in 1965, offers comprehensive education in electronics, communication systems, VLSI design, embedded systems, and signal processing.',
+              'Our curriculum balances theoretical knowledge with practical skills in analog electronics, digital systems, microprocessors, and electromagnetic theory.'
             ]
           },
           {
             heading: 'Research Facilities',
             paragraphs: [
-              'The department operates ten specialized research laboratories. The VLSI Design Lab is equipped with industry-standard EDA tools from Cadence, Synopsys, and Mentor Graphics. The Communications Lab features signal generators, spectrum analyzers, and software-defined radio platforms.',
-              'The Embedded Systems Lab provides microcontroller development boards, FPGA platforms, and debugging tools. Students design embedded systems for applications ranging from industrial automation to consumer electronics.'
+              'Ten specialized laboratories include the VLSI Design Lab with Cadence, Synopsys, and Mentor Graphics tools. The Communications Lab features signal generators and spectrum analyzers.',
+              'The Embedded Systems Lab provides microcontroller boards, FPGA platforms, and debugging tools for industrial automation applications.'
             ]
           },
           {
             heading: 'Career Prospects',
             paragraphs: [
-              'ECE students are recruited by Texas Instruments, Qualcomm, Broadcom, Intel, Samsung, and Analog Devices. The average package is ₹15 lakhs with the highest reaching ₹45 lakhs. Students receive offers for chip design, embedded systems, network engineering, and signal processing roles.',
-              'Many opt for higher studies at top universities or pursue entrepreneurial ventures. The Career Development Cell organizes training programs and mock interviews to prepare students for placements.'
+              'Students join Texas Instruments, Qualcomm, Broadcom, Intel, Samsung. Average package is ₹15 lakhs, highest reaching ₹45 lakhs.',
+              'Many pursue higher studies or entrepreneurial ventures with support from the Career Development Cell.'
             ]
           }
         ]
       }
     },
-
     mech: {
       title: 'Mechanical Engineering',
       category: 'Departments',
@@ -139,13 +128,11 @@ export default function WikiNITT() {
       contributors: 26,
       lastEdited: '2025-01-13',
       readingTime: 10,
-      difficulty: 'Intermediate',
-      tags: ['Engineering', 'Manufacturing', 'Design', 'Automation'],
-      keywords: ['Mechanical', 'Manufacturing', 'Design', 'CAD', 'Robotics'],
+      tags: ['Engineering', 'Manufacturing', 'Design'],
+      keywords: ['Mechanical', 'Manufacturing', 'CAD', 'Robotics'],
       quickFacts: [
         { label: 'Established', value: '1964' },
         { label: 'Students', value: '500+' },
-        { label: 'Faculty', value: '38' },
         { label: 'Avg Package', value: '₹12 LPA' }
       ],
       content: {
@@ -153,28 +140,27 @@ export default function WikiNITT() {
           {
             heading: 'Department Profile',
             paragraphs: [
-              'The Department of Mechanical Engineering, established in 1964, maintains its position as a leader in mechanical engineering education. The department offers programs covering traditional topics and emerging areas like robotics, automation, and advanced manufacturing.',
-              'Our curriculum includes thermodynamics, fluid mechanics, heat transfer, manufacturing processes, machine design, and materials science. Students also learn CAD, finite element analysis, and computational fluid dynamics.'
+              'The Mechanical Engineering Department covers traditional topics and emerging areas like robotics, automation, and advanced manufacturing.',
+              'Curriculum includes thermodynamics, fluid mechanics, heat transfer, manufacturing processes, machine design, CAD, and FEA.'
             ]
           },
           {
             heading: 'Labs and Workshops',
             paragraphs: [
-              'The department houses eight well-equipped laboratories. The Manufacturing Technology Lab features CNC machines, 3D printers, and laser cutting systems. The CAD/CAM Lab runs industry-standard software like CATIA, SolidWorks, and ANSYS.',
-              'The Thermal Engineering Lab studies heat transfer, combustion, and refrigeration. The Robotics and Automation Lab has robotic arms and automation equipment for hands-on learning.'
+              'Eight laboratories feature CNC machines, 3D printers, laser cutting systems. The CAD/CAM Lab runs CATIA, SolidWorks, and ANSYS.',
+              'The Robotics Lab has robotic arms and automation equipment for hands-on learning.'
             ]
           },
           {
             heading: 'Placements',
             paragraphs: [
-              'Graduates are recruited by L&T, Tata Motors, Mahindra, Ashok Leyland, Honeywell, and Schlumberger. The average package is ₹12 lakhs with the highest at ₹38 lakhs. Students also join consulting firms and analytics companies.',
-              'Many pursue higher education or MBA programs. The alumni network provides valuable support and mentorship to current students.'
+              'Graduates join L&T, Tata Motors, Mahindra, Ashok Leyland. Average package is ₹12 lakhs, highest at ₹38 lakhs.',
+              'Alumni network provides valuable support and mentorship to current students.'
             ]
           }
         ]
       }
     },
-
     civil: {
       title: 'Civil Engineering',
       category: 'Departments',
@@ -183,13 +169,11 @@ export default function WikiNITT() {
       contributors: 22,
       lastEdited: '2025-01-12',
       readingTime: 9,
-      difficulty: 'Intermediate',
       tags: ['Engineering', 'Construction', 'Infrastructure'],
-      keywords: ['Civil', 'Construction', 'Structural', 'Buildings'],
+      keywords: ['Civil', 'Construction', 'Structural'],
       quickFacts: [
         { label: 'Established', value: '1965' },
         { label: 'Students', value: '450+' },
-        { label: 'Faculty', value: '35' },
         { label: 'Avg Package', value: '₹10 LPA' }
       ],
       content: {
@@ -197,28 +181,20 @@ export default function WikiNITT() {
           {
             heading: 'About the Department',
             paragraphs: [
-              'The Department of Civil Engineering has been a cornerstone of infrastructure education since 1965. Programs cover structural engineering, transportation, geotechnical, water resources, and environmental engineering.',
-              'Students learn structural analysis, concrete technology, soil mechanics, highway engineering, and construction management. The curriculum emphasizes sustainability and modern computational tools.'
+              'The Civil Engineering Department covers structural, transportation, geotechnical, water resources, and environmental engineering.',
+              'Students learn structural analysis, concrete technology, soil mechanics, and construction management with emphasis on sustainability.'
             ]
           },
           {
             heading: 'Facilities',
             paragraphs: [
-              'Seven specialized laboratories support teaching and research. The Structural Lab has universal testing machines and non-destructive testing equipment. The Geotechnical Lab conducts soil testing including triaxial and shear tests.',
-              'The Surveying Lab provides total stations, GPS equipment, and drones. The CAD Lab has software for structural design and transportation planning.'
-            ]
-          },
-          {
-            heading: 'Career Paths',
-            paragraphs: [
-              'Students join L&T Construction, Shapoorji Pallonji, Tata Projects, and GMR. The average package is ₹10 lakhs. Many qualify for government jobs through GATE in ISRO, DRDO, and PSUs.',
-              'Industrial visits and guest lectures bridge academic learning with professional practice, ensuring industry-ready graduates.'
+              'Seven laboratories support teaching and research including Structural Lab with testing machines and Geotechnical Lab for soil analysis.',
+              'CAD Lab features software for structural design and transportation planning.'
             ]
           }
         ]
       }
     },
-
     eee: {
       title: 'Electrical & Electronics Engineering',
       category: 'Departments',
@@ -227,13 +203,11 @@ export default function WikiNITT() {
       contributors: 24,
       lastEdited: '2025-01-11',
       readingTime: 10,
-      difficulty: 'Advanced',
-      tags: ['Engineering', 'Power Systems', 'Control', 'Energy'],
-      keywords: ['Electrical', 'EEE', 'Power', 'Control Systems'],
+      tags: ['Engineering', 'Power Systems', 'Control'],
+      keywords: ['Electrical', 'EEE', 'Power', 'Control'],
       quickFacts: [
         { label: 'Established', value: '1964' },
         { label: 'Students', value: '480+' },
-        { label: 'Faculty', value: '36' },
         { label: 'Avg Package', value: '₹13 LPA' }
       ],
       content: {
@@ -241,28 +215,20 @@ export default function WikiNITT() {
           {
             heading: 'Overview',
             paragraphs: [
-              'The EEE Department has pioneered electrical engineering education since 1964. Programs cover power systems, power electronics, control systems, electrical machines, renewable energy, and smart grid technologies.',
-              'The curriculum includes circuit theory, electromagnetic fields, electrical machines, power systems, and control systems. Students study renewable energy, electric vehicles, and energy storage.'
+              'EEE Department covers power systems, power electronics, control systems, electrical machines, renewable energy, and smart grids.',
+              'Curriculum includes circuit theory, electromagnetic fields, power systems, and renewable energy technologies.'
             ]
           },
           {
             heading: 'Research Labs',
             paragraphs: [
-              'Nine laboratories support learning and research. The Power Systems Lab has protective relays and simulation software. The Power Electronics Lab features thyristors, converters, and inverters.',
-              'The Renewable Energy Lab focuses on solar PV, wind energy conversion, and storage technologies. Students access MATLAB/Simulink, PSCAD, and ETAP software.'
-            ]
-          },
-          {
-            heading: 'Opportunities',
-            paragraphs: [
-              'Graduates join BHEL, Siemens, ABB, Schneider Electric, and GE. The average package is ₹13 lakhs with the highest at ₹42 lakhs. Many also join power sector PSUs like NTPC and PGCIL.',
-              'Students pursue higher education in power electronics, renewable energy, or control systems. The placement cell ensures excellent career outcomes.'
+              'Nine laboratories include Power Systems Lab with relays and simulation software, Power Electronics Lab with converters.',
+              'Renewable Energy Lab focuses on solar PV, wind energy, and storage technologies.'
             ]
           }
         ]
       }
     },
-
     chemical: {
       title: 'Chemical Engineering',
       category: 'Departments',
@@ -271,13 +237,11 @@ export default function WikiNITT() {
       contributors: 20,
       lastEdited: '2025-01-10',
       readingTime: 9,
-      difficulty: 'Intermediate',
-      tags: ['Engineering', 'Process', 'Chemistry', 'Biotechnology'],
-      keywords: ['Chemical', 'Process', 'Biotechnology', 'Polymers'],
+      tags: ['Engineering', 'Process', 'Chemistry'],
+      keywords: ['Chemical', 'Process', 'Biotechnology'],
       quickFacts: [
         { label: 'Established', value: '1966' },
         { label: 'Students', value: '400+' },
-        { label: 'Faculty', value: '32' },
         { label: 'Avg Package', value: '₹11 LPA' }
       ],
       content: {
@@ -285,29 +249,13 @@ export default function WikiNITT() {
           {
             heading: 'Introduction',
             paragraphs: [
-              'The Chemical Engineering Department, established in 1966, offers education in chemical processes, biotechnology, polymer engineering, and environmental engineering. The curriculum combines chemistry, physics, mathematics, and engineering principles.',
-              'Students learn mass transfer, heat transfer, fluid mechanics, thermodynamics, reaction engineering, and process control. Advanced courses cover petroleum refining, polymer science, and biochemical engineering.'
-            ]
-          },
-          {
-            heading: 'Infrastructure',
-            paragraphs: [
-              'Six specialized laboratories include the Unit Operations Lab with distillation and extraction equipment. The Process Control Lab has controllers and simulators. The Biotechnology Lab focuses on fermentation and enzyme technology.',
-              'Students access Aspen Plus, HYSYS, and COMSOL software for process simulation, essential for plant design and optimization.'
-            ]
-          },
-          {
-            heading: 'Careers',
-            paragraphs: [
-              'Graduates join Reliance Industries, IOCL, BPCL, Hindustan Unilever, and Procter & Gamble. The average package is ₹11 lakhs. Many also enter consulting and analytics firms.',
-              'The department supports students qualifying for PSU jobs through GATE and pursuing higher education in specialized areas.'
+              'Chemical Engineering offers education in chemical processes, biotechnology, polymer engineering, and environmental engineering.',
+              'Students learn mass transfer, thermodynamics, reaction engineering, and process control.'
             ]
           }
         ]
       }
     },
-
-    // HOSTELS (16 - ALL BOYS)
     agate: {
       title: 'Agate Hostel',
       category: 'Hostels',
@@ -316,44 +264,32 @@ export default function WikiNITT() {
       contributors: 48,
       lastEdited: '2025-01-16',
       readingTime: 8,
-      difficulty: 'Beginner',
-      tags: ['Hostel', 'Accommodation', 'Boys', 'Campus Life'],
-      keywords: ['Agate', 'Hostel', 'Boys', 'Accommodation', 'Delta Force', 'Mess'],
+      tags: ['Hostel', 'Boys', 'Campus Life'],
+      keywords: ['Agate', 'Hostel', 'Boys', 'Delta Force'],
       quickFacts: [
         { label: 'Type', value: 'Boys Hostel' },
         { label: 'Capacity', value: '400 students' },
-        { label: 'Floors', value: '4 floors' },
-        { label: 'Room Types', value: 'Single, Double' },
-        { label: 'Mess', value: 'In-house' },
-        { label: 'Established', value: '1985' }
+        { label: 'Floors', value: '4 floors' }
       ],
       content: {
         sections: [
           {
             heading: 'Hostel Overview',
             paragraphs: [
-              'Agate Hostel is one of the premier boys hostels at NIT Trichy, housing 400 male students across four floors. Located in the heart of the campus, Agate has built a reputation for its vibrant culture, excellent facilities, and strong sense of community among residents.',
-              'The hostel provides both single and double occupancy rooms, all equipped with basic furniture including bed, study table, chair, and wardrobe. Each floor has common areas for recreation and studying, fostering a collaborative living environment.'
+              'Agate Hostel is a premier boys hostel housing 400 male students across four floors. Located in the heart of campus, Agate has built a reputation for vibrant culture and excellent facilities.',
+              'The hostel provides single and double occupancy rooms with bed, study table, chair, and wardrobe.'
             ]
           },
           {
-            heading: 'Facilities and Amenities',
+            heading: 'Facilities',
             paragraphs: [
-              'Agate features an in-house mess serving breakfast, lunch, dinner, and snacks. The mess committee works closely with the catering service to ensure quality food and diverse menus. The hostel also has a canteen for late-night refreshments.',
-              'Common facilities include a TV room, reading room, gym, indoor games room with table tennis and carrom, and a music room. High-speed WiFi connectivity is available throughout the hostel, and each room has LAN ports for wired internet access.'
-            ]
-          },
-          {
-            heading: 'Student Culture',
-            paragraphs: [
-              'Agate is known for its active participation in technical and cultural activities. Many residents are members of Delta Force coding club and participate regularly in Pragyan events. The hostel organizes internal sports tournaments, cultural nights, and celebrates major festivals together.',
-              'The hostel council manages day-to-day affairs and represents student interests to the administration. Senior students mentor juniors, creating a supportive environment for first-year students transitioning to hostel life.'
+              'In-house mess serves breakfast, lunch, dinner, and snacks. Common facilities include TV room, reading room, gym, and music room.',
+              'High-speed WiFi is available throughout. Many residents are Delta Force members who participate in Pragyan events.'
             ]
           }
         ]
       }
     },
-
     diamond: {
       title: 'Diamond Hostel',
       category: 'Hostels',
@@ -362,35 +298,24 @@ export default function WikiNITT() {
       contributors: 42,
       lastEdited: '2025-01-15',
       readingTime: 7,
-      difficulty: 'Beginner',
-      tags: ['Hostel', 'Accommodation', 'Boys', 'Campus'],
-      keywords: ['Diamond', 'Hostel', 'Boys', 'Students'],
+      tags: ['Hostel', 'Boys'],
+      keywords: ['Diamond', 'Hostel', 'Boys'],
       quickFacts: [
         { label: 'Type', value: 'Boys Hostel' },
-        { label: 'Capacity', value: '380 students' },
-        { label: 'Floors', value: '4 floors' },
-        { label: 'Room Types', value: 'Double, Triple' }
+        { label: 'Capacity', value: '380 students' }
       ],
       content: {
         sections: [
           {
             heading: 'About Diamond',
             paragraphs: [
-              'Diamond Hostel accommodates 380 male students in double and triple occupancy rooms. The hostel is known for its cleanliness, discipline, and academic-focused environment. Located near the main academic block, it offers convenient access to classes.',
-              'Rooms are spacious with good ventilation and natural lighting. Each student gets a bed, study table, chair, and personal storage space.'
-            ]
-          },
-          {
-            heading: 'Hostel Life',
-            paragraphs: [
-              'Diamond has a well-maintained mess with vegetarian and non-vegetarian options. The hostel also has a small gym, common room, and study areas. Regular maintenance ensures all facilities remain in excellent condition.',
-              'Students actively participate in inter-hostel sports competitions and cultural events. The hostel atmosphere promotes both academic excellence and extracurricular involvement.'
+              'Diamond Hostel accommodates 380 male students in double and triple rooms. Known for cleanliness and academic-focused environment.',
+              'Located near academic blocks with convenient access to classes.'
             ]
           }
         ]
       }
     },
-
     jade: {
       title: 'Jade Hostel',
       category: 'Hostels',
@@ -399,34 +324,24 @@ export default function WikiNITT() {
       contributors: 38,
       lastEdited: '2025-01-14',
       readingTime: 6,
-      difficulty: 'Beginner',
       tags: ['Hostel', 'Boys', 'Sports'],
-      keywords: ['Jade', 'Hostel', 'Boys', 'Sports'],
+      keywords: ['Jade', 'Hostel', 'Boys'],
       quickFacts: [
         { label: 'Type', value: 'Boys Hostel' },
-        { label: 'Capacity', value: '350 students' },
-        { label: 'Specialty', value: 'Sports Culture' }
+        { label: 'Capacity', value: '350 students' }
       ],
       content: {
         sections: [
           {
-            heading: 'Jade Hostel Profile',
+            heading: 'Jade Profile',
             paragraphs: [
-              'Jade Hostel is home to 350 male students and is particularly known for its strong sports culture. Many hostel residents are part of college sports teams in cricket, football, basketball, and athletics.',
-              'The hostel has its own volleyball and badminton courts nearby, and residents regularly use these facilities for practice and recreation.'
-            ]
-          },
-          {
-            heading: 'Community Spirit',
-            paragraphs: [
-              'Jade promotes teamwork and fitness. The hostel organizes morning running groups, sports practice sessions, and participates enthusiastically in inter-hostel tournaments.',
-              'Despite the sports focus, academic performance is also emphasized with dedicated study hours and peer tutoring among students.'
+              'Jade Hostel houses 350 male students and is known for strong sports culture. Many residents are college sports team members.',
+              'The hostel has volleyball and badminton courts nearby for practice and recreation.'
             ]
           }
         ]
       }
     },
-
     coral: {
       title: 'Coral Hostel',
       category: 'Hostels',
@@ -435,232 +350,383 @@ export default function WikiNITT() {
       contributors: 35,
       lastEdited: '2025-01-13',
       readingTime: 6,
-      difficulty: 'Beginner',
-      tags: ['Hostel', 'Boys', 'Modern'],
-      keywords: ['Coral', 'Hostel', 'Boys', 'Eco-friendly'],
+      tags: ['Hostel', 'Boys'],
+      keywords: ['Coral', 'Hostel', 'Boys'],
       quickFacts: [
         { label: 'Type', value: 'Boys Hostel' },
-        { label: 'Capacity', value: '360 students' },
-        { label: 'Features', value: 'Solar panels' }
+        { label: 'Capacity', value: '360 students' }
       ],
       content: {
         sections: [
           {
             heading: 'Modern Coral',
             paragraphs: [
-              'Coral Hostel is one of the newer boys hostels with modern eco-friendly features including solar water heaters and LED lighting throughout. The hostel houses 360 male students in comfortable rooms with contemporary amenities.',
-              'Each floor has water purifiers, and the hostel maintains high standards of cleanliness and hygiene.'
-            ]
-          },
-          {
-            heading: 'Facilities',
-            paragraphs: [
-              'Coral features a spacious mess, reading room with AC, and well-equipped common areas. The hostel emphasizes sustainability with waste segregation and composting initiatives.',
-              'Students enjoy a peaceful environment conducive to both study and recreation, with regular cultural programs and festival celebrations.'
+              'Coral is a modern boys hostel with eco-friendly features including solar water heaters and LED lighting. Houses 360 male students.',
+              'Emphasizes sustainability with waste segregation and composting initiatives.'
             ]
           }
         ]
       }
     },
-
-    opal: {
-      title: 'Opal Hostel',
-      category: 'Hostels',
-      icon: '⚪',
-      views: 6234,
-      contributors: 28,
-      lastEdited: '2025-01-12',
-      readingTime: 5,
-      difficulty: 'Beginner',
-      tags: ['Hostel', 'Boys', 'Academic'],
-      keywords: ['Opal', 'Hostel', 'Boys'],
+    pragyan: {
+      title: 'Pragyan - Technical Festival',
+      category: 'Student Life',
+      icon: '🚀',
+      views: 15234,
+      contributors: 52,
+      lastEdited: '2025-01-17',
+      readingTime: 10,
+      tags: ['Festival', 'Technical', 'Events'],
+      keywords: ['Pragyan', 'Technical', 'Festival', 'Computer Science', 'Delta Force'],
       quickFacts: [
-        { label: 'Type', value: 'Boys Hostel' },
-        { label: 'Capacity', value: '320 students' },
-        { label: 'Focus', value: 'Academic Excellence' }
+        { label: 'Type', value: 'Technical Festival' },
+        { label: 'Participants', value: '25,000+' },
+        { label: 'Duration', value: '3 days' }
       ],
       content: {
         sections: [
           {
-            heading: 'Opal Overview',
+            heading: 'About Pragyan',
             paragraphs: [
-              'Opal Hostel accommodates 320 male students and is known for its academic atmosphere. Many top performers and research-oriented students reside here, creating a studious environment.',
-              'The hostel has excellent library facilities and dedicated quiet hours to support focused study.'
-            ]
-          },
-          {
-            heading: 'Community',
-            paragraphs: [
-              'Residents organize study groups, peer teaching sessions, and academic workshops. The hostel also participates in Pragyan technical events with strong representation from CSE and ECE students.',
-              'Despite the academic focus, Opal maintains a balanced lifestyle with recreational activities and social events.'
+              'Pragyan is the annual technical festival of NIT Trichy, attracting over 25,000 participants from across India. The three-day event showcases cutting-edge technology, innovation, and engineering excellence.',
+              'Events include coding competitions organized by Delta Force, robotics challenges by Spider R&D, workshops, hackathons, and guest lectures by industry leaders and researchers from top companies and institutions worldwide.'
             ]
           }
         ]
       }
     },
-
-    pearl: {
-      title: 'Pearl Hostel',
-      category: 'Hostels',
-      icon: '🤍',
-      views: 5892,
+    festember: {
+      title: 'Festember - Cultural Festival',
+      category: 'Student Life',
+      icon: '🎭',
+      views: 14892,
+      contributors: 48,
+      lastEdited: '2025-01-16',
+      readingTime: 9,
+      tags: ['Festival', 'Cultural', 'Events'],
+      keywords: ['Festember', 'Cultural', 'Festival'],
+      quickFacts: [
+        { label: 'Type', value: 'Cultural Festival' },
+        { label: 'Footfall', value: '60,000+' },
+        { label: 'Duration', value: '4 days' }
+      ],
+      content: {
+        sections: [
+          {
+            heading: 'About Festember',
+            paragraphs: [
+              'Festember is South India largest cultural festival with over 60,000 participants. The four-day extravaganza features music, dance, drama, literary events, and celebrity performances.',
+              'Students showcase talents in various competitions while enjoying pro-nights featuring renowned artists and bands from across the country.'
+            ]
+          }
+        ]
+      }
+    },
+    deltaforce: {
+      title: 'Delta Force - Coding Club',
+      category: 'Student Life',
+      icon: '👨‍💻',
+      views: 10234,
+      contributors: 38,
+      lastEdited: '2025-01-15',
+      readingTime: 7,
+      tags: ['Club', 'Coding', 'Programming'],
+      keywords: ['Delta Force', 'Coding', 'Programming', 'Computer Science', 'Pragyan'],
+      quickFacts: [
+        { label: 'Type', value: 'Technical Club' },
+        { label: 'Members', value: '200+' },
+        { label: 'Focus', value: 'Competitive Programming' }
+      ],
+      content: {
+        sections: [
+          {
+            heading: 'About Delta Force',
+            paragraphs: [
+              'Delta Force is the premier coding and competitive programming club at NIT Trichy. The club conducts regular coding contests, workshops, and training sessions to help students excel in competitive programming.',
+              'Members have achieved success in ACM ICPC regionals and various national coding competitions. During Pragyan, Delta Force organizes major coding events and hackathons attracting participants from across India.'
+            ]
+          }
+        ]
+      }
+    },
+    spider: {
+      title: 'Spider R&D - Robotics Club',
+      category: 'Student Life',
+      icon: '🤖',
+      views: 9456,
+      contributors: 35,
+      lastEdited: '2025-01-14',
+      readingTime: 7,
+      tags: ['Club', 'Robotics', 'R&D'],
+      keywords: ['Spider', 'Robotics', 'IoT', 'Pragyan'],
+      quickFacts: [
+        { label: 'Type', value: 'R&D Club' },
+        { label: 'Members', value: '150+' },
+        { label: 'Focus', value: 'Robotics & IoT' }
+      ],
+      content: {
+        sections: [
+          {
+            heading: 'About Spider R&D',
+            paragraphs: [
+              'Spider R&D focuses on research and development in robotics, IoT, and emerging technologies. Students work on innovative projects, participate in hackathons, and contribute to open-source software.',
+              'The club organizes robotics events during Pragyan and provides a platform for students to explore hardware and software integration in real-world applications.'
+            ]
+          }
+        ]
+      }
+    },
+    sac: {
+      title: 'Student Activity Center (SAC)',
+      category: 'Student Life',
+      icon: '🏛️',
+      views: 11234,
+      contributors: 42,
+      lastEdited: '2025-01-15',
+      readingTime: 8,
+      tags: ['Facility', 'Activities', 'Clubs'],
+      keywords: ['SAC', 'Activities', 'Clubs'],
+      quickFacts: [
+        { label: 'Type', value: 'Activity Center' },
+        { label: 'Clubs', value: '50+' },
+        { label: 'Facilities', value: 'Auditorium, Studios' }
+      ],
+      content: {
+        sections: [
+          {
+            heading: 'About SAC',
+            paragraphs: [
+              'The Student Activity Center is the hub of extracurricular activities at NIT Trichy. It houses over 50 clubs including music, dance, drama, photography, and technical clubs.',
+              'SAC provides rehearsal spaces, equipment, and support for student activities. It serves as the coordination center for Festember and other cultural events throughout the year.'
+            ]
+          }
+        ]
+      }
+    },
+    library: {
+      title: 'Central Library',
+      category: 'Student Life',
+      icon: '📚',
+      views: 8892,
+      contributors: 32,
+      lastEdited: '2025-01-13',
+      readingTime: 6,
+      tags: ['Facility', 'Library', 'Resources'],
+      keywords: ['Library', 'Books', 'Resources'],
+      quickFacts: [
+        { label: 'Collection', value: '2 lakh books' },
+        { label: 'Journals', value: '500+' },
+        { label: 'Reading Seats', value: '1000+' }
+      ],
+      content: {
+        sections: [
+          {
+            heading: 'Library Overview',
+            paragraphs: [
+              'The Central Library houses over 2 lakh books, 500+ journals, and extensive digital resources. It provides a conducive environment for study and research with over 1000 reading seats.',
+              'The library subscribes to major digital databases including IEEE, Springer, Elsevier, and provides access to e-books, journals, and research papers for students and faculty.'
+            ]
+          }
+        ]
+      }
+    },
+    cdc: {
+      title: 'Career Development Cell',
+      category: 'Student Life',
+      icon: '💼',
+      views: 13456,
+      contributors: 45,
+      lastEdited: '2025-01-16',
+      readingTime: 8,
+      tags: ['Career', 'Placements', 'Training'],
+      keywords: ['CDC', 'Placements', 'Career'],
+      quickFacts: [
+        { label: 'Placement Rate', value: '100%' },
+        { label: 'Avg Package', value: '₹14 LPA' },
+        { label: 'Recruiters', value: '200+' }
+      ],
+      content: {
+        sections: [
+          {
+            heading: 'About CDC',
+            paragraphs: [
+              'The Career Development Cell coordinates placements and internships for NIT Trichy students. With 100% placement record, CDC brings over 200 companies for campus recruitment annually.',
+              'The cell conducts training programs, mock interviews, resume workshops, and provides career counseling to prepare students for successful careers in industry and research.'
+            ]
+          }
+        ]
+      }
+    },
+    ecell: {
+      title: 'E-Cell - Entrepreneurship Cell',
+      category: 'Student Life',
+      icon: '💡',
+      views: 7234,
+      contributors: 28,
+      lastEdited: '2025-01-12',
+      readingTime: 6,
+      tags: ['Entrepreneurship', 'Startups'],
+      keywords: ['E-Cell', 'Entrepreneurship', 'Startups'],
+      quickFacts: [
+        { label: 'Type', value: 'Entrepreneurship' },
+        { label: 'Startups Supported', value: '30+' },
+        { label: 'Focus', value: 'Innovation' }
+      ],
+      content: {
+        sections: [
+          {
+            heading: 'About E-Cell',
+            paragraphs: [
+              'The Entrepreneurship Cell fosters innovation and startup culture at NIT Trichy. E-Cell conducts workshops on business planning, funding, and startup operations.',
+              'The cell has supported over 30 student startups and regularly invites successful entrepreneurs for mentorship sessions and networking events.'
+            ]
+          }
+        ]
+      }
+    },
+    nss: {
+      title: 'NSS - National Service Scheme',
+      category: 'Student Life',
+      icon: '🤝',
+      views: 6892,
       contributors: 26,
       lastEdited: '2025-01-11',
       readingTime: 5,
-      difficulty: 'Beginner',
-      tags: ['Hostel', 'Boys'],
-      keywords: ['Pearl', 'Hostel', 'Boys'],
+      tags: ['Social Service', 'Volunteering'],
+      keywords: ['NSS', 'Service', 'Social'],
       quickFacts: [
-        { label: 'Type', value: 'Boys Hostel' },
-        { label: 'Capacity', value: '340 students' }
+        { label: 'Type', value: 'Social Service' },
+        { label: 'Volunteers', value: '500+' },
+        { label: 'Activities', value: 'Village camps, Drives' }
       ],
       content: {
         sections: [
           {
-            heading: 'Pearl Hostel',
+            heading: 'About NSS',
             paragraphs: [
-              'Pearl Hostel houses 340 male students in a friendly and inclusive environment. The hostel is centrally located with easy access to academic buildings, libraries, and sports facilities.',
-              'Rooms are well-maintained with regular housekeeping services and pest control measures.'
-            ]
-          },
-          {
-            heading: 'Life at Pearl',
-            paragraphs: [
-              'Pearl has an active student council that organizes cultural nights, movie screenings, and festival celebrations. The mess serves quality food with options for different dietary preferences.',
-              'Students from various departments live together, promoting interdisciplinary interactions and friendships that last beyond college years.'
+              'NSS at NIT Trichy promotes social responsibility through community service. With over 500 volunteers, NSS organizes blood donation drives, village development camps, and awareness programs.',
+              'Activities include teaching underprivileged children, environmental conservation, and health awareness campaigns in nearby villages.'
             ]
           }
         ]
       }
     },
-
-    ruby: {
-      title: 'Ruby Hostel',
-      category: 'Hostels',
-      icon: '🔴',
-      views: 5621,
-      contributors: 24,
-      lastEdited: '2025-01-10',
-      readingTime: 5,
-      difficulty: 'Beginner',
-      tags: ['Hostel', 'Boys'],
-      keywords: ['Ruby', 'Hostel', 'Boys'],
-      quickFacts: [
-        { label: 'Type', value: 'Boys Hostel' },
-        { label: 'Capacity', value: '310 students' }
-      ],
-      content: {
-        sections: [
-          {
-            heading: 'Ruby Introduction',
-            paragraphs: [
-              'Ruby Hostel is home to 310 male students and offers a vibrant living experience. The hostel has excellent common facilities including a large TV room, games room, and outdoor sitting areas.',
-              'The mess provides nutritious meals with a rotating menu that includes regional specialties.'
-            ]
-          },
-          {
-            heading: 'Activities',
-            paragraphs: [
-              'Ruby students actively participate in Festember cultural events and inter-hostel competitions. The hostel has produced winners in drama, music, and dance competitions.',
-              'The friendly atmosphere and supportive seniors make Ruby an ideal home away from home for students.'
-            ]
-          }
-        ]
-      }
-    },
-
-    sapphire: {
-      title: 'Sapphire Hostel',
-      category: 'Hostels',
-      icon: '🔵',
+    forge: {
+      title: 'Forge - Innovation & Maker Club',
+      category: 'Student Life',
+      icon: '🔧',
       views: 5234,
       contributors: 22,
-      lastEdited: '2025-01-09',
-      readingTime: 4,
-      difficulty: 'Beginner',
-      tags: ['Hostel', 'Boys'],
-      keywords: ['Sapphire', 'Hostel', 'Boys'],
+      lastEdited: '2025-01-10',
+      readingTime: 5,
+      tags: ['Innovation', 'Making', 'Prototyping'],
+      keywords: ['Forge', 'Innovation', 'Making'],
       quickFacts: [
-        { label: 'Type', value: 'Boys Hostel' },
-        { label: 'Capacity', value: '300 students' }
+        { label: 'Type', value: 'Innovation Club' },
+        { label: 'Equipment', value: '3D Printers, Laser Cutters' },
+        { label: 'Focus', value: 'Rapid Prototyping' }
       ],
       content: {
         sections: [
           {
-            heading: 'Sapphire Hostel',
+            heading: 'About Forge',
             paragraphs: [
-              'Sapphire Hostel accommodates 300 male students in a peaceful campus setting. The hostel is surrounded by greenery, providing a refreshing environment for students.',
-              'Modern amenities include high-speed internet, 24/7 security, and well-equipped common areas for group study and recreation.'
+              'Forge is the innovation and maker club providing access to 3D printers, laser cutting machines, and prototyping equipment. Students work on hardware projects and product development.',
+              'The maker space encourages hands-on learning and supports students in transforming ideas into tangible prototypes for competitions and startup ventures.'
             ]
           }
         ]
       }
-    },
+    }
+  }
 
-    emerald: {
-      title: 'Emerald Hostel',
-      category: 'Hostels',
-      icon: '💎',
-      views: 4892,
-      contributors: 20,
-      lastEdited: '2025-01-08',
-      readingTime: 4,
-      difficulty: 'Beginner',
-      tags: ['Hostel', 'Boys'],
-      keywords: ['Emerald', 'Hostel', 'Boys'],
-      quickFacts: [
-        { label: 'Type', value: 'Boys Hostel' },
-        { label: 'Capacity', value: '290 students' }
-      ],
-      content: {
-        sections: [
-          {
-            heading: 'Emerald Overview',
-            paragraphs: [
-              'Emerald Hostel houses 290 male students with a focus on creating a homely atmosphere. The hostel council works actively to address student concerns and organize regular events.',
-              'Facilities include a well-stocked library, gym equipment, and recreational spaces for students to unwind after classes.'
-            ]
-          }
-        ]
+  const toggleBookmark = (key) => {
+    setBookmarks(prev => 
+      prev.includes(key) ? prev.filter(k => k !== key) : [...prev, key]
+    )
+  }
+
+  const openArticle = (key) => {
+    setSelectedArticle(key)
+    setCurrentView('article')
+    setMobileMenuOpen(false)
+    setShowSearch(false)
+    window.scrollTo(0, 0)
+    setReadingProgress(0)
+  }
+
+  const goBack = () => {
+    setSelectedArticle(null)
+    setCurrentView(selectedCategory === 'all' ? 'home' : 'category')
+    window.scrollTo(0, 0)
+  }
+
+  const selectCategory = (cat) => {
+    setSelectedCategory(cat)
+    setCurrentView(cat === 'all' ? 'home' : 'category')
+    setMobileMenuOpen(false)
+  }
+
+  const getFilteredArticles = () => {
+    let filtered = Object.entries(articles)
+    if (selectedCategory !== 'all') {
+      filtered = filtered.filter(([_, article]) => article.category === selectedCategory)
+    }
+    if (searchQuery) {
+      const query = searchQuery.toLowerCase()
+      filtered = filtered.filter(([key, article]) => 
+        article.title.toLowerCase().includes(query) ||
+        article.category.toLowerCase().includes(query) ||
+        article.tags.some(tag => tag.toLowerCase().includes(query)) ||
+        article.keywords.some(kw => kw.toLowerCase().includes(query))
+      )
+    }
+    return filtered
+  }
+
+  const createAutoLinkedContent = (text, currentKey) => {
+    let linkedText = text
+    Object.entries(articles).forEach(([key, article]) => {
+      if (key !== currentKey) {
+        article.keywords.forEach(keyword => {
+          const regex = new RegExp(`\\b${keyword}\\b`, 'gi')
+          linkedText = linkedText.replace(regex, (match) => `<LINK>${key}|${match}</LINK>`)
+        })
       }
-    },
-
-    topaz: {
-      title: 'Topaz Hostel',
-      category: 'Hostels',
-      icon: '🟡',
-      views: 4562,
-      contributors: 18,
-      lastEdited: '2025-01-07',
-      readingTime: 4,
-      difficulty: 'Beginner',
-      tags: ['Hostel', 'Boys'],
-      keywords: ['Topaz', 'Hostel', 'Boys'],
-      quickFacts: [
-        { label: 'Type', value: 'Boys Hostel' },
-        { label: 'Capacity', value: '280 students' }
-      ],
-      content: {
-        sections: [
-          {
-            heading: 'Topaz Hostel',
-            paragraphs: [
-              'Topaz Hostel is home to 280 male students and features modern infrastructure with comfortable living spaces. The hostel emphasizes cleanliness and maintains high hygiene standards.',
-              'Students enjoy access to indoor games, WiFi connectivity, and a mess that caters to diverse food preferences.'
-            ]
-          }
-        ]
+    })
+    
+    const parts = linkedText.split(/<LINK>|<\/LINK>/)
+    return parts.map((part, i) => {
+      if (i % 2 === 1) {
+        const [targetKey, text] = part.split('|')
+        return (
+          <span
+            key={i}
+            onClick={() => openArticle(targetKey)}
+            className="text-cyan-400 hover:text-cyan-300 underline cursor-pointer transition-colors"
+          >
+            {text}
+          </span>
+        )
       }
-    },
+      return part
+    })
+  }
 
-    amber: {
-      title: 'Amber Hostel',
-      category: 'Hostels',
-      icon: '🟠',
-      views: 4234,
-      contributors: 16,
-      lastEdited: '2025-01-06',
-      readingTime: 4,
-      difficulty: 'Beginner',
-      tags: ['Hostel', 'Boys'],
-      keywords: ['Amber', 'Hostel
+  const stats = {
+    totalArticles: Object.keys(articles).length,
+    totalViews: Object.values(articles).reduce((sum, a) => sum + a.views, 0),
+    totalContributors: Object.values(articles).reduce((sum, a) => sum + a.contributors, 0),
+    avgReadingTime: Math.round(Object.values(articles).reduce((sum, a) => sum + a.readingTime, 0) / Object.keys(articles).length)
+  }
+
+  const categories = ['all', 'Departments', 'Hostels', 'Student Life']
+  const filteredArticles = getFilteredArticles()
+  const article = selectedArticle ? articles[selectedArticle] : null
+
+  return (
+    <div className={`min-h-screen transition-colors duration-500 ${darkMode ? 'bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-100' : 'bg-gradient-to-br from-gray-50 via-white to-gray-50 text-gray-900'}`}>
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className={`absolute top-20 -left-20 w-72 h-72 ${darkMode ? 'bg-blue-500/10' : 'bg-blue-500/5'} rounded-full blur-3xl animate-pulse`}></div>
+        <div className={`absolute bottom-20 -right-20 w-96 h-96 ${darkMode ? 'bg-indigo-500/10' : 'bg-indigo-500/5'} rounded-full blur-3xl animate-pulse`} style={{animationDelay: '1s'}}></div>
+      </div>
